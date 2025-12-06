@@ -71,6 +71,66 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               {project.summary}
             </p>
 
+            {/* Spider Bot Story */}
+            {project.content.contentFlow && project.content.contentFlow.length > 0 && (
+              <Section title="Spider Bot Story">
+                <div className="space-y-12">
+                  {project.content.contentFlow.map((block, index) => {
+                    const media = project.content.media?.[block.mediaIndex];
+                    if (!media) return null;
+
+                    return (
+                      <div
+                        key={index}
+                        className={`flex flex-col gap-6 md:gap-8 items-center ${
+                          index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
+                        }`}
+                      >
+                        <div className="w-full md:w-1/2 overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+                          {media.type === "image" ? (
+                            <img
+                              src={media.src}
+                              alt={media.label}
+                              className="w-full h-full min-h-[320px] object-cover"
+                            />
+                          ) : (
+                            <video
+                              controls
+                              playsInline
+                              className="w-full h-full min-h-[320px] object-cover"
+                            >
+                              <source src={media.src} type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          )}
+                        </div>
+                        <div className="w-full md:w-1/2 space-y-3 text-left">
+                          {block.subtitle && (
+                            <p className="text-xs font-semibold uppercase tracking-[0.4em] text-accent">
+                              {block.subtitle}
+                            </p>
+                          )}
+                          <h3 className="text-xl font-semibold text-foreground">
+                            {block.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
+                            {block.text}
+                          </p>
+                          {block.bullets && block.bullets.length > 0 && (
+                            <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
+                              {block.bullets.map((bullet, bulletIndex) => (
+                                <li key={bulletIndex}>{bullet}</li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Section>
+            )}
+
             {/* Abstract */}
             {project.content.abstract && (
               <Section title="Abstract">
@@ -118,6 +178,58 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                     </li>
                   ))}
                 </ul>
+              </Section>
+            )}
+
+            {/* Hardware & Lab Requirements */}
+            {project.content.hardwareGroups && project.content.hardwareGroups.length > 0 && (
+              <Section title="Hardware & Lab Requirements">
+                <div className="space-y-6">
+                  {project.content.hardwareGroups.map((group, index) => (
+                    <div key={index} className="space-y-2">
+                      <p className="font-medium text-foreground">{group.title}</p>
+                      <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+                        {group.items.map((item, itemIndex) => (
+                          <li key={itemIndex}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </Section>
+            )}
+
+            {/* Architecture Comparison */}
+            {project.content.comparisons && project.content.comparisons.length > 0 && (
+              <Section title="Comparative Architecture">
+                <div className="space-y-6">
+                  {project.content.comparisons.map((stage, index) => (
+                    <div key={index} className="space-y-3">
+                      <p className="text-base font-medium text-foreground">{stage.title}</p>
+                      {stage.note && (
+                        <p className="text-sm text-muted-foreground">{stage.note}</p>
+                      )}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <p className="font-medium text-sm text-foreground mb-2">Key Hardware Components</p>
+                          <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
+                            {stage.hardwareComponents.map((component, compIndex) => (
+                              <li key={compIndex}>{component}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="font-medium text-sm text-foreground mb-2">Functions</p>
+                          <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
+                            {stage.functions.map((fn, fnIndex) => (
+                              <li key={fnIndex}>{fn}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </Section>
             )}
 

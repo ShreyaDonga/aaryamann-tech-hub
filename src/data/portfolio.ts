@@ -9,6 +9,15 @@ export interface Project {
   content: ProjectContent;
 }
 
+export type MediaType = "image" | "video";
+
+export interface MediaItem {
+  type: MediaType;
+  src: string;
+  label: string;
+  description?: string;
+}
+
 export interface ProjectContent {
   introduction?: string;
   objective?: string;
@@ -20,6 +29,30 @@ export interface ProjectContent {
   abstract?: string;
   background?: string;
   subProjects?: SubProject[];
+  media?: MediaItem[];
+  hardwareGroups?: HardwareGroup[];
+  comparisons?: ComparisonStage[];
+  contentFlow?: ContentFlowItem[];
+}
+
+export interface HardwareGroup {
+  title: string;
+  items: string[];
+}
+
+export interface ComparisonStage {
+  title: string;
+  note?: string;
+  hardwareComponents: string[];
+  functions: string[];
+}
+
+export interface ContentFlowItem {
+  mediaIndex: number;
+  title: string;
+  subtitle?: string;
+  text: string;
+  bullets?: string[];
 }
 
 export interface SubProject {
@@ -74,11 +107,210 @@ export const projects: Project[] = [
         "Wire organizer, foam tape, acrylic mount"
       ],
       methodology: "Step 1: Collected all electronic parts and 3D printed the chassis. Step 2: Used the Nano Expansion Board to connect all servos according to reference diagrams. Step 3: Calibrated each servo to initial positions (90°). Step 4: Assembled chassis with SG90 plastic gear servos on coxa joints. Step 5: Assembled 4 separate legs with 2 servos each for tibia and femur joints. Step 6: Attached legs to coxa joints via servo horns. Step 7: Coded walking gaits using Quadbot Inverse Kinematics for FORWARD, BACKWARD, LEFT, RIGHT movements. Step 8: Upgraded to SunFounder Aluminum Chassis with metal-geared servos for stability. Step 9-10: Fixed leg inversion issues by reconfiguring code. Step 11-12: Calibrated radio control system and integrated joystick values. Step 13-14: Mounted batteries, UBEC, RC receiver, and 720p Wi-Fi night-vision camera. Step 15-16: Organized wiring and uploaded final code for testing.",
+      hardwareGroups: [
+        {
+          title: "Essential Hardware Setup",
+          items: [
+            "Raspberry Pi 4 (8 GB)",
+            "Screen/Monitor",
+            "HDMI cable compatible with Raspberry Pi",
+            "64 GB SD card",
+            "Mouse & Keyboard",
+            "Raspberry Pi camera",
+            "Web camera",
+            "Spider Robot battery + charger"
+          ]
+        },
+        {
+          title: "Core Project Components",
+          items: [
+            "Quadruped robot chassis (SunFounder PiCrawler kit)",
+            "Raspberry Pi 4 (8 GB RAM)",
+            "Raspberry Pi 5 V power supply",
+            "Raspberry Pi fan and heatsink",
+            "Micro HDMI to HDMI adapter",
+            "64 GB SD card",
+            "Ultrasonic sensors",
+            "IR and PIR sensors",
+            "MQ5 gas sensor",
+            "Arduino Nano",
+            "Raspberry Pi camera",
+            "Sensor shield for Raspberry Pi with onboard speaker",
+            "Thermistor",
+            "Accelerometer",
+            "Node MCU",
+            "Joystick and buttons"
+          ]
+        },
+        {
+          title: "Components to Bring to RFL Lab",
+          items: [
+            "Arduino Nano (working with upload verification)",
+            "Arduino Nano cables (at least 2)",
+            "Arduino Nano shield",
+            "Complete PiCrawler chassis kit with accessories",
+            "Spider servos ×12",
+            "Screwdriver for servo horns",
+            "Battery cells (18650) ×3",
+            "Battery holders for 2-cell and 3-cell packs",
+            "Battery charger (if cells are not fully charged)",
+            "On-off switch",
+            "Raspberry Pi board and Raspberry Pi camera",
+            "Jumper wires (MM, MF, FF)",
+            "Breadboard"
+          ]
+        },
+        {
+          title: "Additional Tools & Supplies",
+          items: [
+            "General purpose PCB",
+            "Pin headers (male + female)",
+            "Soldering iron, flux, solder wire",
+            "UBEC switch",
+            "Power converter",
+            "RC controller"
+          ]
+        }
+      ],
+      comparisons: [
+        {
+          title: "Mark 1",
+          note: "Original configuration prior to DRDO recommendation",
+          hardwareComponents: [
+            "WiFi AP camera",
+            "RC controller",
+            "Arduino Nano"
+          ],
+          functions: [
+            "RC control",
+            "Wi-Fi IP video transmission",
+            "IR-based night vision",
+            "Audio transmitting",
+            "Kinematic control (Forward, Backward, Left, Right)"
+          ]
+        },
+        {
+          title: "Mark 2",
+          note: "After DRDO recommendation",
+          hardwareComponents: [
+            "WiFi AP camera",
+            "RC controller",
+            "Arduino Nano",
+            "ESP32",
+            "Gas sensors (MQ2, MQ3)",
+            "Temperature sensor"
+          ],
+          functions: [
+            "RC control + Wi-Fi based control",
+            "Smoke detection",
+            "LPG gas detection",
+            "Live temperature monitoring",
+            "Wi-Fi IP video transmission",
+            "IR-based night vision",
+            "Audio transmitting",
+            "Kinematic control (Forward, Backward, Left, Right)"
+          ]
+        }
+      ],
+      contentFlow: [
+        {
+          mediaIndex: 6,
+          title: "Spider Bot Demo in Action",
+          subtitle: "Live Wi-Fi + RC telemetry with night vision",
+          text:
+            "This demo captures the full control loop: RC input with backup Wi-Fi stream, live video/audio, and the servo-driven gaits moving through debris. It mirrors the manual traversal described in the results section and shows how the camera feed and IR lighting keep operators informed.",
+          bullets: [
+            "Dual-mode control (RC + Wi-Fi) keeps the robot responsive in confined spaces.",
+            "IR-enabled AP camera streams 720p night vision back to the operator.",
+            "Telemetry captures audio and positional cues for rescue responders."
+          ]
+        },
+        {
+          mediaIndex: 0,
+          title: "Mechanics & Vision Stack",
+          subtitle: "SunFounder PiCrawler chassis with high-resolution optics",
+          text:
+            "The aluminum PiCrawler chassis and servo assemblies give the legs their articulated gait. The camera module rests on a damped mount, which keeps the IR/night-vision sensor stable during motion—this is the same setup highlighted in the materials list.",
+          bullets: [
+            "Twelve servos divide responsibilities between coxa, femur, and tibia joints.",
+            "Metal gear servos provide the torque needed for forward, backward, and turning kinematics.",
+            "Camera mount pairs with an AP-enabled Wi-Fi module for remote viewing."
+          ]
+        },
+        {
+          mediaIndex: 2,
+          title: "Electronics & Sensor Layout",
+          subtitle: "Raspberry Pi, Arduino Nano, sensor shield, and power train",
+          text:
+            "All the logic boards sit beneath the chassis shroud with neatly routed wiring. The Arduino Nano handles servo PWM, while the Raspberry Pi bridges video, telemetry, and advanced sensors like the MQ5 gas detector referenced in hardware requirements.",
+          bullets: [
+            "Sensor shield keeps the speaker, PIR, and thermistor accessible for rapid diagnostics.",
+            "A Nano expansion board routes the PWM to every servo while keeping signals tidy.",
+            "18650 battery pack, UBEC, and on-off switch form the onboard power section."
+          ]
+        },
+        {
+          mediaIndex: 4,
+          title: "Operational Readiness & Control",
+          subtitle: "Field testing highlights smoke, LPG, and temperature awareness",
+          text:
+            "With live temperature monitoring and gas detection attached, the Spider Bot reports environmental dangers that human teams would otherwise miss. The same sensors power the aftermath of the DRDO-recommended upgrade.",
+          bullets: [
+            "MQ2 and MQ3 sensors scan for smoke and LPG while keeping UI alerts current.",
+            "NodeMCU assists the ESP32 for cloud reporting of environmental readings.",
+            "Kinematic control ensures the bot can pivot in place when navigating hazards."
+          ]
+        }
+      ],
       results: "The spider robot demonstrates functionality that is perfect for search and rescue missions in areas more inaccessible to humans. Its servo motor driven walking mechanism enables it many degrees of freedom and allows it to maneuver itself through tight gaps. The Wi-Fi camera provides live videos, which allows someone using the device to control it in real time, while its infrared night vision ensures visibility in low light scenarios allowing for operation regardless of time of day. The camera's built in audio recording capabilities helps the operator understand what is going around the robot, and perhaps catch signals of any distress calls. Additionally, by attaching different kinds of sensors to it (eg. PIR, Temperature, M4 gas sensors, etc) this robot could serve different purposes which makes it adaptable to many scenarios. Finally, radio control offers reliable navigation especially where Wi-Fi signals may be obstructed, maintaining smooth control over distances.",
       citations: [
         "https://researchinestonia.eu/2024/05/14/spider-inspired-robots/",
         "https://sdgs.un.org/goals/goal3",
         "https://www.un.org/en/academic-impact/robots-rescue-using-technology-mitigate-effects-natural-disasters"
+      ],
+      media: [
+        {
+          type: "image",
+          src: "/projects/spider-bot/img1.jpeg",
+          label: "Spider Bot standing pose",
+          description: "Full frontal view showcasing the completed quadruped chassis and mounted camera module."
+        },
+        {
+          type: "image",
+          src: "/projects/spider-bot/img2.jpeg",
+          label: "Spider Bot leg assembly",
+          description: "Close-up of the servo-driven legs as they connect to the coxa and femur joints."
+        },
+        {
+          type: "image",
+          src: "/projects/spider-bot/img3.jpeg",
+          label: "Spider Bot electronics layout",
+          description: "Interior wiring of the Raspberry Pi, Arduino Nano, and sensor shield neatly routed."
+        },
+        {
+          type: "image",
+          src: "/projects/spider-bot/img4.jpeg",
+          label: "Spider Bot in motion",
+          description: "Captured mid-gait to demonstrate how the inverse kinematics steer forward motion."
+        },
+        {
+          type: "image",
+          src: "/projects/spider-bot/img5.jpeg",
+          label: "Spider Bot night operation",
+          description: "Night-time scenario lit by IR LEDs while the robot navigates wreckage."
+        },
+        {
+          type: "image",
+          src: "/projects/spider-bot/img6.jpeg",
+          label: "Spider Bot close-up",
+          description: "Macro shot revealing the reinforced servo horns and fasteners."
+        },
+        {
+          type: "video",
+          src: "/projects/spider-bot/Spider_Bot_video.mp4",
+          label: "Spider Bot demo",
+          description: "Recorded walkthrough of the bot traversing uneven terrain with live telemetry."
+        }
       ]
     }
   },

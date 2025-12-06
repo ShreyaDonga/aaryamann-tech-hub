@@ -7,7 +7,6 @@ import { MapPin, Mail, Github, Linkedin, Phone, Send, GraduationCap, Award, Book
 import type { Project } from "@/data/portfolio";
 import { useToast } from "@/hooks/use-toast";
 import { Footer } from "@/components/Footer";
-import heroBanner from "@/assets/hero-banner.jpg";
 import profilePlaceholder from "@/assets/profile-placeholder.jpg";
 
 const Index = () => {
@@ -51,9 +50,9 @@ const Index = () => {
         {/* Hero Banner */}
         <section className="relative h-64 md:h-80 overflow-hidden">
           <img
-            src={heroBanner}
-            alt="Engineering workspace"
-            className="w-full h-full object-cover"
+            src="src/assets/hero-banner.jpg"
+            alt="Spider Bot hero"
+            className="w-full h-full object-cover transform "
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
         </section>
@@ -65,10 +64,12 @@ const Index = () => {
               {/* Profile Image */}
               <div className="relative">
                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-4 border-background shadow-xl">
-                  <img
-                    src={profilePlaceholder}
-                    alt={aboutData.name}
-                    className="w-full h-full object-cover"
+                  <video
+                    src="/projects/spider-bot/Spider_Bot_video.mp4"
+                    className="w-full h-full object-cover transform scale-120"
+                    autoPlay
+                    muted
+                    playsInline
                   />
                 </div>
               </div>
