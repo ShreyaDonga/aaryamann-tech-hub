@@ -1,15 +1,21 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Project } from "@/data/portfolio";
+import { MediaItem, Project } from "@/data/portfolio";
 import { X, ExternalLink } from "lucide-react";
-import projectSpiderRobot from "@/assets/project-spider-robot.jpg";
-import projectCompost from "@/assets/project-compost.jpg";
-import projectCybersecurity from "@/assets/project-cybersecurity.jpg";
+import type { ReactNode } from "react";
 
-const imageMap: Record<string, string> = {
-  "spider-robot": projectSpiderRobot,
-  "compost": projectCompost,
-  "cybersecurity": projectCybersecurity,
+const fallbackImage = "/projects/spider-bot/img1.jpeg";
+const fallbackMedia: MediaItem = {
+  type: "image",
+  src: fallbackImage,
+  label: "Beetel Bot hero",
+};
+
+const getHeroMedia = (project: Project) => {
+  const imageMedia = project.content.media?.find((item) => item.type === "image");
+  if (imageMedia) return imageMedia;
+  const videoMedia = project.content.media?.find((item) => item.type === "video");
+  return videoMedia ?? fallbackMedia;
 };
 
 interface ProjectModalProps {
@@ -21,17 +27,33 @@ interface ProjectModalProps {
 export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   if (!project) return null;
 
+  const heroMedia = getHeroMedia(project);
+  const heroLabel = heroMedia.label ?? project.title;
+  const isHeroVideo = heroMedia.type === "video";
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl max-h-[90vh] p-0 overflow-hidden">
         <ScrollArea className="max-h-[90vh]">
-          {/* Hero Image */}
+          {/* Hero Media */}
           <div className="relative aspect-video">
-            <img
-              src={imageMap[project.image]}
-              alt={project.title}
-              className="w-full h-full object-cover"
-            />
+            {isHeroVideo ? (
+              <video
+                controls
+                playsInline
+                aria-label={heroLabel}
+                className="w-full h-full object-cover"
+              >
+                <source src={heroMedia.src} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <img
+                src={heroMedia.src}
+                alt={heroLabel}
+                className="w-full h-full object-cover"
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
             
             {/* Close Button */}
@@ -71,9 +93,9 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               {project.summary}
             </p>
 
-            {/* Spider Bot Story */}
+            {/* Project Story */}
             {project.content.contentFlow && project.content.contentFlow.length > 0 && (
-              <Section title="Spider Bot Story">
+              <Section title={`${project.title} Story`}>
                 <div className="space-y-12">
                   {project.content.contentFlow.map((block, index) => {
                     const media = project.content.media?.[block.mediaIndex];
@@ -295,7 +317,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   );
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div className="space-y-3">
       <h3 className="font-display font-semibold text-lg text-foreground flex items-center gap-2">

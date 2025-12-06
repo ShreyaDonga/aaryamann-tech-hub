@@ -7,7 +7,6 @@ import { MapPin, Mail, Github, Linkedin, Phone, Send, GraduationCap, Award, Book
 import type { Project } from "@/data/portfolio";
 import { useToast } from "@/hooks/use-toast";
 import { Footer } from "@/components/Footer";
-import profilePlaceholder from "@/assets/profile-placeholder.jpg";
 
 const Index = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -50,9 +49,9 @@ const Index = () => {
         {/* Hero Banner */}
         <section className="relative h-64 md:h-80 overflow-hidden">
           <img
-            src="/hero-banner.jpg"
-            alt="Spider Bot hero"
-            className="w-full h-full object-cover transform "
+            src="/projects/spider-bot/img1.jpeg"
+            alt="Beetel Bot pose"
+            className="w-full h-full object-cover transform"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
         </section>
@@ -64,12 +63,10 @@ const Index = () => {
               {/* Profile Image */}
               <div className="relative">
                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-4 border-background shadow-xl">
-                  <video
-                    src="/projects/spider-bot/Spider_Bot_video.mp4"
-                    className="w-full h-full object-cover transform scale-120"
-                    autoPlay
-                    muted
-                    playsInline
+                  <img
+                    src="/projects/spider-bot/img3.jpeg"
+                    alt="Aaryamann conducting robotics work"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </div>

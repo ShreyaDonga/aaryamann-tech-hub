@@ -80,10 +80,10 @@ export const skills = [
 export const projects: Project[] = [
   {
     id: "spider-robot",
-    title: "Radio-Wave Operated Quadruped Spider Robot",
-    shortTitle: "Spider Bot",
+    title: "Radio-Wave Operated Quadruped Beetel Robot",
+    shortTitle: "Beetel Bot",
     category: "Robotics & Search Rescue",
-    summary: "A spider-inspired quadruped robot designed for search and rescue operations during disasters. Features radio control, night-vision camera, and real-time video/audio transmission.",
+    summary: "A beetel-inspired quadruped robot designed for search and rescue operations during disasters. Features radio control, night-vision camera, and real-time video/audio transmission.",
     image: "spider-robot",
     tags: ["Robotics", "Arduino", "3D Printing", "Radio Control"],
     content: {
@@ -118,7 +118,7 @@ export const projects: Project[] = [
             "Mouse & Keyboard",
             "Raspberry Pi camera",
             "Web camera",
-            "Spider Robot battery + charger"
+            "Beetel Bot battery + charger"
           ]
         },
         {
@@ -215,7 +215,7 @@ export const projects: Project[] = [
       contentFlow: [
         {
           mediaIndex: 6,
-          title: "Spider Bot Demo in Action",
+          title: "Beetel Bot Demo in Action",
           subtitle: "Live Wi-Fi + RC telemetry with night vision",
           text:
             "This demo captures the full control loop: RC input with backup Wi-Fi stream, live video/audio, and the servo-driven gaits moving through debris. It mirrors the manual traversal described in the results section and shows how the camera feed and IR lighting keep operators informed.",
@@ -254,7 +254,7 @@ export const projects: Project[] = [
           title: "Operational Readiness & Control",
           subtitle: "Field testing highlights smoke, LPG, and temperature awareness",
           text:
-            "With live temperature monitoring and gas detection attached, the Spider Bot reports environmental dangers that human teams would otherwise miss. The same sensors power the aftermath of the DRDO-recommended upgrade.",
+            "With live temperature monitoring and gas detection attached, the Beetel Bot reports environmental dangers that human teams would otherwise miss. The same sensors power the aftermath of the DRDO-recommended upgrade.",
           bullets: [
             "MQ2 and MQ3 sensors scan for smoke and LPG while keeping UI alerts current.",
             "NodeMCU assists the ESP32 for cloud reporting of environmental readings.",
@@ -262,7 +262,7 @@ export const projects: Project[] = [
           ]
         }
       ],
-      results: "The spider robot demonstrates functionality that is perfect for search and rescue missions in areas more inaccessible to humans. Its servo motor driven walking mechanism enables it many degrees of freedom and allows it to maneuver itself through tight gaps. The Wi-Fi camera provides live videos, which allows someone using the device to control it in real time, while its infrared night vision ensures visibility in low light scenarios allowing for operation regardless of time of day. The camera's built in audio recording capabilities helps the operator understand what is going around the robot, and perhaps catch signals of any distress calls. Additionally, by attaching different kinds of sensors to it (eg. PIR, Temperature, M4 gas sensors, etc) this robot could serve different purposes which makes it adaptable to many scenarios. Finally, radio control offers reliable navigation especially where Wi-Fi signals may be obstructed, maintaining smooth control over distances.",
+      results: "The Beetel robot demonstrates functionality that is perfect for search and rescue missions in areas more inaccessible to humans. Its servo motor driven walking mechanism enables it many degrees of freedom and allows it to maneuver itself through tight gaps. The Wi-Fi camera provides live videos, which allows someone using the device to control it in real time, while its infrared night vision ensures visibility in low light scenarios allowing for operation regardless of time of day. The camera's built in audio recording capabilities helps the operator understand what is going around the robot, and perhaps catch signals of any distress calls. Additionally, by attaching different kinds of sensors to it (eg. PIR, Temperature, M4 gas sensors, etc) this robot could serve different purposes which makes it adaptable to many scenarios. Finally, radio control offers reliable navigation especially where Wi-Fi signals may be obstructed, maintaining smooth control over distances.",
       citations: [
         "https://researchinestonia.eu/2024/05/14/spider-inspired-robots/",
         "https://sdgs.un.org/goals/goal3",
@@ -272,43 +272,43 @@ export const projects: Project[] = [
         {
           type: "image",
           src: "/projects/spider-bot/img1.jpeg",
-          label: "Spider Bot standing pose",
+          label: "Beetel Bot standing pose",
           description: "Full frontal view showcasing the completed quadruped chassis and mounted camera module."
         },
         {
           type: "image",
           src: "/projects/spider-bot/img2.jpeg",
-          label: "Spider Bot leg assembly",
+          label: "Beetel Bot leg assembly",
           description: "Close-up of the servo-driven legs as they connect to the coxa and femur joints."
         },
         {
           type: "image",
           src: "/projects/spider-bot/img3.jpeg",
-          label: "Spider Bot electronics layout",
+          label: "Beetel Bot electronics layout",
           description: "Interior wiring of the Raspberry Pi, Arduino Nano, and sensor shield neatly routed."
         },
         {
           type: "image",
           src: "/projects/spider-bot/img4.jpeg",
-          label: "Spider Bot in motion",
+          label: "Beetel Bot in motion",
           description: "Captured mid-gait to demonstrate how the inverse kinematics steer forward motion."
         },
         {
           type: "image",
           src: "/projects/spider-bot/img5.jpeg",
-          label: "Spider Bot night operation",
+          label: "Beetel Bot night operation",
           description: "Night-time scenario lit by IR LEDs while the robot navigates wreckage."
         },
         {
           type: "image",
           src: "/projects/spider-bot/img6.jpeg",
-          label: "Spider Bot close-up",
+          label: "Beetel Bot close-up",
           description: "Macro shot revealing the reinforced servo horns and fasteners."
         },
         {
           type: "video",
           src: "/projects/spider-bot/Spider_Bot_video.mp4",
-          label: "Spider Bot demo",
+          label: "Beetel Bot demo",
           description: "Recorded walkthrough of the bot traversing uneven terrain with live telemetry."
         }
       ]

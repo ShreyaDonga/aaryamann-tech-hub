@@ -1,12 +1,17 @@
-import { Project } from "@/data/portfolio";
-import projectSpiderRobot from "@/assets/project-spider-robot.jpg";
-import projectCompost from "@/assets/project-compost.jpg";
-import projectCybersecurity from "@/assets/project-cybersecurity.jpg";
+import { MediaItem, Project } from "@/data/portfolio";
 
-const imageMap: Record<string, string> = {
-  "spider-robot": projectSpiderRobot,
-  "compost": projectCompost,
-  "cybersecurity": projectCybersecurity,
+const fallbackImage = "/projects/spider-bot/img1.jpeg";
+const fallbackMedia: MediaItem = {
+  type: "image",
+  src: fallbackImage,
+  label: "Beetel Bot standing pose",
+};
+
+const getProjectCardMedia = (project: Project) => {
+  const videoMedia = project.content.media?.find((item) => item.type === "video");
+  if (videoMedia) return videoMedia;
+  const imageMedia = project.content.media?.find((item) => item.type === "image");
+  return imageMedia ?? fallbackMedia;
 };
 
 interface ProjectCardProps {
@@ -16,6 +21,7 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
+  const cardMedia = getProjectCardMedia(project);
   return (
     <div
       onClick={onClick}
@@ -24,11 +30,23 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
     >
       {/* Image */}
       <div className="relative aspect-video overflow-hidden">
-        <img
-          src={imageMap[project.image]}
-          alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
+        {cardMedia.type === "image" ? (
+          <img
+            src={cardMedia.src}
+            alt={cardMedia.label ?? project.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        ) : (
+          <video
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            autoPlay
+            muted
+            loop
+            playsInline
+          >
+            <source src={cardMedia.src} type="video/mp4" />
+          </video>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         
         {/* Category Badge */}
