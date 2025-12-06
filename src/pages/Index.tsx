@@ -50,7 +50,7 @@ const Index = () => {
         {/* Hero Banner */}
         <section className="relative h-64 md:h-80 overflow-hidden">
           <img
-            src="src/assets/hero-banner.jpg"
+            src="/hero-banner.jpg"
             alt="Spider Bot hero"
             className="w-full h-full object-cover transform "
           />
