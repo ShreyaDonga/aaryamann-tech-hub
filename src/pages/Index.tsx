@@ -1,17 +1,19 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ProjectModal } from "@/components/ProjectModal";
 import { SkillBadges } from "@/components/SkillBadges";
 import { projects, aboutData, contactData } from "@/data/portfolio";
-import { MapPin, Mail, Github, Linkedin, Phone, Send, Award, BookOpen, Users } from "lucide-react";
+import { MapPin, Mail, Github, Linkedin, Phone, Send, Award, BookOpen, Users, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Project } from "@/data/portfolio";
 import { useToast } from "@/hooks/use-toast";
 import { Footer } from "@/components/Footer";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 
 const Index = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>("all");
+  const [heroApi, setHeroApi] = useState<CarouselApi | null>(null);
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -19,6 +21,29 @@ const Index = () => {
     subject: "",
     message: "",
   });
+  
+  const heroImages = useMemo(() => [
+    { src: "/projects/compost/compost-bin-01.jpeg", caption: "Compost Bin - Sensor Deck" },
+    { src: "/projects/spider-bot/img1.jpeg", caption: "BeetleBot - Rescue Robot" },
+    { src: "/projects/compost/compost-bin-02.jpeg", caption: "Compost Bin - Aeration Setup" },
+    { src: "/projects/spider-bot/img4.jpeg", caption: "BeetleBot - In Motion" },
+    { src: "/projects/compost/compost-bin-05.jpeg", caption: "Compost Bin - Control View" },
+    { src: "/projects/spider-bot/img5.jpeg", caption: "BeetleBot - Night Vision" },
+  ], []);
+  
+  useEffect(() => {
+    if (!heroApi) return;
+    
+    const interval = setInterval(() => {
+      if (heroApi.canScrollNext()) {
+        heroApi.scrollNext();
+      } else {
+        heroApi.scrollTo(0);
+      }
+    }, 2000);
+    
+    return () => clearInterval(interval);
+  }, [heroApi]);
 
   const categories = ["all", ...new Set(projects.map((p) => p.category))];
   const spotlightProjects = useMemo(
@@ -67,28 +92,30 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <main className="flex-1">
         {/* Hero Banner */}
-        <section className="relative overflow-hidden bg-[var(--gradient-hero)]">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 flex flex-col md:flex-row items-center gap-10">
-            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-4 ring-accent/30 shadow-lg bg-card">
-              <img
-                src="/profile-hero.png"
-                alt="Aaryamann Goenka headshot"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="flex-1 space-y-4 text-primary-foreground">
-              <p className="text-sm uppercase tracking-[0.28em] font-semibold opacity-80">Spotlight</p>
-              <h1 className="text-3xl md:text-4xl font-display font-bold leading-tight">
-                {aboutData.name} <span className="ml-2">🪴 🤖 🌊</span>
-              </h1>
-              <p className="text-base md:text-lg max-w-3xl opacity-90 font-semibold">
-                STEM Generalist | Robotics & IoT Builder | Outreach Lead
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <SkillBadges />
-              </div>
-            </div>
-          </div>
+        <section className="relative h-64 md:h-80 lg:h-96 overflow-hidden">
+          <Carousel opts={{ loop: true }} setApi={setHeroApi} className="h-full">
+            <CarouselContent className="h-full">
+              {heroImages.map((item, index) => (
+                <CarouselItem key={index} className="h-64 md:h-80 lg:h-96">
+                  <div className="relative h-full">
+                    <img
+                      src={item.src}
+                      alt={item.caption}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <p className="text-sm md:text-base font-medium text-white drop-shadow-lg">
+                        {item.caption}
+                      </p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-4 bg-background/80 hover:bg-background" />
+            <CarouselNext className="right-4 bg-background/80 hover:bg-background" />
+          </Carousel>
         </section>
 
         {/* Profile Section */}
@@ -99,8 +126,8 @@ const Index = () => {
               <div className="relative">
                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-4 border-background shadow-xl">
                   <img
-                    src="/projects/spider-bot/img3.jpeg"
-                    alt="Aaryamann conducting robotics work"
+                    src="/profile-hero.png"
+                    alt="Aaryamann Goenka"
                     className="w-full h-full object-cover"
                   />
                 </div>
