@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ProjectModal } from "@/components/ProjectModal";
 import { SkillBadges } from "@/components/SkillBadges";
@@ -7,13 +7,11 @@ import { MapPin, Mail, Github, Linkedin, Phone, Send, Award, BookOpen, Users } f
 import type { Project } from "@/data/portfolio";
 import { useToast } from "@/hooks/use-toast";
 import { Footer } from "@/components/Footer";
-import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const Index = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>("all");
-  const [heroApi, setHeroApi] = useState<CarouselApi | null>(null);
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -32,7 +30,12 @@ const Index = () => {
       projects
         .map((project) => ({
           project,
-          docs: project.content.media?.filter((m) => m.type === "pdf") ?? [],
+          docs: [
+            ...(project.content.media?.filter((m) => m.type === "pdf") ?? []),
+            ...(project.id === "smart-compost"
+              ? project.content.media?.filter((m) => m.type === "video" && m.src.includes("Khadify_DemoVideo")) ?? []
+              : []),
+          ],
         }))
         .filter((entry) => entry.docs.length > 0),
     []
@@ -41,21 +44,6 @@ const Index = () => {
     activeFilter === "all"
       ? projects
       : projects.filter((p) => p.category === activeFilter);
-
-  useEffect(() => {
-    if (!heroApi) return;
-
-    const id = setInterval(() => {
-      if (!heroApi) return;
-      if (heroApi.canScrollNext()) {
-        heroApi.scrollNext();
-      } else {
-        heroApi.scrollTo(0);
-      }
-    }, 5000);
-
-    return () => clearInterval(id);
-  }, [heroApi]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,32 +67,28 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <main className="flex-1">
         {/* Hero Banner */}
-        <section className="relative h-64 md:h-80 overflow-hidden">
-          <Carousel opts={{ loop: true }} setApi={setHeroApi} className="h-full">
-            <CarouselContent className="h-full">
-              {spotlightProjects.map((project) => {
-                const heroMedia =
-                  project.content.media?.find((m) => m.type === "image") ??
-                  ({
-                    type: "image",
-                    src: project.image || "/projects/spider-bot/img1.jpeg",
-                    label: project.title,
-                  } as const);
-                return (
-                  <CarouselItem key={project.id} className="h-64 md:h-80">
-                    <div className="relative h-64 md:h-80">
-                      <img
-                        src={heroMedia.src}
-                        alt={heroMedia.label ?? project.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
-                    </div>
-                  </CarouselItem>
-                );
-              })}
-            </CarouselContent>
-          </Carousel>
+        <section className="relative overflow-hidden bg-[var(--gradient-hero)]">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 flex flex-col md:flex-row items-center gap-10">
+            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-4 ring-accent/30 shadow-lg bg-card">
+              <img
+                src="/profile-hero.png"
+                alt="Aaryamann Goenka headshot"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="flex-1 space-y-4 text-primary-foreground">
+              <p className="text-sm uppercase tracking-[0.28em] font-semibold opacity-80">Spotlight</p>
+              <h1 className="text-3xl md:text-4xl font-display font-bold leading-tight">
+                {aboutData.name} <span className="ml-2">🪴 🤖 🌊</span>
+              </h1>
+              <p className="text-base md:text-lg max-w-3xl opacity-90 font-semibold">
+                STEM Generalist | Robotics & IoT Builder | Outreach Lead
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <SkillBadges />
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Profile Section */}
@@ -248,26 +232,37 @@ const Index = () => {
                               <span className="font-medium text-foreground">{doc.label ?? "Document"}</span>
                               <a
                                 href={doc.src}
-                                download
+                                download={doc.type === "pdf"}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-xs px-3 py-1 rounded-full bg-secondary hover:bg-accent hover:text-accent-foreground transition-colors"
                               >
-                                Download
+                                {doc.type === "video" ? "Watch" : "Download"}
                               </a>
                             </div>
                           </AccordionTrigger>
                           <AccordionContent className="px-4 pb-4">
                             <div className="border border-border rounded-lg overflow-hidden bg-background">
-                              <object data={doc.src} type="application/pdf" className="w-full h-80">
-                                <p className="p-4 text-sm text-muted-foreground">
-                                  PDF preview unavailable.{" "}
-                                  <a href={doc.src} target="_blank" rel="noopener noreferrer" className="text-accent underline">
-                                    Open in new tab
-                                  </a>
-                                  .
-                                </p>
-                              </object>
+                              {doc.type === "video" ? (
+                                <video
+                                  controls
+                                  playsInline
+                                  className="w-full h-80 object-contain bg-black"
+                                  src={doc.src}
+                                >
+                                  Your browser does not support the video tag.
+                                </video>
+                              ) : (
+                                <object data={doc.src} type="application/pdf" className="w-full h-80">
+                                  <p className="p-4 text-sm text-muted-foreground">
+                                    PDF preview unavailable.{" "}
+                                    <a href={doc.src} target="_blank" rel="noopener noreferrer" className="text-accent underline">
+                                      Open in new tab
+                                    </a>
+                                    .
+                                  </p>
+                                </object>
+                              )}
                             </div>
                           </AccordionContent>
                         </AccordionItem>

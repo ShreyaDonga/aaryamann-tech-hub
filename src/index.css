@@ -141,7 +141,24 @@
   }
 
   .skill-badge {
-    @apply inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full border border-border bg-card text-secondary-foreground hover:border-accent hover:text-accent transition-all duration-200;
+    @apply inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full text-white transition-transform duration-200 cursor-default pointer-events-none;
+    background-color: hsl(142 50% 35%);
+  }
+  
+  .skill-badge:nth-child(3n+1) {
+    background-color: hsl(142 50% 35%);
+  }
+  
+  .skill-badge:nth-child(3n+2) {
+    background-color: hsl(200 60% 40%);
+  }
+  
+  .skill-badge:nth-child(3n+3) {
+    background-color: hsl(25 70% 45%);
+  }
+  
+  .skill-badge:hover {
+    transform: scale(1.08);
   }
 
   .project-card {

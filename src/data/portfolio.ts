@@ -334,10 +334,10 @@ export const projects: Project[] = [
     id: "cyber-advocacy",
     title: "Cyber-Bullying Advocacy & Social Impact",
     shortTitle: "Cyber Advocacy",
-    category: "Non-STEM Leadership",
+    category: "Community",
     summary:
       "Founded cyberbullying awareness portal; ran 1,000+ participant seminars; secured 1,300+ signature petition with Dept. of Education endorsement.",
-    image: "/hero-banner.jpg",
+    image: "/projects/compost/compost-bin-01.jpeg",
     tags: ["Advocacy", "Policy", "Digital safety"],
     content: {
       media: [
