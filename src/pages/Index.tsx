@@ -3,7 +3,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { ProjectModal } from "@/components/ProjectModal";
 import { SkillBadges } from "@/components/SkillBadges";
 import { projects, aboutData, contactData } from "@/data/portfolio";
-import { MapPin, Mail, Github, Linkedin, Phone, Send, GraduationCap, Award, BookOpen, Users } from "lucide-react";
+import { MapPin, Mail, Github, Linkedin, Phone, Send, Award, BookOpen, Users } from "lucide-react";
 import type { Project } from "@/data/portfolio";
 import { useToast } from "@/hooks/use-toast";
 import { Footer } from "@/components/Footer";
@@ -52,7 +52,7 @@ const Index = () => {
       } else {
         heroApi.scrollTo(0);
       }
-    }, 1000);
+    }, 5000);
 
     return () => clearInterval(id);
   }, [heroApi]);
@@ -99,30 +99,6 @@ const Index = () => {
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
-                      <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-2">
-                        <span className="px-3 py-1 text-xs font-semibold rounded-full bg-accent text-accent-foreground w-fit">
-                          {project.category}
-                        </span>
-                        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-                          <div className="space-y-1 max-w-3xl">
-                            <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground/80">
-                              Spotlight
-                            </p>
-                            <h1 className="text-2xl md:text-3xl font-display font-bold text-foreground">
-                              {project.title}
-                            </h1>
-                            <p className="text-sm md:text-base text-muted-foreground line-clamp-2 md:line-clamp-3">
-                              {project.summary}
-                            </p>
-                          </div>
-                          <button
-                            onClick={() => setSelectedProject(project)}
-                            className="btn-primary self-start"
-                          >
-                            View details
-                          </button>
-                        </div>
-                      </div>
                     </div>
                   </CarouselItem>
                 );
@@ -306,82 +282,61 @@ const Index = () => {
 
         {/* About Section */}
         <section id="about" className="py-16">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4 animate-slide-up">
-              About Me
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-3xl mb-12 animate-slide-up">
-              {aboutData.bio}
-            </p>
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+            <div className="space-y-3">
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground animate-slide-up">
+                About Me
+              </h2>
+              <p className="text-foreground/80 text-lg max-w-3xl animate-slide-up">
+                {aboutData.bio}
+              </p>
+            </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Main Content */}
-              <div className="lg:col-span-2 space-y-8">
-                {/* Technical Background */}
-                <Card icon={<BookOpen />} title="Technical Background">
-                  <ul className="space-y-2">
-                    {aboutData.technicalBackground.map((item, index) => (
-                      <li key={index} className="flex items-start gap-2 text-muted-foreground">
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
-                        {item}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <p className="text-sm uppercase tracking-[0.24em] text-foreground/70 font-semibold">Expertise</p>
+                  <h3 className="text-xl font-display font-semibold text-foreground">Technical Background</h3>
+                  <ul className="space-y-2 text-foreground/90">
+                    {aboutData.technicalBackground.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent flex-shrink-0" />
+                        <span className="font-medium">{item}</span>
                       </li>
                     ))}
                   </ul>
-                </Card>
+                </div>
 
-                {/* Key Achievements */}
-                <Card icon={<Award />} title="Key Technical Achievements">
-                  <ul className="space-y-2">
-                    {aboutData.achievements.map((item, index) => (
-                      <li key={index} className="flex items-start gap-2 text-muted-foreground">
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
-                        {item}
+                <div className="space-y-2">
+                  <p className="text-sm uppercase tracking-[0.24em] text-foreground/70 font-semibold">Impact</p>
+                  <h3 className="text-xl font-display font-semibold text-foreground">Key Achievements</h3>
+                  <ul className="space-y-2 text-foreground/90">
+                    {aboutData.achievements.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent flex-shrink-0" />
+                        <span className="font-semibold">{item}</span>
                       </li>
                     ))}
                   </ul>
-                </Card>
-
-                {/* Leadership */}
-                <Card icon={<Users />} title="Technical Leadership">
-                  <ul className="space-y-2">
-                    {aboutData.leadership.map((item, index) => (
-                      <li key={index} className="flex items-start gap-2 text-muted-foreground">
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </Card>
+                </div>
               </div>
 
-              {/* Sidebar */}
               <div className="space-y-6">
-                {/* Education */}
-                <Card icon={<GraduationCap />} title="Education">
-                  <div className="space-y-2">
-                    <p className="font-medium text-foreground">{aboutData.education.school}</p>
-                    <p className="text-sm text-muted-foreground">{aboutData.education.graduation}</p>
-                    <p className="text-sm text-muted-foreground mt-3">{aboutData.education.grades}</p>
-                  </div>
-                </Card>
-
-                {/* Courses */}
-                <Card icon={<BookOpen />} title="Technical Courses">
-                  <ul className="space-y-2">
-                    {aboutData.courses.map((course, index) => (
-                      <li key={index} className="flex items-start gap-2 text-muted-foreground text-sm">
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0" />
-                        {course}
+                <div className="space-y-2">
+                  <p className="text-sm uppercase tracking-[0.24em] text-foreground/70 font-semibold">Leadership</p>
+                  <h3 className="text-xl font-display font-semibold text-foreground">Roles</h3>
+                  <ul className="space-y-2 text-foreground/90">
+                    {aboutData.leadership.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent flex-shrink-0" />
+                        <span className="font-semibold">{item}</span>
                       </li>
                     ))}
                   </ul>
-                </Card>
+                </div>
 
-                {/* Skills */}
-                <div className="p-6 rounded-xl bg-card border border-border">
-                  <h3 className="font-display font-semibold text-lg text-foreground mb-4">
-                    Skills
-                  </h3>
+                <div className="space-y-3">
+                  <p className="text-sm uppercase tracking-[0.24em] text-foreground/70 font-semibold">Skills</p>
                   <SkillBadges />
                 </div>
               </div>
