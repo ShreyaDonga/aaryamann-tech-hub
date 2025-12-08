@@ -61,11 +61,6 @@ const Index = () => {
   }, [heroApi]);
 
   const categories = ["all", ...new Set(projects.map((p) => p.category).filter(c => c !== "Spotlight"))];
-  const spotlightProjects = useMemo(() => projects.filter(p => p.category === "Spotlight"), []);
-  const spotlightProjects = useMemo(
-    () => projects.filter((p) => ["beetlebot", "smart-compost", "coastal-erosion"].includes(p.id)),
-    []
-  );
   const documentMedia = useMemo(
     () =>
       projects
