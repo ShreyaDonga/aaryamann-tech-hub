@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ProjectModal } from "@/components/ProjectModal";
 import { SkillBadges } from "@/components/SkillBadges";
@@ -7,10 +7,13 @@ import { MapPin, Mail, Github, Linkedin, Phone, Send, GraduationCap, Award, Book
 import type { Project } from "@/data/portfolio";
 import { useToast } from "@/hooks/use-toast";
 import { Footer } from "@/components/Footer";
+import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const Index = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>("all");
+  const [heroApi, setHeroApi] = useState<CarouselApi | null>(null);
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -20,10 +23,39 @@ const Index = () => {
   });
 
   const categories = ["all", ...new Set(projects.map((p) => p.category))];
+  const spotlightProjects = useMemo(
+    () => projects.filter((p) => ["beetlebot", "smart-compost", "coastal-erosion"].includes(p.id)),
+    []
+  );
+  const documentMedia = useMemo(
+    () =>
+      projects
+        .map((project) => ({
+          project,
+          docs: project.content.media?.filter((m) => m.type === "pdf") ?? [],
+        }))
+        .filter((entry) => entry.docs.length > 0),
+    []
+  );
   const filteredProjects =
     activeFilter === "all"
       ? projects
       : projects.filter((p) => p.category === activeFilter);
+
+  useEffect(() => {
+    if (!heroApi) return;
+
+    const id = setInterval(() => {
+      if (!heroApi) return;
+      if (heroApi.canScrollNext()) {
+        heroApi.scrollNext();
+      } else {
+        heroApi.scrollTo(0);
+      }
+    }, 1000);
+
+    return () => clearInterval(id);
+  }, [heroApi]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,12 +80,55 @@ const Index = () => {
       <main className="flex-1">
         {/* Hero Banner */}
         <section className="relative h-64 md:h-80 overflow-hidden">
-          <img
-            src="/projects/spider-bot/img1.jpeg"
-            alt="Beetel Bot pose"
-            className="w-full h-full object-cover transform"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
+          <Carousel opts={{ loop: true }} setApi={setHeroApi} className="h-full">
+            <CarouselContent className="h-full">
+              {spotlightProjects.map((project) => {
+                const heroMedia =
+                  project.content.media?.find((m) => m.type === "image") ??
+                  ({
+                    type: "image",
+                    src: project.image || "/projects/spider-bot/img1.jpeg",
+                    label: project.title,
+                  } as const);
+                return (
+                  <CarouselItem key={project.id} className="h-64 md:h-80">
+                    <div className="relative h-64 md:h-80">
+                      <img
+                        src={heroMedia.src}
+                        alt={heroMedia.label ?? project.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
+                      <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-2">
+                        <span className="px-3 py-1 text-xs font-semibold rounded-full bg-accent text-accent-foreground w-fit">
+                          {project.category}
+                        </span>
+                        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                          <div className="space-y-1 max-w-3xl">
+                            <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground/80">
+                              Spotlight
+                            </p>
+                            <h1 className="text-2xl md:text-3xl font-display font-bold text-foreground">
+                              {project.title}
+                            </h1>
+                            <p className="text-sm md:text-base text-muted-foreground line-clamp-2 md:line-clamp-3">
+                              {project.summary}
+                            </p>
+                          </div>
+                          <button
+                            onClick={() => setSelectedProject(project)}
+                            className="btn-primary self-start"
+                          >
+                            View details
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+          </Carousel>
         </section>
 
         {/* Profile Section */}
@@ -166,6 +241,68 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        {/* Documents Section */}
+        {documentMedia.length > 0 && (
+          <section className="py-12 border-t border-border bg-background">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+              <div>
+                <h3 className="text-2xl font-display font-bold text-foreground">Project Documents</h3>
+                <p className="text-muted-foreground">
+                  Expand to preview PDFs in-browser; use the top-right button to download.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {documentMedia.map(({ project, docs }) => (
+                  <div key={project.id} className="p-4 rounded-xl border border-border bg-card">
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Project</p>
+                        <h4 className="text-lg font-semibold text-foreground">{project.title}</h4>
+                      </div>
+                      <span className="px-3 py-1 text-xs rounded-full bg-secondary text-secondary-foreground">
+                        {project.category}
+                      </span>
+                    </div>
+                    <Accordion type="single" collapsible className="space-y-2">
+                      {docs.map((doc, idx) => (
+                        <AccordionItem key={`${project.id}-doc-${idx}`} value={`${project.id}-doc-${idx}`} className="border border-border rounded-lg">
+                          <AccordionTrigger className="px-4 py-3 text-left">
+                            <div className="flex items-center justify-between w-full gap-4">
+                              <span className="font-medium text-foreground">{doc.label ?? "Document"}</span>
+                              <a
+                                href={doc.src}
+                                download
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-xs px-3 py-1 rounded-full bg-secondary hover:bg-accent hover:text-accent-foreground transition-colors"
+                              >
+                                Download
+                              </a>
+                            </div>
+                          </AccordionTrigger>
+                          <AccordionContent className="px-4 pb-4">
+                            <div className="border border-border rounded-lg overflow-hidden bg-background">
+                              <object data={doc.src} type="application/pdf" className="w-full h-80">
+                                <p className="p-4 text-sm text-muted-foreground">
+                                  PDF preview unavailable.{" "}
+                                  <a href={doc.src} target="_blank" rel="noopener noreferrer" className="text-accent underline">
+                                    Open in new tab
+                                  </a>
+                                  .
+                                </p>
+                              </object>
+                            </div>
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* About Section */}
         <section id="about" className="py-16">

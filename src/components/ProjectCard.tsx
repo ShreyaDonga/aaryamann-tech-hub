@@ -8,10 +8,16 @@ const fallbackMedia: MediaItem = {
 };
 
 const getProjectCardMedia = (project: Project) => {
-  const videoMedia = project.content.media?.find((item) => item.type === "video");
-  if (videoMedia) return videoMedia;
   const imageMedia = project.content.media?.find((item) => item.type === "image");
-  return imageMedia ?? fallbackMedia;
+  if (imageMedia) return imageMedia;
+  if (project.image) {
+    return {
+      type: "image",
+      src: project.image,
+      label: project.title,
+    };
+  }
+  return fallbackMedia;
 };
 
 interface ProjectCardProps {
@@ -30,23 +36,11 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
     >
       {/* Image */}
       <div className="relative aspect-video overflow-hidden">
-        {cardMedia.type === "image" ? (
-          <img
-            src={cardMedia.src}
-            alt={cardMedia.label ?? project.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          />
-        ) : (
-          <video
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            autoPlay
-            muted
-            loop
-            playsInline
-          >
-            <source src={cardMedia.src} type="video/mp4" />
-          </video>
-        )}
+        <img
+          src={cardMedia.src}
+          alt={cardMedia.label ?? project.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         
         {/* Category Badge */}

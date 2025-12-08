@@ -1,5 +1,6 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { MediaItem, Project } from "@/data/portfolio";
 import { X, ExternalLink } from "lucide-react";
 import type { ReactNode } from "react";
@@ -30,6 +31,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   const heroMedia = getHeroMedia(project);
   const heroLabel = heroMedia.label ?? project.title;
   const isHeroVideo = heroMedia.type === "video";
+  const pdfMedia = project.content.media?.filter((m) => m.type === "pdf") ?? [];
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -92,6 +94,45 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             <p className="text-muted-foreground leading-relaxed">
               {project.summary}
             </p>
+
+            {/* PDFs */}
+            {pdfMedia.length > 0 && (
+              <Section title="Supporting Documents">
+                <Accordion type="single" collapsible className="w-full space-y-2">
+                  {pdfMedia.map((doc, idx) => (
+                    <AccordionItem key={`${project.id}-pdf-${idx}`} value={`${project.id}-pdf-${idx}`} className="border border-border rounded-lg">
+                      <AccordionTrigger className="px-4 py-3 text-left">
+                        <div className="flex items-center justify-between w-full gap-4">
+                          <span className="font-medium text-foreground">{doc.label ?? "Document"}</span>
+                          <a
+                            href={doc.src}
+                            download
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm px-3 py-1 rounded-full bg-secondary hover:bg-accent hover:text-accent-foreground transition-colors"
+                          >
+                            Download
+                          </a>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent className="px-4 pb-4">
+                        <div className="border border-border rounded-lg overflow-hidden bg-card">
+                          <object data={doc.src} type="application/pdf" className="w-full h-96">
+                            <p className="p-4 text-sm text-muted-foreground">
+                              PDF preview unavailable.{" "}
+                              <a href={doc.src} target="_blank" rel="noopener noreferrer" className="text-accent underline">
+                                Open in new tab
+                              </a>
+                              .
+                            </p>
+                          </object>
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </Section>
+            )}
 
             {/* Project Story */}
             {project.content.contentFlow && project.content.contentFlow.length > 0 && (
