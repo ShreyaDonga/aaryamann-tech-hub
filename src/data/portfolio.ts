@@ -156,12 +156,6 @@ export const projects: Project[] = [
           label: "BeetleBot demo",
           description: "Click to watch traversal and telemetry.",
         },
-        {
-          type: "pdf",
-          src: "/docs/Beetlebot_LetterofSupport_FSAI.pdf",
-          label: "Letter of Appreciation (FSAI)",
-          description: "Official appreciation letter for BeetleBot presentation.",
-        },
       ],
     },
   },
@@ -358,7 +352,7 @@ export const projects: Project[] = [
         {
           type: "pdf",
           src: "/docs/Message_DharmendraPradhan_CyberDost.pdf",
-          label: "Message from CyberDost",
+          label: "Message from Minister Pradhan",
         },
       ],
       subProjects: [
@@ -437,24 +431,11 @@ export const aboutData = {
     "FTC Think Award + Inspire Award; AI/Engineering club leadership",
     "IGCSE World Topper (Add-Math) + SASMO Gold + HKISO Silver",
   ],
-  education: {
-    school: "Bombay International School, Mumbai, India",
-    graduation: "Anticipated 2027",
-    grades:
-      "IGCSE Grade 9: English A*, Literature A*, Chemistry A*, Physics A*, Integrated Mathematics A*, Computer Science A*",
-  },
-  courses: [
-    "AI with Python (Coding & More)",
-    "Arduino & IoT (Maker's Asylum)",
-    "PCB Design & Soldering",
-    "Unity VR Development",
-    "3D Designing",
-  ],
   leadership: [
     "Head Boy, Bombay International School (2024–Present)",
     "Tech Secretary (2023–2024)",
     "Founder, AI Club",
-    "Logistics Head, Engineering Club",
+    "President, Engineering Club",
   ],
 };
 
