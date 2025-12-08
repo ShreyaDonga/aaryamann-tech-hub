@@ -340,16 +340,16 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             {/* Citations */}
             {project.content.citations && project.content.citations.length > 0 && (
               <Section title="References">
-                <div className="space-y-2">
+                <div className="space-y-1.5 sm:space-y-2">
                   {project.content.citations.map((citation, index) => (
                     <a
                       key={index}
                       href={citation}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-accent hover:underline text-sm break-all"
+                      className="flex items-center gap-1.5 sm:gap-2 text-accent hover:underline text-[10px] sm:text-sm break-all"
                     >
-                      <ExternalLink size={14} className="flex-shrink-0" />
+                      <ExternalLink size={12} className="sm:w-3.5 sm:h-3.5 flex-shrink-0" />
                       {citation}
                     </a>
                   ))}
