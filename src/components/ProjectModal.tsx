@@ -35,10 +35,10 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-[96vw] sm:w-auto max-w-4xl max-h-[90vh] p-0 overflow-hidden">
-        <ScrollArea className="max-h-[90vh]">
+      <DialogContent className="w-full h-full sm:w-[96vw] sm:h-auto sm:max-w-4xl sm:max-h-[90vh] p-0 overflow-hidden fixed inset-0 sm:left-[50%] sm:top-[50%] sm:translate-x-[-50%] sm:translate-y-[-50%] sm:rounded-lg">
+        <ScrollArea className="h-full sm:max-h-[90vh]">
           {/* Hero Media */}
-          <div className="relative aspect-video max-h-[420px]">
+          <div className="relative aspect-video sm:max-h-[420px] h-[40vh] sm:h-auto">
             {isHeroVideo ? (
               <video
                 controls
@@ -62,20 +62,20 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             <DialogClose asChild>
               <button
                 onClick={onClose}
-                className="absolute top-3 right-3 w-10 h-10 rounded-full bg-background/85 backdrop-blur-sm flex items-center justify-center hover:bg-background transition-colors shadow-md"
+                className="absolute top-2 right-2 sm:top-3 sm:right-3 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center hover:bg-background active:bg-background transition-colors shadow-lg z-10"
                 aria-label="Close project"
               >
-                <X size={20} />
+                <X size={18} className="sm:w-5 sm:h-5" />
               </button>
             </DialogClose>
 
             {/* Title Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 p-6">
-              <span className="px-3 py-1 text-xs font-medium rounded-full bg-accent text-accent-foreground mb-3 inline-block">
+            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+              <span className="px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-medium rounded-full bg-accent text-accent-foreground mb-2 sm:mb-3 inline-block">
                 {project.category}
               </span>
               <DialogHeader>
-                <DialogTitle className="text-2xl md:text-3xl font-display text-foreground">
+                <DialogTitle className="text-lg sm:text-2xl md:text-3xl font-display text-foreground leading-tight">
                   {project.title}
                 </DialogTitle>
               </DialogHeader>
@@ -83,18 +83,18 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           </div>
 
           {/* Content */}
-          <div className="p-6 space-y-6">
+          <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
             {/* Tags */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {project.tags.map((tag) => (
-                <span key={tag} className="skill-badge pointer-events-none cursor-default">
+                <span key={tag} className="skill-badge pointer-events-none cursor-default text-[10px] sm:text-xs px-2 py-1 sm:px-3 sm:py-1.5">
                   {tag}
                 </span>
               ))}
             </div>
 
             {/* Summary */}
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
               {project.summary}
             </p>
 
@@ -118,10 +118,10 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                           </a>
                         </div>
                       </AccordionTrigger>
-                      <AccordionContent className="px-4 pb-4">
+                      <AccordionContent className="px-2 sm:px-4 pb-3 sm:pb-4">
                         <div className="border border-border rounded-lg overflow-hidden bg-card">
-                          <object data={doc.src} type="application/pdf" className="w-full h-96">
-                            <p className="p-4 text-sm text-muted-foreground">
+                          <object data={doc.src} type="application/pdf" className="w-full h-64 sm:h-96">
+                            <p className="p-3 sm:p-4 text-xs sm:text-sm text-muted-foreground">
                               PDF preview unavailable.{" "}
                               <a href={doc.src} target="_blank" rel="noopener noreferrer" className="text-accent underline">
                                 Open in new tab
@@ -140,7 +140,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             {/* Project Story */}
             {project.content.contentFlow && project.content.contentFlow.length > 0 && (
               <Section title={`${project.title} Story`}>
-                <div className="space-y-12">
+                <div className="space-y-6 sm:space-y-12">
                   {project.content.contentFlow.map((block, index) => {
                     const media = project.content.media?.[block.mediaIndex];
                     if (!media) return null;
@@ -148,22 +148,23 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                     return (
                       <div
                         key={index}
-                        className={`flex flex-col gap-6 md:gap-8 items-center ${
+                        className={`flex flex-col gap-4 sm:gap-6 md:gap-8 items-center ${
                           index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
                         }`}
                       >
-                        <div className="w-full md:w-1/2 overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+                        <div className="w-full md:w-1/2 overflow-hidden rounded-xl sm:rounded-3xl border border-border bg-card shadow-sm">
                           {media.type === "image" ? (
                             <img
                               src={media.src}
                               alt={media.label}
-                              className="w-full h-full min-h-[320px] object-cover"
+                              className="w-full h-full min-h-[200px] sm:min-h-[320px] object-cover"
+                              loading="lazy"
                             />
                           ) : (
                             <video
                               controls
                               playsInline
-                              className="w-full h-full min-h-[320px] object-cover"
+                              className="w-full h-full min-h-[200px] sm:min-h-[320px] object-cover"
                             >
                               <source src={media.src} type="video/mp4" />
                               Your browser does not support the video tag.
@@ -302,7 +303,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             {/* Methodology */}
             {project.content.methodology && (
               <Section title="Methodology">
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
                   {project.content.methodology}
                 </p>
               </Section>
@@ -311,7 +312,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             {/* Results */}
             {project.content.results && (
               <Section title="Results & Conclusion">
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
                   {project.content.results}
                 </p>
               </Section>
@@ -320,13 +321,13 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             {/* Sub-Projects (for Cybersecurity) */}
             {project.content.subProjects && project.content.subProjects.length > 0 && (
               <Section title="Project Collection">
-                <div className="grid gap-4">
+                <div className="grid gap-3 sm:gap-4">
                   {project.content.subProjects.map((subProject, index) => (
-                    <div key={index} className="p-4 rounded-lg bg-secondary/50 border border-border">
-                      <h4 className="font-display font-semibold text-foreground mb-2">
+                    <div key={index} className="p-3 sm:p-4 rounded-lg bg-secondary/50 border border-border">
+                      <h4 className="font-display font-semibold text-foreground mb-1.5 sm:mb-2 text-sm sm:text-base">
                         {subProject.title}
                       </h4>
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
                         {subProject.description}
                       </p>
                     </div>
@@ -363,9 +364,9 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="space-y-3">
-      <h3 className="font-display font-semibold text-lg text-foreground flex items-center gap-2">
-        <span className="w-1 h-6 bg-accent rounded-full" />
+    <div className="space-y-2 sm:space-y-3">
+      <h3 className="font-display font-semibold text-base sm:text-lg text-foreground flex items-center gap-2">
+        <span className="w-0.5 sm:w-1 h-4 sm:h-6 bg-accent rounded-full" />
         {title}
       </h3>
       {children}
