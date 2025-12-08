@@ -35,7 +35,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-full h-full sm:w-[96vw] sm:h-auto sm:max-w-4xl sm:max-h-[90vh] p-0 overflow-hidden fixed inset-0 sm:left-[50%] sm:top-[50%] sm:translate-x-[-50%] sm:translate-y-[-50%] sm:rounded-lg">
+      <DialogContent className="w-full h-full sm:w-[96vw] sm:h-auto sm:max-w-4xl sm:max-h-[90vh] p-0 overflow-hidden">
         <ScrollArea className="h-full sm:max-h-[90vh]">
           {/* Hero Media */}
           <div className="relative aspect-video sm:max-h-[420px] h-[40vh] sm:h-auto">

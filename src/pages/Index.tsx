@@ -279,19 +279,44 @@ const Index = () => {
                     </div>
                     <Accordion type="single" collapsible className="space-y-2">
                       {docs.map((doc, idx) => (
-                        <AccordionItem key={`${project.id}-doc-${idx}`} value={`${project.id}-doc-${idx}`} className="border border-border rounded-lg">
-                          <AccordionTrigger className="px-4 py-3 text-left">
-                            <div className="flex items-center justify-between w-full gap-4">
-                              <span className="font-medium text-foreground">{doc.label ?? "Document"}</span>
-                              <a
-                                href={doc.src}
-                                download={doc.type === "pdf"}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-xs px-3 py-1 rounded-full bg-secondary hover:bg-accent hover:text-accent-foreground transition-colors"
-                              >
-                                {doc.type === "video" ? "Watch" : "Download"}
-                              </a>
+                        <AccordionItem key={`${project.id}-doc-${idx}`} value={`${project.id}-doc-${idx}`} className="border border-border rounded-lg overflow-hidden">
+                          <AccordionTrigger className="px-4 py-3 text-left hover:no-underline">
+                            <div className="flex items-center gap-4 w-full">
+                              {doc.type === "video" && (
+                                <div className="relative flex-shrink-0 w-24 h-16 rounded overflow-hidden bg-black">
+                                  <video
+                                    src={doc.src}
+                                    className="w-full h-full object-cover"
+                                    preload="metadata"
+                                    muted
+                                  />
+                                  <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                                    <div className="w-10 h-10 rounded-full bg-white/90 flex items-center justify-center">
+                                      <svg className="w-5 h-5 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
+                              <div className="flex-1 flex items-center justify-between gap-4">
+                                <div>
+                                  <span className="font-medium text-foreground block">{doc.label ?? "Document"}</span>
+                                  {doc.description && (
+                                    <span className="text-xs text-muted-foreground mt-0.5 block">{doc.description}</span>
+                                  )}
+                                </div>
+                                <a
+                                  href={doc.src}
+                                  download={doc.type === "pdf"}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="text-xs px-3 py-1 rounded-full bg-secondary hover:bg-accent hover:text-accent-foreground transition-colors flex-shrink-0"
+                                >
+                                  {doc.type === "video" ? "Watch" : "Download"}
+                                </a>
+                              </div>
                             </div>
                           </AccordionTrigger>
                           <AccordionContent className="px-4 pb-4">

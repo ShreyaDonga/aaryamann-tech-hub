@@ -195,6 +195,24 @@ export const projects: Project[] = [
           description: "Latest end-to-end demo of the smart compost system (automation + dashboard).",
         },
         {
+          type: "video",
+          src: "/projects/compost/videos/khadify_field_test-01.mp4",
+          label: "Field Test 1",
+          description: "Real-world field testing of the compost system.",
+        },
+        {
+          type: "video",
+          src: "/projects/compost/videos/khadify_field_test-02.mp4",
+          label: "Field Test 2",
+          description: "Additional field validation footage.",
+        },
+        {
+          type: "video",
+          src: "/projects/compost/videos/khadify_field_test-03.mp4",
+          label: "Field Test 3",
+          description: "Extended field testing demonstration.",
+        },
+        {
           type: "pdf",
           src: "/docs/Khadify_PPT_Submission.pdf",
           label: "Khadify Project Deck",
