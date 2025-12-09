@@ -32,10 +32,11 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   const heroLabel = heroMedia.label ?? project.title;
   const isHeroVideo = heroMedia.type === "video";
   const pdfMedia = project.content.media?.filter((m) => m.type === "pdf") ?? [];
+  const videoMedia = project.content.media?.filter((m) => m.type === "video") ?? [];
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-full h-full sm:w-[96vw] sm:h-auto sm:max-w-4xl sm:max-h-[90vh] p-0 overflow-hidden flex flex-col">
+      <DialogContent className="w-[95vw] max-w-4xl max-h-[90vh] p-0 overflow-hidden flex flex-col">
         <ScrollArea className="flex-1 overflow-y-auto">
           {/* Hero Media */}
           <div className="relative aspect-video sm:max-h-[420px] h-[30vh] sm:h-auto">
@@ -352,6 +353,58 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                       <ExternalLink size={12} className="sm:w-3.5 sm:h-3.5 flex-shrink-0" />
                       {citation}
                     </a>
+                  ))}
+                </div>
+              </Section>
+            )}
+
+            {/* Video Thumbnails */}
+            {videoMedia.length > 0 && (
+              <Section title="Project Videos">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+                  {videoMedia.map((video, idx) => (
+                    <div
+                      key={`${project.id}-video-${idx}`}
+                      className="group relative rounded-lg overflow-hidden border border-border bg-card cursor-pointer hover:border-accent transition-colors"
+                      onClick={() => {
+                        const videoElement = document.getElementById(`video-player-${project.id}-${idx}`) as HTMLVideoElement;
+                        if (videoElement) {
+                          if (videoElement.paused) {
+                            videoElement.play();
+                          } else {
+                            videoElement.pause();
+                          }
+                        }
+                      }}
+                    >
+                      <div className="relative aspect-video bg-black">
+                        <video
+                          id={`video-player-${project.id}-${idx}`}
+                          src={video.src}
+                          className="w-full h-full object-cover"
+                          preload="metadata"
+                          muted
+                          playsInline
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/20 transition-colors">
+                          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <svg className="w-6 h-6 sm:w-8 sm:h-8 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-2 sm:p-3">
+                        <h4 className="text-xs sm:text-sm font-semibold text-foreground mb-0.5 sm:mb-1">
+                          {video.label}
+                        </h4>
+                        {video.description && (
+                          <p className="text-[10px] sm:text-xs text-muted-foreground line-clamp-2">
+                            {video.description}
+                          </p>
+                        )}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </Section>
