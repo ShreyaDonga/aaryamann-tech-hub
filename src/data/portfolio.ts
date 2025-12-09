@@ -443,7 +443,7 @@ export const projects: Project[] = [
 
 export const aboutData = {
   name: "Aaryamann Goenka",
-  title: "Adaptive Robotics | Sustainability Frontliner | Mangrove Mender",
+  title: "Adaptive Robotics 🤖  Sustainability Frontliner ♻️ Mangrove Mender 🌴",
   bio: "Designs rescue robots, IoT + ML systems, and geospatial models; leads clubs, competitions, and outreach with a bias for measurable impact. MEMRI stands for Mangroves Erosion Mitigation Research Initiative.",
   technicalBackground: [
     "Robotics control: Arduino, ESP32, RC + Wi-Fi failsafes",
