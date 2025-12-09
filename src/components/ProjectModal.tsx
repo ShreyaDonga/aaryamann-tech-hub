@@ -3,7 +3,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { MediaItem, Project } from "@/data/portfolio";
 import { X, ExternalLink } from "lucide-react";
-import type { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 const fallbackImage = "/projects/spider-bot/img1.jpeg";
 const fallbackMedia: MediaItem = {
@@ -362,60 +362,14 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             {videoMedia.length > 0 && (
               <Section title="Project Videos">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-                  {videoMedia.map((video, idx) => {
-                    const [isPlaying, setIsPlaying] = React.useState(false);
-                    return (
-                      <div
-                        key={`${project.id}-video-${idx}`}
-                        className="group relative rounded-lg overflow-hidden border border-border bg-card cursor-pointer hover:border-accent transition-colors"
-                        onClick={() => {
-                          const videoElement = document.getElementById(`video-player-${project.id}-${idx}`) as HTMLVideoElement;
-                          if (videoElement) {
-                            if (videoElement.paused) {
-                              videoElement.play();
-                              setIsPlaying(true);
-                            } else {
-                              videoElement.pause();
-                              setIsPlaying(false);
-                            }
-                          }
-                        }}
-                      >
-                        <div className="relative aspect-video bg-black">
-                          <video
-                            id={`video-player-${project.id}-${idx}`}
-                            src={video.src}
-                            className="w-full h-full object-cover"
-                            preload="metadata"
-                            muted={!isPlaying}
-                            playsInline
-                            controls={isPlaying}
-                            onPlay={() => setIsPlaying(true)}
-                            onPause={() => setIsPlaying(false)}
-                          />
-                          {!isPlaying && (
-                            <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/20 transition-colors pointer-events-none">
-                              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                  <path d="M8 5v14l11-7z" />
-                                </svg>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                        <div className="p-2 sm:p-3">
-                          <h4 className="text-xs sm:text-sm font-semibold text-foreground mb-0.5 sm:mb-1">
-                            {video.label}
-                          </h4>
-                          {video.description && (
-                            <p className="text-[10px] sm:text-xs text-muted-foreground line-clamp-2">
-                              {video.description}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
+                  {videoMedia.map((video, idx) => (
+                    <VideoThumbnail
+                      key={`${project.id}-video-${idx}`}
+                      video={video}
+                      projectId={project.id}
+                      index={idx}
+                    />
+                  ))}
                 </div>
               </Section>
             )}
@@ -423,6 +377,64 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
         </ScrollArea>
       </DialogContent>
     </Dialog>
+  );
+}
+
+function VideoThumbnail({ video, projectId, index }: { video: MediaItem; projectId: string; index: number }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoId = `video-player-${projectId}-${index}`;
+
+  const handleClick = () => {
+    const videoElement = document.getElementById(videoId) as HTMLVideoElement;
+    if (videoElement) {
+      if (videoElement.paused) {
+        videoElement.play();
+        setIsPlaying(true);
+      } else {
+        videoElement.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  return (
+    <div
+      className="group relative rounded-lg overflow-hidden border border-border bg-card cursor-pointer hover:border-accent transition-colors"
+      onClick={handleClick}
+    >
+      <div className="relative aspect-video bg-black">
+        <video
+          id={videoId}
+          src={video.src}
+          className="w-full h-full object-cover"
+          preload="metadata"
+          muted={!isPlaying}
+          playsInline
+          controls={isPlaying}
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+        />
+        {!isPlaying && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/20 transition-colors pointer-events-none">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <svg className="w-6 h-6 sm:w-8 sm:h-8 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        )}
+      </div>
+      <div className="p-2 sm:p-3">
+        <h4 className="text-xs sm:text-sm font-semibold text-foreground mb-0.5 sm:mb-1">
+          {video.label}
+        </h4>
+        {video.description && (
+          <p className="text-[10px] sm:text-xs text-muted-foreground line-clamp-2">
+            {video.description}
+          </p>
+        )}
+      </div>
+    </div>
   );
 }
 
