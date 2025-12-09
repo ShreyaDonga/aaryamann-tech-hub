@@ -355,10 +355,13 @@ export const projects: Project[] = [
     category: "Community",
     summary:
       "Founded cyberbullying awareness portal; ran 1,000+ participant seminars; secured 1,300+ signature petition with Dept. of Education endorsement.",
-    image: "/projects/compost/compost-bin-01.jpeg",
+    image: "/projects/cyberdost-1.jpeg",
     tags: ["Advocacy", "Policy", "Digital safety"],
     content: {
       media: [
+        { type: "image", src: "/projects/cyberdost-1.jpeg", label: "CyberDost Awareness Campaign" },
+        { type: "image", src: "/projects/cyberdost-07.jpeg", label: "Community Outreach" },
+        { type: "image", src: "/projects/cyberdost-08.jpeg", label: "Digital Safety Workshop" },
         {
           type: "pdf",
           src: "/docs/Cyberbullying Awareness and Prevention in India.pdf",
