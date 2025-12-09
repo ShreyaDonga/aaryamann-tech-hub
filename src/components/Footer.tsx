@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <footer className="bg-card border-t border-border py-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
@@ -18,25 +18,6 @@ export function Footer() {
             <p className="text-muted-foreground text-sm">
               Young Engineer building innovative solutions in Robotics, AI, and IoT.
             </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-display font-semibold text-foreground mb-4">Quick Links</h4>
-            <div className="space-y-2">
-              <Link to="/" className="block text-muted-foreground hover:text-accent transition-colors text-sm">
-                Home
-              </Link>
-              <Link to="/projects" className="block text-muted-foreground hover:text-accent transition-colors text-sm">
-                Projects
-              </Link>
-              <Link to="/about" className="block text-muted-foreground hover:text-accent transition-colors text-sm">
-                About
-              </Link>
-              <Link to="/contact" className="block text-muted-foreground hover:text-accent transition-colors text-sm">
-                Contact
-              </Link>
-            </div>
           </div>
 
           {/* Contact */}

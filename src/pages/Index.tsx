@@ -3,9 +3,8 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { ProjectModal } from "@/components/ProjectModal";
 import { SkillBadges } from "@/components/SkillBadges";
 import { projects, aboutData, contactData } from "@/data/portfolio";
-import { MapPin, Mail, Github, Linkedin, Phone, Send, Award, BookOpen, Users, ChevronLeft, ChevronRight } from "lucide-react";
+import { MapPin, Mail, Github, Linkedin, Award, BookOpen, Users, ChevronLeft, ChevronRight, GraduationCap } from "lucide-react";
 import type { Project } from "@/data/portfolio";
-import { useToast } from "@/hooks/use-toast";
 import { Footer } from "@/components/Footer";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
@@ -15,7 +14,6 @@ const Index = () => {
   const [activeFilter, setActiveFilter] = useState<string>("all");
   const [heroApi, setHeroApi] = useState<CarouselApi | null>(null);
   const [isDark, setIsDark] = useState(false);
-  const { toast } = useToast();
   
   useEffect(() => {
     if (isDark) {
@@ -24,16 +22,9 @@ const Index = () => {
       document.documentElement.classList.remove("dark");
     }
   }, [isDark]);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  
   const heroImages = useMemo(() => [
     { src: "/projects/fsai/beetlebot_at_fsai-02.jpeg", caption: "BeetleBot - FSAI Conference" },
-    { src: "/projects/compost/compost-bin-01.jpeg", caption: "Khadify - Compost Bin Sensor Deck" },
+    { src: "/projects/compost/compost-bin-01.jpeg", caption: "Khadify - Sensor Deck" },
     { src: "/projects/cyberdost-1.jpeg", caption: "CyberDost - Cyberbullying Advocacy" },
     { src: "/projects/fsai/beetlebot_at_fsai-05.jpeg", caption: "BeetleBot - FSAI Presentation" },
     { src: "/projects/compost/compost-bin-02.jpeg", caption: "Khadify - Aeration Setup" },
@@ -43,9 +34,9 @@ const Index = () => {
     { src: "/projects/fsai/fsai-speaker.jpeg", caption: "FSAI - Speaker Session" },
     { src: "/projects/compost/compost-bin-08.jpeg", caption: "Khadify - Field Testing" },
     { src: "/projects/cyberdost-08.jpeg", caption: "CyberDost - Policy Engagement" },
-    { src: "/projects/compost/compost-bin-11.jpeg", caption: "Khadify - Compost Quality Analysis" },
+    { src: "/projects/compost/compost-bin-11.jpeg", caption: "Khadify - Quality Analysis" },
     { src: "/projects/compost/compost-bin-12.jpeg", caption: "Khadify - Final Product" },
-    { src: "/projects/compost/compost-bin-11.jpeg", caption: "Khadify - Compost Quality Analysis" },
+    { src: "/projects/compost/compost-bin-11.jpeg", caption: "Khadify - Quality Analysis" },
   ], []);
   
   useEffect(() => {
@@ -91,24 +82,6 @@ const Index = () => {
     });
   }, [activeFilter]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-    setFormData({ name: "", email: "", subject: "", message: "" });
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
   return (
     <div className="min-h-screen flex flex-col">
       {/* Dark Mode Toggle */}
@@ -121,16 +94,17 @@ const Index = () => {
       </button>
       <main className="flex-1">
         {/* Hero Banner */}
-        <section className="relative h-64 md:h-80 lg:h-96 overflow-hidden">
+        <section className="relative h-80 md:h-96 lg:h-[32rem] overflow-hidden">
           <Carousel opts={{ loop: true }} setApi={setHeroApi} className="h-full">
             <CarouselContent className="h-full">
               {heroImages.map((item, index) => (
-                <CarouselItem key={index} className="h-64 md:h-80 lg:h-96">
+                <CarouselItem key={index} className="h-80 md:h-96 lg:h-[32rem]">
                   <div className="relative h-full">
                     <img
                       src={item.src}
                       alt={item.caption}
                       className="w-full h-full object-cover"
+                      style={{ objectPosition: 'center 30%' }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
                     <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -437,167 +411,31 @@ const Index = () => {
                 </div>
                 <SkillBadges />
               </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Contact Section */}
-        <section id="contact" className="py-16 bg-secondary/30">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4 animate-slide-up">
-              Get In Touch
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mb-12 animate-slide-up">
-              Interested in collaborating on a project or just want to say hello? 
-              Feel free to reach out!
-            </p>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Contact Info */}
-              <div className="space-y-8 animate-slide-up">
-                <div>
-                  <h3 className="text-xl font-display font-semibold text-foreground mb-6">
-                    Contact Information
-                  </h3>
-                  
-                  <div className="space-y-4">
-                    <ContactItem
-                      icon={<Mail />}
-                      label="Email"
-                      value={contactData.email}
-                      href={`mailto:${contactData.email}`}
-                    />
-                    <ContactItem
-                      icon={<Phone />}
-                      label="Phone"
-                      value={contactData.phone}
-                      href={`tel:${contactData.phone}`}
-                    />
-                    <ContactItem
-                      icon={<MapPin />}
-                      label="Location"
-                      value={contactData.location}
-                    />
+              {/* Academic Qualifications Card */}
+              <div className="p-6 rounded-xl bg-card border border-border">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
+                    <GraduationCap size={20} />
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-wider text-foreground/60 font-medium">Education</p>
+                    <h3 className="text-lg font-display font-semibold text-foreground">Academic Qualifications</h3>
                   </div>
                 </div>
-
-                {/* Social Links */}
-                <div>
-                  <h3 className="text-lg font-display font-semibold text-foreground mb-4">
-                    Connect With Me
-                  </h3>
-                  <div className="flex gap-4">
-                    <a
-                      href={contactData.socials.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-3 rounded-lg bg-card border border-border hover:border-accent hover:text-accent transition-all"
-                    >
-                      <Github size={20} />
-                      <span className="font-medium">GitHub</span>
-                    </a>
-                    <a
-                      href={contactData.socials.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-3 rounded-lg bg-card border border-border hover:border-accent hover:text-accent transition-all"
-                    >
-                      <Linkedin size={20} />
-                      <span className="font-medium">LinkedIn</span>
-                    </a>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-2 text-sm">IGCSE Grade 10</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      9 A*s: Chemistry, Physics, International Math, Additional Math, History, Computer Science, English Literature, English as a first language, Hindi
+                    </p>
                   </div>
-                </div>
-
-                {/* Availability */}
-                <div className="p-6 rounded-xl bg-accent/10 border border-accent/20">
-                  <h3 className="text-lg font-display font-semibold text-foreground mb-2">
-                    Open to Opportunities
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    I'm always interested in hearing about new projects, 
-                    research collaborations, or internship opportunities 
-                    in robotics, AI, and IoT.
-                  </p>
-                </div>
-              </div>
-
-              {/* Contact Form */}
-              <div className="animate-slide-up">
-                <div className="p-8 rounded-xl bg-card border border-border">
-                  <h3 className="text-xl font-display font-semibold text-foreground mb-6">
-                    Send a Message
-                  </h3>
-                  
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                        Your Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-                        placeholder="John Doe"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-                        placeholder="john@example.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                        Subject
-                      </label>
-                      <input
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-                        placeholder="Project Collaboration"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        rows={5}
-                        className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all resize-none"
-                        placeholder="Tell me about your project or inquiry..."
-                      />
-                    </div>
-
-                    <button type="submit" className="btn-primary w-full flex items-center justify-center gap-2">
-                      <Send size={18} />
-                      Send Message
-                    </button>
-                  </form>
+                  <div className="pt-2 border-t border-border">
+                    <h4 className="font-semibold text-foreground mb-2 text-sm">SAT</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Score: <span className="font-semibold text-foreground">1560</span>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -636,40 +474,6 @@ function Card({
       {children}
     </div>
   );
-}
-
-function ContactItem({
-  icon,
-  label,
-  value,
-  href,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-  href?: string;
-}) {
-  const content = (
-    <div className="flex items-start gap-4 p-4 rounded-lg bg-card border border-border hover:border-accent/50 transition-colors">
-      <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent flex-shrink-0">
-        {icon}
-      </div>
-      <div>
-        <p className="text-sm text-muted-foreground">{label}</p>
-        <p className="font-medium text-foreground">{value}</p>
-      </div>
-    </div>
-  );
-
-  if (href) {
-    return (
-      <a href={href} className="block">
-        {content}
-      </a>
-    );
-  }
-
-  return content;
 }
 
 export default Index;

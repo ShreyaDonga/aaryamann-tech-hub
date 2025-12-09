@@ -61,18 +61,19 @@ export interface SubProject {
 }
 
 export const skills = [
-  "Robotics (Arduino/ESP32)",
-  "IoT automation",
+  "Python",
+  "Arduino",
+  "ESP32",
+  "IoT automation (ESP32)",
+  "ANSYS",
+  "MATLAB",
+  "GIS (Python)",
+  "3D CAD",
   "ML pipelines",
-  "Geospatial modeling (Python/ANSYS/MATLAB)",
-  "Sensor integration",
-  "3D CAD & fabrication",
-  "Data visualization",
-  "Research writing",
-  "Leadership & ops",
-  "STEM outreach",
+  "Cloud dashboards",
   "Web dashboards",
-  "Field testing",
+  "PCB design",
+  "Soldering",
 ];
 
 export const projects: Project[] = [
@@ -161,8 +162,8 @@ export const projects: Project[] = [
   },
   {
     id: "smart-compost",
-    title: "Smart Compost System (IoT + ML)",
-    shortTitle: "Smart Compost",
+    title: "Khadify (IoT + ML)",
+    shortTitle: "Khadify",
     category: "Spotlight",
     summary:
       "Built dual-function reactor with NPK/ammonia/temp/moisture sensing, ESP32 automation, and ML Compost Quality Score; cut cycle time 20–25% and costs 40–50%.",
@@ -170,7 +171,7 @@ export const projects: Project[] = [
     tags: ["IoT automation", "ESP32", "Agri-ML", "Sustainability"],
     content: {
       abstract:
-        "Low-cost compost reactor that monitors nutrients and automates aeration, heating, and moisture control while scoring quality via ML dashboard.",
+        "Khadify: Low-cost compost reactor that monitors nutrients and automates aeration, heating, and moisture control while scoring quality via ML dashboard.",
       innovation:
         "Combines sensor validation (±10% accuracy) with bilingual UI and CQS scoring so smallholder farmers can trust output before field use.",
       methodology:
@@ -192,13 +193,13 @@ export const projects: Project[] = [
           type: "video",
           src: "/projects/compost/videos/Khadify_DemoVideo_2025.mp4",
           label: "Khadify Demo 2025",
-          description: "Latest end-to-end demo of the smart compost system (automation + dashboard).",
+          description: "Latest end-to-end demo of Khadify (automation + dashboard).",
         },
         {
           type: "video",
           src: "/projects/compost/videos/khadify_field_test-01.mp4",
           label: "Field Test 1",
-          description: "Real-world field testing of the compost system.",
+          description: "Real-world field testing of Khadify.",
         },
         {
           type: "video",
@@ -222,8 +223,8 @@ export const projects: Project[] = [
   },
   {
     id: "coastal-erosion",
-    title: "Coastal Erosion Modeling (Mangroves)",
-    shortTitle: "Coastal Modeling",
+    title: "MEMRI (Mangroves Erosion Mitigation Research Initiative)",
+    shortTitle: "MEMRI",
     category: "Spotlight",
     summary:
       "Modeled mangrove root-density effects on wave attenuation using Hansen Global Forest data, Python GIS, ANSYS/MATLAB shoreline simulations, and long-term land-loss scenarios to guide coastal resilience.",
@@ -231,7 +232,7 @@ export const projects: Project[] = [
     tags: ["Geospatial", "Simulation", "Climate resilience"],
     content: {
       abstract:
-        "Independent study quantifying mangrove density vs. shoreline stability using remote-sensing datasets and simulation to prioritize coastal buffers.",
+        "MEMRI: Independent study quantifying mangrove density vs. shoreline stability using remote-sensing datasets and simulation to prioritize coastal buffers.",
       methodology:
         "Processed Hansen Global Forest layers; built Python geospatial pipeline; simulated root drag and wave energy in ANSYS/MATLAB; mapped erosion risk bands.",
       results:
@@ -328,14 +329,14 @@ export const projects: Project[] = [
     shortTitle: "Tech Outreach",
     category: "Outreach & Fairs",
     summary:
-      "Captured BIS Tech Fair honors (Most Creative 2024, Most Innovative 2025) and led STEM workshops, compost demos, and robotics/AI sessions.",
+      "Captured BIS Tech Fair honors (Most Creative 2024, Most Innovative 2025) and led STEM workshops, Khadify demos, and robotics/AI sessions.",
     image: "/projects/compost/compost-bin-03.jpeg",
     tags: ["STEM outreach", "UI/UX", "Education"],
     content: {
       subProjects: [
         {
           title: "Most Creative Project (2024)",
-          description: "Cyberbullying-awareness website with interactive UI/UX for social impact.",
+          description: "CyberDost awareness website with interactive UI/UX for social impact.",
         },
         {
           title: "Most Innovative Project (2025)",
@@ -343,18 +344,18 @@ export const projects: Project[] = [
         },
         {
           title: "STEM Outreach",
-          description: "Workshops and demos on compost-tech and robotics/AI for students.",
+          description: "Workshops and demos on Khadify and robotics/AI for students.",
         },
       ],
     },
   },
   {
     id: "cyber-advocacy",
-    title: "Cyber-Bullying Advocacy & Social Impact",
-    shortTitle: "Cyber Advocacy",
+    title: "CyberDost",
+    shortTitle: "CyberDost",
     category: "Community",
     summary:
-      "Founded cyberbullying awareness portal; ran 1,000+ participant seminars; secured 1,300+ signature petition with Dept. of Education endorsement.",
+      "Founded CyberDost awareness portal; ran 1,000+ participant seminars; secured 1,300+ signature petition with Dept. of Education endorsement.",
     image: "/projects/cyberdost-1.jpeg",
     tags: ["Advocacy", "Policy", "Digital safety"],
     content: {
@@ -442,8 +443,8 @@ export const projects: Project[] = [
 
 export const aboutData = {
   name: "Aaryamann Goenka",
-  title: "STEM Generalist | Robotics & IoT Builder | Outreach Lead",
-  bio: "Designs rescue robots, IoT + ML systems, and geospatial models; leads clubs, competitions, and outreach with a bias for measurable impact.",
+  title: "Adaptive Robotics | Sustainability Frontliner | Mangrove Mender",
+  bio: "Designs rescue robots, IoT + ML systems, and geospatial models; leads clubs, competitions, and outreach with a bias for measurable impact. MEMRI stands for Mangroves Erosion Mitigation Research Initiative.",
   technicalBackground: [
     "Robotics control: Arduino, ESP32, RC + Wi-Fi failsafes",
     "IoT + ML dashboards for sensing and automation",
@@ -453,8 +454,8 @@ export const aboutData = {
   ],
   achievements: [
     "BeetleBot demos to DRDO/Naval Dockyard + FSAI talk (200+ audience)",
-    "Smart Compost: 20–25% faster cycles, 40–50% cheaper output",
-    "Coastal erosion modeling to map mangrove impact",
+    "Khadify: 20–25% faster cycles, 40–50% cheaper output",
+    "MEMRI: Coastal erosion modeling to map mangrove impact",
     "CREST Gold (materials science) + Hippo Technotex internship",
     "FTC Think Award + Inspire Award; AI/Engineering club leadership",
     "IGCSE World Topper (Add-Math) + SASMO Gold + HKISO Silver",
