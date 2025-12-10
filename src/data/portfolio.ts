@@ -315,6 +315,11 @@ export const projects: Project[] = [
           label: "Mangrove area reduction analysis",
           description: "Comparative analysis of mangrove area reduction across different spatial feature sets using satellite mapping and geospatial analysis.",
         },
+        {
+          type: "pdf",
+          src: "/projects/Mumbai_Mangroves_White_Paper.pdf",
+          label: "Mumbai Mangroves White Paper",
+        },
       ],
     },
   },
