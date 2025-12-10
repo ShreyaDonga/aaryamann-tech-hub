@@ -136,83 +136,89 @@ export const projects: Project[] = [
       ],
       media: [
         {
+          type: "image",
+          src: "/projects/beetlebot/initial_prototype.jpeg",
+          label: "Initial Prototype",
+        },
+        {
           type: "video",
           src: "/projects/beetlebot/beetlebot_demo.mp4",
           label: "Beetlebot Demo 1",
-          description: "Quadruped rescue robot demonstration.",
         },
         {
           type: "video",
           src: "/projects/beetlebot/beetlebot_demo2.mp4",
           label: "Beetlebot Demo 2",
-          description: "Additional demonstration footage.",
         },
         {
           type: "image",
           src: "/projects/beetlebot/beetlebot1.jpeg",
-          label: "BeetleBot pose",
-          description: "Quadruped ready for rescue entry.",
+          label: "BeetleBot",
         },
         {
           type: "image",
           src: "/projects/beetlebot/img2.jpeg",
-          label: "Hardware assembly",
         },
         {
           type: "image",
           src: "/projects/beetlebot/img3.jpeg",
-          label: "Workshop build",
         },
         {
           type: "image",
           src: "/projects/beetlebot/img4.jpeg",
-          label: "BeetleBot in motion",
         },
         {
           type: "image",
           src: "/projects/beetlebot/img5.jpeg",
-          label: "IR night run",
         },
         {
           type: "image",
           src: "/projects/beetlebot/img6.jpeg",
-          label: "Field deployment",
         },
         {
           type: "image",
           src: "/projects/beetlebot/beetlebot_at_fsai-02.jpeg",
-          label: "Beetlebot Conference setup",
         },
         {
           type: "image",
           src: "/projects/beetlebot/beetlebot_at_fsai-03.jpeg",
-          label: "Beetlebot demonstration",
         },
         {
           type: "image",
           src: "/projects/beetlebot/beetlebot_at_fsai-04.jpeg",
-          label: "Technical presentation",
+        },
+        {
+          type: "image",
+          src: "/projects/beetlebot/beetlebot_at_fsai-05.jpeg",
         },
         {
           type: "image",
           src: "/projects/beetlebot/beetlebot_at_fsai-06.jpeg",
-          label: "Conference showcase",
+        },
+        {
+          type: "image",
+          src: "/projects/beetlebot/beetlebot_at_fsai-07.jpeg",
+        },
+        {
+          type: "image",
+          src: "/projects/beetlebot/beetlebot_at_fsai-10.jpeg",
+        },
+        {
+          type: "image",
+          src: "/projects/beetlebot/beetlebot_at_fsai-11.jpeg",
         },
         {
           type: "image",
           src: "/projects/beetlebot/beetlebot_at_fsai-12.jpeg",
-          label: "Beetlebot event",
         },
         {
           type: "image",
           src: "/projects/observership_naval.jpeg",
-          label: "Naval Dockyard observership",
         },
         {
           type: "video",
           src: "/projects/beetlebot/Spider_Bot_video.mp4",
-          label: "BeetleBot demo",
-          description: "Click to watch traversal and telemetry.",
+          label: "BeetleBot Demo",
         },
       ],
     },
@@ -428,9 +434,11 @@ export const projects: Project[] = [
     tags: ["Advocacy", "Policy", "Digital safety"],
     content: {
       media: [
-        { type: "image", src: "/projects/cyberdost-1.jpeg", label: "CyberDost Awareness Campaign" },
-        { type: "image", src: "/projects/cyberdost-07.jpeg", label: "Community Outreach" },
-        { type: "image", src: "/projects/cyberdost-08.jpeg", label: "Digital Safety Workshop" },
+        { type: "image", src: "/projects/cyberdost-1.jpeg" },
+        { type: "image", src: "/projects/cyberdost-07.jpeg" },
+        { type: "image", src: "/projects/cyberdost-08.jpeg" },
+        { type: "image", src: "/projects/cyberdost_smiley.jpeg" },
+        { type: "image", src: "/projects/cyberdost_webinar.jpeg" },
         {
           type: "pdf",
           src: "/docs/Cyberbullying Awareness and Prevention in India.pdf",
