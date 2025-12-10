@@ -377,9 +377,12 @@ export const projects: Project[] = [
     category: "Competitions & Leadership",
     summary:
       "IGCSE World Topper (Additional Math 2025); SASMO Gold; HKISO Silver; Waterloo Pascal Distinction; AP Microeconomics 5 (self-study).",
-    image: "/placeholder.svg",
+    image: "/projects/fsai/fsai-speaker.jpeg",
     tags: ["Olympiads", "Math", "Self-study"],
     content: {
+      media: [
+        { type: "image", src: "/projects/fsai/fsai-speaker.jpeg", label: "Beetlebot Speaker Session" },
+      ],
       subProjects: [
         { title: "IGCSE World Topper", description: "Additional Mathematics (2025)." },
         { title: "SASMO Gold & HKISO Silver", description: "International STEM Olympiads." },
