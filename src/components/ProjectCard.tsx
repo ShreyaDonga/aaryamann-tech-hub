@@ -1,4 +1,5 @@
 import { MediaItem, Project } from "@/data/portfolio";
+import { useState, useEffect } from "react";
 
 const fallbackImage = "/projects/spider-bot/beetlebot1.jpeg";
 const fallbackMedia: MediaItem = {
@@ -20,6 +21,17 @@ const getProjectCardMedia = (project: Project) => {
   return fallbackMedia;
 };
 
+const getBeetleBotVideos = (project: Project) => {
+  if (project.id === "beetlebot") {
+    const videos = project.content.media?.filter((item) => item.type === "video" && item.src.includes("beetlebot_demo")) ?? [];
+    return videos.length > 0 ? videos : [
+      { type: "video" as const, src: "/projects/spider-bot/beetlebot_demo.mp4", label: "Demo 1" },
+      { type: "video" as const, src: "/projects/spider-bot/beetlebot_demo2.mp4", label: "Demo 2" },
+    ];
+  }
+  return [];
+};
+
 interface ProjectCardProps {
   project: Project;
   onClick: () => void;
@@ -29,6 +41,22 @@ interface ProjectCardProps {
 export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
   const cardMedia = getProjectCardMedia(project);
   const isSpotlight = project.category === "Spotlight";
+  const beetleBotVideos = getBeetleBotVideos(project);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+  useEffect(() => {
+    if (beetleBotVideos.length > 1) {
+      const video = document.getElementById(`beetlebot-video-${project.id}`) as HTMLVideoElement;
+      if (video) {
+        const handleEnded = () => {
+          setCurrentVideoIndex((prev) => (prev + 1) % beetleBotVideos.length);
+        };
+        video.addEventListener('ended', handleEnded);
+        return () => video.removeEventListener('ended', handleEnded);
+      }
+    }
+  }, [beetleBotVideos.length, project.id]);
+
   return (
     <div
       onClick={onClick}
@@ -37,7 +65,17 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
     >
       {/* Image/Video */}
       <div className="relative aspect-video overflow-hidden">
-        {project.image && project.image.endsWith('.mp4') ? (
+        {beetleBotVideos.length > 0 ? (
+          <video
+            id={`beetlebot-video-${project.id}`}
+            key={beetleBotVideos[currentVideoIndex]?.src}
+            src={beetleBotVideos[currentVideoIndex]?.src}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            autoPlay
+            muted
+            playsInline
+          />
+        ) : project.image && project.image.endsWith('.mp4') ? (
           <video
             src={project.image}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
