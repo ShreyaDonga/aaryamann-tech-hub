@@ -253,7 +253,7 @@ export const projects: Project[] = [
     shortTitle: "Innovation Awards",
     category: "Research & Entrepreneurship",
     summary:
-      "Captured CREST Gold (materials science enamel study) and Hippo Technotex internship delivering cost/thermal analysis for Cool Roof panels.",
+      "Captured CREST Gold (materials science enamel study) and Hippo Technotex internship delivering cost/thermal analysis for Relief Roof panels.",
     image: "/projects/spider-bot/img2.jpeg",
     tags: ["Materials", "Thermal analysis", "Research"],
     content: {
@@ -266,7 +266,7 @@ export const projects: Project[] = [
         {
           title: "Hippo Technotex Internship (2025–present)",
           description:
-            "Benchmarked Cool Roof sandwich panels vs. conventional roofing; modeled thermal + structural loads and drafted scalable design guidance.",
+            "Benchmarked Relief Roof sandwich panels vs. conventional roofing; modeled thermal + structural loads and drafted scalable design guidance.",
         },
       ],
     },
@@ -277,7 +277,7 @@ export const projects: Project[] = [
     shortTitle: "Robotics & Leadership",
     category: "Competitions & Leadership",
     summary:
-      "Led FTC G-Force CAD, founded AI Club, ran Engineering Club build labs, and served Tech Secretary for BIS Tech Fest with AV + web ops.",
+      "Led FTC G-Force CAD, founded AI Club, ran Engineering Club build labs, and served as Tech Secretary for BIS Tech Fest with AV + web ops.",
     image: "/projects/spider-bot/img3.jpeg",
     tags: ["FTC", "Club leadership", "Workshops"],
     content: {
