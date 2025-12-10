@@ -479,7 +479,6 @@ export const contactData = {
   phone: "+91 8291817701",
   location: "Mumbai, India",
   socials: {
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    linkedin: "https://www.linkedin.com/in/aaryamann-goenka-981502399/",
   },
 };

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Github, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { contactData } from "@/data/portfolio";
 
 export function Footer() {
@@ -47,20 +47,18 @@ export function Footer() {
             {/* Social Links */}
             <div className="flex gap-3 mt-4">
               <a
-                href={contactData.socials.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
-              >
-                <Github size={18} />
-              </a>
-              <a
                 href={contactData.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
               >
                 <Linkedin size={18} />
+              </a>
+              <a
+                href={`mailto:${contactData.email}`}
+                className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
+              >
+                <Mail size={18} />
               </a>
             </div>
           </div>

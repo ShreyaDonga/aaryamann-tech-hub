@@ -3,7 +3,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { ProjectModal } from "@/components/ProjectModal";
 import { SkillBadges } from "@/components/SkillBadges";
 import { projects, aboutData, contactData } from "@/data/portfolio";
-import { MapPin, Mail, Github, Linkedin, Award, BookOpen, Users, ChevronLeft, ChevronRight, GraduationCap } from "lucide-react";
+import { MapPin, Mail, Linkedin, Award, BookOpen, Users, ChevronLeft, ChevronRight, GraduationCap } from "lucide-react";
 import type { Project } from "@/data/portfolio";
 import { Footer } from "@/components/Footer";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -156,14 +156,6 @@ const Index = () => {
                 {/* Social & Contact */}
                 <div className="flex flex-wrap items-center gap-4">
                   <div className="flex gap-2">
-                    <a
-                      href={contactData.socials.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
-                    >
-                      <Github size={18} />
-                    </a>
                     <a
                       href={contactData.socials.linkedin}
                       target="_blank"
