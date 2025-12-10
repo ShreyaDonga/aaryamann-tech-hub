@@ -180,7 +180,7 @@ export const projects: Project[] = [
         },
         {
           type: "image",
-          src: "/projects/beetlebot/beetlebot_at_fsai-01.jpeg",
+          src: "/projects/beetlebot/beetlebot_at_fsai-02.jpeg",
           label: "Beetlebot Conference setup",
         },
         {
