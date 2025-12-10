@@ -79,12 +79,12 @@ export const skills = [
 export const projects: Project[] = [
   {
     id: "beetlebot",
-    title: "Fire-Safety Quadruped (BeetleBot)",
-    shortTitle: "BeetleBot Rescue",
+    title: "Beetlebot: Quadrupled Rescue Robot",
+    shortTitle: "BeetleBot",
     category: "Spotlight",
     summary:
-      "Built RC+Wi-Fi quadruped with night vision and onboard audio; briefed DRDO & Naval Dockyard; earned Letter of Appreciation and FSAI talk to 200+ engineers.",
-    image: "/projects/spider-bot/img1.jpeg",
+      "Built RC+Wi-Fi quadruped with night vision and onboard audio; briefed DRDO & Naval Dockyard; earned Letter of Appreciation and Beetlebot talk to 200+ engineers.",
+    image: "/projects/spider-bot/beetlebot_demo.mp4",
     tags: ["Rescue robotics", "Night vision", "RC control", "Field demos"],
     content: {
       abstract:
@@ -94,7 +94,7 @@ export const projects: Project[] = [
       methodology:
         "Iterated Mark 1→2 after DRDO input; calibrated 12-servo gait, integrated RC receiver + ESP32 telemetry, mounted IR camera, validated maneuvering in clutter.",
       results:
-        "Executed demos for DRDO Delhi and Naval Dockyard Mumbai; secured formal appreciation; recognized as Most Innovative Project at BIS Tech Fair 2025 and speaker slot at FSAI Mumbai (200+ audience).",
+        "Executed demos for DRDO Delhi and Naval Dockyard Mumbai; secured formal appreciation; recognized as Most Innovative Project at BIS Tech Fair 2025 and speaker slot at Beetlebot Mumbai (200+ audience).",
       hardwareGroups: [
         {
           title: "Core Stack",
@@ -137,7 +137,21 @@ export const projects: Project[] = [
       media: [
         {
           type: "image",
-          src: "/projects/spider-bot/img1.jpeg",
+        {
+          type: "video",
+          src: "/projects/spider-bot/beetlebot_demo.mp4",
+          label: "Beetlebot Demo 1",
+          description: "Quadruped rescue robot demonstration.",
+        },
+        {
+          type: "video",
+          src: "/projects/spider-bot/beetlebot_demo2.mp4",
+          label: "Beetlebot Demo 2",
+          description: "Additional demonstration footage.",
+        },
+        {
+          type: "image",
+          src: "/projects/spider-bot/beetlebot1.jpeg",
           label: "BeetleBot pose",
           description: "Quadruped ready for rescue entry.",
         },
@@ -169,12 +183,12 @@ export const projects: Project[] = [
         {
           type: "image",
           src: "/projects/fsai/beetlebot_at_fsai-01.jpeg",
-          label: "FSAI Conference setup",
+          label: "Beetlebot Conference setup",
         },
         {
           type: "image",
           src: "/projects/fsai/beetlebot_at_fsai-03.jpeg",
-          label: "FSAI demonstration",
+          label: "Beetlebot demonstration",
         },
         {
           type: "image",
@@ -189,7 +203,12 @@ export const projects: Project[] = [
         {
           type: "image",
           src: "/projects/fsai/beetlebot_at_fsai-12.jpeg",
-          label: "FSAI event",
+          label: "Beetlebot event",
+        },
+        {
+          type: "image",
+          src: "/projects/observership_naval.jpeg",
+          label: "Naval Dockyard observership",
         },
         {
           type: "video",
@@ -202,7 +221,7 @@ export const projects: Project[] = [
   },
   {
     id: "smart-compost",
-    title: "Khadify (IoT + ML)",
+    title: "Khadify: Low-Cost, At-Home Smart Compost Bin",
     shortTitle: "Khadify",
     category: "Spotlight",
     summary:
@@ -462,9 +481,13 @@ export const projects: Project[] = [
     category: "Service & Expeditions",
     summary:
       "Head Boy 2024–25; launched BIS Beholder film festival; executed school events; completed NOLS 65-mile expedition and multiple treks; advanced skier and scuba certified.",
-    image: "/hero-banner.jpg",
+    image: "/projects/trek_expedition_NOLS_USA.jpeg",
     tags: ["Leadership", "Operations", "Expeditions"],
     content: {
+      media: [
+        { type: "image", src: "/projects/trek_expedition_NOLS_USA.jpeg", label: "NOLS Expedition" },
+        { type: "image", src: "/projects/observership_naval.jpeg", label: "Naval Dockyard Observership" },
+      ],
       subProjects: [
         {
           title: "Head Boy & Event Ops",
@@ -501,7 +524,7 @@ export const aboutData = {
     "Field testing, sensor validation, and iteration loops",
   ],
   achievements: [
-    "BeetleBot demos to DRDO/Naval Dockyard + FSAI talk (200+ audience)",
+    "Beetlebot demos to DRDO/Naval Dockyard + Beetlebot talk (200+ audience)",
     "Khadify: 20–25% faster cycles, 40–50% cheaper output",
     "MEMRI: Coastal erosion modeling to map mangrove impact",
     "CREST Gold (materials science) + Hippo Technotex internship",

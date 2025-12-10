@@ -1,6 +1,6 @@
 import { MediaItem, Project } from "@/data/portfolio";
 
-const fallbackImage = "/projects/spider-bot/img1.jpeg";
+const fallbackImage = "/projects/spider-bot/beetlebot1.jpeg";
 const fallbackMedia: MediaItem = {
   type: "image",
   src: fallbackImage,
@@ -35,13 +35,24 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
       className={`project-card group animate-slide-up ${isSpotlight ? "border-2 border-yellow-500" : ""}`}
       style={{ animationDelay: `${index * 100}ms` }}
     >
-      {/* Image */}
+      {/* Image/Video */}
       <div className="relative aspect-video overflow-hidden">
-        <img
-          src={cardMedia.src}
-          alt={cardMedia.label ?? project.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
+        {project.image && project.image.endsWith('.mp4') ? (
+          <video
+            src={project.image}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        ) : (
+          <img
+            src={cardMedia.src}
+            alt={cardMedia.label ?? project.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         
         {/* Spotlight Badge */}
