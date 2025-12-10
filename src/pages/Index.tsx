@@ -255,7 +255,7 @@ const Index = () => {
                         <h4 className="text-lg font-semibold text-foreground">{project.title}</h4>
                       </div>
                       <span className="px-3 py-1 text-xs rounded-full bg-secondary text-secondary-foreground">
-                        {project.category}
+                        {project.id === "coastal-erosion" ? "Sustainability" : project.category}
                       </span>
                     </div>
                     <Accordion type="single" collapsible className="space-y-2">
