@@ -449,7 +449,7 @@ export const projects: Project[] = [
   },
   {
     id: "cyber-advocacy",
-    title: "CyberDost",
+    title: "CyberDost: Anti-Cyberbullying Initiative",
     shortTitle: "CyberDost",
     category: "Community",
     summary:
