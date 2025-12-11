@@ -13,10 +13,21 @@ const fallbackMedia: MediaItem = {
 };
 
 const getHeroMedia = (project: Project) => {
-  const imageMedia = project.content.media?.find((item) => item.type === "image");
+  // Find first image that is different from the thumbnail
+  const imageMedia = project.content.media?.find((item) => 
+    item.type === "image" && item.src !== project.image
+  );
   if (imageMedia) return imageMedia;
-  const videoMedia = project.content.media?.find((item) => item.type === "video");
-  return videoMedia ?? fallbackMedia;
+  // If no different image found, try video
+  const videoMedia = project.content.media?.find((item) => 
+    item.type === "video" && item.src !== project.image
+  );
+  if (videoMedia) return videoMedia;
+  // Fallback: use any image or video, or fallback
+  const anyImage = project.content.media?.find((item) => item.type === "image");
+  if (anyImage) return anyImage;
+  const anyVideo = project.content.media?.find((item) => item.type === "video");
+  return anyVideo ?? fallbackMedia;
 };
 
 interface ProjectModalProps {

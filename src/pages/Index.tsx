@@ -440,12 +440,6 @@ const Index = () => {
                     </p>
                   </div>
                   <div className="pt-2 border-t border-border">
-                    <h4 className="font-semibold text-foreground mb-2 text-sm">SAT</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Score: <span className="font-semibold text-foreground">1560</span>
-                    </p>
-                  </div>
-                  <div className="pt-2 border-t border-border">
                     <p className="text-sm text-muted-foreground">
                       SAT: <span className="font-semibold text-foreground">1560 (800 Math)</span> | AP Econ: <span className="font-semibold text-foreground">5</span>
                     </p>

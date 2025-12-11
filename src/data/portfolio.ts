@@ -316,15 +316,15 @@ export const projects: Project[] = [
         "Identified high-loss segments needing reforestation; produced policy-ready visuals to guide buffer planting and monitoring.",
       media: [
         {
+          type: "pdf",
+          src: "/projects/Mumbai_Mangroves_White_Paper.pdf",
+          label: "Mumbai Mangroves White Paper",
+        },
+        {
           type: "image",
           src: "/projects/mangrove/mangrove-analysis.jpeg",
           label: "Mangrove area reduction analysis",
           description: "Comparative analysis of mangrove area reduction across different spatial feature sets using satellite mapping and geospatial analysis.",
-        },
-        {
-          type: "pdf",
-          src: "/projects/Mumbai_Mangroves_White_Paper.pdf",
-          label: "Mumbai Mangroves White Paper",
         },
       ],
     },
@@ -339,6 +339,9 @@ export const projects: Project[] = [
     image: "/projects/beetlebot/img2.jpeg",
     tags: ["Materials", "Thermal analysis", "Research"],
     content: {
+      media: [
+        { type: "image", src: "/projects/crest_gold_award.jpeg", label: "CREST Gold Award" },
+      ],
       subProjects: [
         {
           title: "CREST Gold Award",
@@ -364,8 +367,8 @@ export const projects: Project[] = [
     tags: ["FTC", "Club leadership", "Workshops"],
     content: {
       media: [
-        { type: "image", src: "/projects/ftc/ftc_robotics_aaryaman_goenka.jpeg" },
-        { type: "image", src: "/projects/ftc/building_FTC_robotics.jpeg" },
+        { type: "image", src: "/projects/ftc/building_FTC_robotics.jpeg", label: "Building FTC Robotics" },
+        { type: "image", src: "/projects/ftc/ftc_robotics_aaryaman_goenka.jpeg", label: "FTC Robotics" },
       ],
       subProjects: [
         {
@@ -402,8 +405,8 @@ export const projects: Project[] = [
     tags: ["Olympiads", "Math", "Self-study"],
     content: {
       media: [
-        { type: "image", src: "/projects/STEM_Olympiads_Academic_Achievements.jpeg", label: "STEM Olympiads & Academic Achievements" },
         { type: "image", src: "/projects/hkiso_silver_award.jpeg", label: "HKISO Silver Award" },
+        { type: "image", src: "/projects/STEM_Olympiads_Academic_Achievements.jpeg", label: "STEM Olympiads & Academic Achievements" },
         { type: "image", src: "/projects/crest_gold_award.jpeg", label: "CREST Gold Award" },
         { type: "image", src: "/projects/certificates/pascal_award.jpeg", label: "Waterloo Pascal Distinction" },
       ],
@@ -425,6 +428,9 @@ export const projects: Project[] = [
     image: "/projects/compost/compost-bin-03.jpeg",
     tags: ["STEM outreach", "UI/UX", "Education"],
     content: {
+      media: [
+        { type: "image", src: "/projects/beetlebot/fsai-speaker.jpeg", label: "BIS Tech Fair Speaker" },
+      ],
       subProjects: [
         {
           title: "Most Creative Project (2024)",
@@ -452,14 +458,14 @@ export const projects: Project[] = [
     tags: ["Advocacy", "Policy", "Digital safety"],
     content: {
       media: [
-        { type: "image", src: "/projects/cyberdost-1.jpeg" },
-        { type: "image", src: "/projects/cyberdost-07.jpeg" },
-        { type: "image", src: "/projects/cyberdost-08.jpeg" },
-        { type: "image", src: "/projects/cyberdost_smiley.jpeg" },
-        { type: "image", src: "/projects/cyberdost_webinar.jpeg" },
-        { type: "image", src: "/projects/cyberdost/cyberdost_with_school_staff.jpeg" },
-        { type: "image", src: "/projects/cyberdost/cyberdost_with_staff.jpeg" },
-        { type: "image", src: "/projects/cyberdost/zoom_webinar_cyberdost.jpeg" },
+        { type: "image", src: "/projects/cyberdost-07.jpeg", label: "CyberDost Outreach" },
+        { type: "image", src: "/projects/cyberdost-1.jpeg", label: "CyberDost" },
+        { type: "image", src: "/projects/cyberdost-08.jpeg", label: "CyberDost Community" },
+        { type: "image", src: "/projects/cyberdost_smiley.jpeg", label: "CyberDost Smiley" },
+        { type: "image", src: "/projects/cyberdost_webinar.jpeg", label: "CyberDost Webinar" },
+        { type: "image", src: "/projects/cyberdost/cyberdost_with_school_staff.jpeg", label: "CyberDost with School Staff" },
+        { type: "image", src: "/projects/cyberdost/cyberdost_with_staff.jpeg", label: "CyberDost with Staff" },
+        { type: "image", src: "/projects/cyberdost/zoom_webinar_cyberdost.jpeg", label: "Zoom Webinar" },
         {
           type: "pdf",
           src: "/docs/Cyberbullying Awareness and Prevention in India.pdf",
@@ -515,8 +521,8 @@ export const projects: Project[] = [
     tags: ["Leadership", "Operations", "Expeditions"],
     content: {
       media: [
-        { type: "image", src: "/projects/trek_expedition_NOLS_USA.jpeg", label: "NOLS Expedition" },
         { type: "image", src: "/projects/trekking_hill.jpeg", label: "Trekking Expedition" },
+        { type: "image", src: "/projects/trek_expedition_NOLS_USA.jpeg", label: "NOLS Expedition" },
         { type: "image", src: "/projects/observership_naval.jpeg", label: "Naval Dockyard Observership" },
       ],
       subProjects: [
