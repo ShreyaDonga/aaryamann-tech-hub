@@ -18,16 +18,16 @@ const getHeroMedia = (project: Project) => {
     item.type === "image" && item.src !== project.image
   );
   if (imageMedia) return imageMedia;
-  // If no different image found, try video
+  // If no different image found, try video that's different from thumbnail
   const videoMedia = project.content.media?.find((item) => 
     item.type === "video" && item.src !== project.image
   );
   if (videoMedia) return videoMedia;
-  // Fallback: use any image or video, or fallback
-  const anyImage = project.content.media?.find((item) => item.type === "image");
-  if (anyImage) return anyImage;
+  // If still no match, try any video (even if same as thumbnail, videos are OK)
   const anyVideo = project.content.media?.find((item) => item.type === "video");
-  return anyVideo ?? fallbackMedia;
+  if (anyVideo) return anyVideo;
+  // Last resort: use fallback image (never use thumbnail image as fallback)
+  return fallbackMedia;
 };
 
 interface ProjectModalProps {
