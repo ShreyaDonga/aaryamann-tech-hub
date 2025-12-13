@@ -411,13 +411,13 @@ export const projects: Project[] = [
     category: "Competitions & Leadership",
     summary:
       "IGCSE World Topper (Additional Math 2025); SASMO Gold; HKISO Silver; Waterloo Pascal Distinction; AP Microeconomics 5 (self-study).",
-    image: "/projects/STEM_Olympiads_Academic_Achievements.jpeg",
-    thumbnail: "/projects/STEM_Olympiads_Academic_Achievements.jpeg",
+    image: "/projects/compost/service.jpeg",
+    thumbnail: "/projects/compost/service.jpeg",
     tags: ["Olympiads", "Math", "Self-study"],
     content: {
       media: [
         { type: "image", src: "/projects/hkiso_silver_award.jpeg", label: "HKISO Silver Award" },
-        { type: "image", src: "/projects/STEM_Olympiads_Academic_Achievements.jpeg", label: "STEM Olympiads & Academic Achievements" },
+        { type: "image", src: "/projects/compost/service.jpeg", label: "STEM Olympiads & Academic Achievements" },
         { type: "image", src: "/projects/crest_gold_award.jpeg", label: "CREST Gold Award" },
         { type: "image", src: "/projects/certificates/pascal_award.jpeg", label: "Waterloo Pascal Distinction" },
       ],
