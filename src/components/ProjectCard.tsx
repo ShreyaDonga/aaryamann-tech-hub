@@ -107,24 +107,6 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        
-        {/* Spotlight Badge */}
-        {isSpotlight && (
-          <div className="absolute top-3 left-3">
-            <span className="px-3 py-1 text-xs font-semibold rounded-full bg-yellow-500 text-black flex items-center gap-1">
-              ⭐ Spotlight
-            </span>
-          </div>
-        )}
-        
-        {/* Category Badge */}
-        {!isSpotlight && (
-          <div className="absolute top-3 left-3">
-            <span className="px-3 py-1 text-xs font-medium rounded-full bg-accent text-accent-foreground">
-              {project.category}
-            </span>
-          </div>
-        )}
       </div>
 
       {/* Content */}
@@ -132,18 +114,9 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
         <h3 className="font-display font-semibold text-lg text-foreground mb-2 line-clamp-2 group-hover:text-accent transition-colors">
           {project.title}
         </h3>
-        <p className="text-muted-foreground text-sm line-clamp-2 mb-4">
+        <p className="text-muted-foreground text-sm line-clamp-3">
           {project.summary}
         </p>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2">
-          {project.tags.slice(0, 3).map((tag) => (
-            <span key={tag} className="skill-badge text-xs pointer-events-none cursor-default">
-              {tag}
-            </span>
-          ))}
-        </div>
       </div>
     </div>
   );

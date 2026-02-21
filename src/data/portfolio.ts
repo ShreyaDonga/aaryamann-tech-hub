@@ -226,11 +226,6 @@ export const projects: Project[] = [
           src: "/projects/beetlebot/Spider_Bot_video.mp4",
           label: "BeetleBot Demo",
         },
-        {
-          type: "pdf",
-          src: "/docs/Beetlebot_Research_Paper.pdf",
-          label: "Beetlebot Research Paper",
-        },
       ],
     },
   },
@@ -305,11 +300,6 @@ export const projects: Project[] = [
           src: "/docs/Khadify_PPT_Submission.pdf",
           label: "Khadify Project Deck",
         },
-        {
-          type: "pdf",
-          src: "/docs/Compost_system_paper_IRIS.pdf",
-          label: "Khadify IRIS Research Paper",
-        },
       ],
     },
   },
@@ -345,7 +335,7 @@ export const projects: Project[] = [
         },
         {
           type: "pdf",
-          src: "/docs/Mumbai_Mangroves_White_Paper.pdf",
+          src: "/projects/Mumbai_Mangroves_White_Paper.pdf",
           label: "Mumbai Mangroves White Paper",
         },
       ],
@@ -353,14 +343,14 @@ export const projects: Project[] = [
   },
   {
     id: "research-innovation",
-    title: "Research & Engineering Innovation",
-    shortTitle: "Innovation Awards",
+    title: "Competitions",
+    shortTitle: "Competitions",
     category: "Competitions",
     summary:
-      "Captured CREST Gold (materials science enamel study) and Hippo Technotex internship delivering cost/thermal analysis for Relief Roof panels.",
+      "CREST Gold (pH–erosion study), FTC Think + Inspire Awards, Most Creative & Most Innovative at BIS Tech Fair.",
     image: "/projects/beetlebot/img2.jpeg",
     thumbnail: "/projects/crest_gold_award.jpeg",
-    tags: ["Materials", "Thermal analysis", "Research"],
+    tags: ["FTC", "CREST", "Materials", "Research"],
     content: {
       media: [
         { type: "image", src: "/projects/crest_gold_award.jpeg", label: "CREST Gold Award" },
@@ -372,23 +362,33 @@ export const projects: Project[] = [
             "Co-authored pH–erosion study using eggshell enamel analogues; paired microscopy with corrosion scoring.",
         },
         {
-          title: "Hippo Technotex Internship (2025–present)",
+          title: "FIRST Tech Challenge (G-Force)",
           description:
-            "Benchmarked Relief Roof sandwich panels vs. conventional roofing; modeled thermal + structural loads and drafted scalable design guidance.",
+            "3D-CAD lead; team earned Think Award (Kazakhstan Nationals) and Inspire Award + 2nd overall (India Nationals).",
+        },
+        {
+          title: "Most Creative Project (2024)",
+          description:
+            "CyberDost awareness website with interactive UI/UX for social impact.",
+        },
+        {
+          title: "Most Innovative Project (2025)",
+          description:
+            "BeetleBot showcase at BIS Tech Fair.",
         },
       ],
     },
   },
   {
     id: "robotics-leadership",
-    title: "Robotics, Competitions & Club Leadership",
-    shortTitle: "Robotics & Leadership",
+    title: "School Leadership",
+    shortTitle: "School Leadership",
     category: "School Leadership",
     summary:
-      "Led FTC G-Force CAD, founded AI Club, ran Engineering Club build labs, and served as Tech Secretary for BIS Tech Fest with AV + web ops.",
+      "Head Boy 2024–25; created BIS Beholder film festival; founded AI Club; led Engineering Club; served as Tech Secretary for BIS Tech Fest.",
     image: "/projects/ftc/ftc_robotics_aaryaman_goenka.jpeg",
     thumbnail: "/projects/ftc/ftc_robotics_aaryaman_goenka.jpeg",
-    tags: ["FTC", "Club leadership", "Workshops"],
+    tags: ["Leadership", "Operations", "Clubs"],
     content: {
       media: [
         { type: "image", src: "/projects/ftc/building_FTC_robotics.jpeg", label: "Building FTC Robotics" },
@@ -396,19 +396,24 @@ export const projects: Project[] = [
       ],
       subProjects: [
         {
-          title: "FIRST Tech Challenge (G-Force)",
+          title: "Head Boy & Event Ops",
           description:
-            "3D-CAD lead; team earned Think Award (Kazakhstan Nationals) and Inspire Award + 2nd overall (India Nationals).",
+            "Ran elections, investiture, NGO fair, showcases, and AV coordination; served as liaison across faculty, students, and parents.",
         },
         {
-          title: "Founder, AI Club",
+          title: "BIS Beholder Festival",
           description:
-            "Built school AI program with Coding & More; authored curriculum and workshops; grew cross-grade membership.",
+            "Created and directed the school's first interschool short-film festival.",
         },
         {
           title: "President, Engineering Club(s)",
           description:
             "Ran prototyping, 3D design, drone-building modules; mentored juniors in CAD/circuits/mechanics.",
+        },
+        {
+          title: "Founder, AI Club",
+          description:
+            "Built school AI program with Coding & More; authored curriculum and workshops; grew cross-grade membership.",
         },
         {
           title: "Tech Secretary",
@@ -420,14 +425,14 @@ export const projects: Project[] = [
   },
   {
     id: "stem-olympiads",
-    title: "STEM Olympiads & Academic Achievements",
+    title: "Academic Achievements",
     shortTitle: "STEM Honors",
     category: "Academic Achievements",
     summary:
       "IGCSE World Topper (Additional Math 2025); SASMO Gold; HKISO Silver; Waterloo Pascal Distinction; AP Microeconomics 5 (self-study).",
     image: "/projects/certificates/img6.jpeg",
     thumbnail: "/projects/certificates/img15.jpeg",
-    tags: ["Olympiads", "Math", "Self-study"],
+    tags: ["Olympiads", "Math"],
     content: {
       media: [
         { type: "image", src: "/projects/certificates/img6.jpeg", label: "Cambridge Outstanding Learner Award" },
@@ -447,37 +452,40 @@ export const projects: Project[] = [
   },
   {
     id: "tech-fairs-outreach",
-    title: "Tech Fairs, Outreach & Applied STEM",
+    title: "Outreach & Applied STEM",
     shortTitle: "Tech Outreach",
     category: "Outreach & Applied STEM",
     summary:
-      "Captured BIS Tech Fair honors (Most Creative 2024, Most Innovative 2025) and led STEM workshops, Khadify demos, and robotics/AI sessions.",
+      "STEM workshops and Khadify demos for farmers; Hippo Technotex Relief Roof internship; FSAI conference presentation to 200+ attendees.",
     image: "/projects/compost/compost-bin-03.jpeg",
-    tags: ["STEM outreach", "UI/UX", "Education"],
+    tags: ["STEM Outreach", "Project application", "Real-World Impact"],
     content: {
       media: [
-        { type: "image", src: "/projects/beetlebot/fsai-speaker.jpeg", label: "BIS Tech Fair Speaker" },
+        { type: "image", src: "/projects/beetlebot/fsai-speaker.jpeg", label: "FSAI Conference Speaker" },
         { type: "image", src: "/projects/img5.jpeg", label: "IIT Delhi - Naval Construction Wing" },
       ],
       subProjects: [
         {
-          title: "Most Creative Project (2024)",
-          description: "CyberDost awareness website with interactive UI/UX for social impact.",
-        },
-        {
-          title: "Most Innovative Project (2025)",
-          description: "BeetleBot showcase at BIS Tech Fair.",
-        },
-        {
           title: "STEM Outreach",
-          description: "Workshops and demos on Khadify and robotics/AI for students.",
+          description:
+            "Workshops and demos on Khadify for farmers in Maharashtra.",
+        },
+        {
+          title: "Hippo Technotex Internship (2025–present)",
+          description:
+            "Benchmarked Relief Roof sandwich panels vs. conventional roofing; modeled thermal + structural loads and drafted scalable design guidance.",
+        },
+        {
+          title: "FSAI Conference",
+          description:
+            "Presented prototype to 200+ attendees at the Fire Safety Association of India, Mumbai Conference.",
         },
       ],
     },
   },
   {
     id: "cyber-advocacy",
-    title: "CyberDost: Anti-Cyberbullying Initiative",
+    title: "Social Initiative",
     shortTitle: "CyberDost",
     category: "Social Initiative",
     summary:
@@ -540,14 +548,14 @@ export const projects: Project[] = [
   },
   {
     id: "leadership-community",
-    title: "Service & Expeditions",
-    shortTitle: "Leadership & Grit",
+    title: "Hobbies",
+    shortTitle: "Hobbies",
     category: "Hobbies",
     summary:
-      "Head Boy 2024–25; launched BIS Beholder film festival; executed school events; completed NOLS 65-mile expedition and multiple treks; advanced skier and scuba certified.",
+      "NOLS 65-mile expedition; Sandakphu–Phalut 50-mile trek; advanced alpine skier (Black Diamond); open-water scuba diver.",
     image: "/projects/trek_expedition_NOLS_USA.jpeg",
     thumbnail: "/projects/trekking_hill.jpeg",
-    tags: ["Leadership", "Operations", "Expeditions"],
+    tags: ["Expeditions", "Hobbies"],
     content: {
       media: [
         { type: "image", src: "/projects/hobbies/img12.jpeg", label: "Sandakphu Trek" },
@@ -557,21 +565,10 @@ export const projects: Project[] = [
         { type: "image", src: "/projects/hobbies/img14.jpeg", label: "Workshop - Woodworking" },
         { type: "image", src: "/projects/hobbies/img4.jpeg", label: "Workshop - Power Tools" },
         { type: "image", src: "/projects/hobbies/img7.jpeg", label: "Workshop - Bike Assembly" },
-        { type: "image", src: "/projects/compost/WhatsApp Image 2025-12-08 at 20.07.14.jpeg", label: "BIS Beholder Festival" },
         { type: "image", src: "/projects/trekking_hill.jpeg", label: "Trekking Expedition" },
         { type: "image", src: "/projects/trek_expedition_NOLS_USA.jpeg", label: "NOLS Expedition" },
-        { type: "image", src: "/projects/observership_naval.jpeg", label: "Naval Dockyard Observership" },
       ],
       subProjects: [
-        {
-          title: "Head Boy & Event Ops",
-          description:
-            "Ran elections, investiture, NGO fair, showcases, and AV coordination; served as liaison across faculty, students, and parents.",
-        },
-        {
-          title: "BIS Beholder Festival",
-          description: "Created and directed the school’s first interschool short-film festival.",
-        },
         {
           title: "Outdoor Leadership",
           description:

@@ -1,4 +1,5 @@
 import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { MediaItem, Project } from "@/data/portfolio";
 import { X, ExternalLink } from "lucide-react";
@@ -98,68 +99,55 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="w-[95vw] max-w-4xl max-h-[90vh] p-0 overflow-hidden flex flex-col gap-0">
-        {/* Hero Media */}
-        <div className="relative aspect-video sm:max-h-[420px] h-[30vh] sm:h-auto bg-black flex items-center justify-center flex-shrink-0">
-          {isHeroVideo ? (
-            <video
-              controls
-              playsInline
-              muted
-              aria-label={heroLabel}
-              className="w-full h-full object-contain block"
-            >
-              <source src={heroMedia.src} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          ) : (
-            <img
-              src={heroMedia.src}
-              alt={heroLabel}
-              className="w-full h-full object-contain block"
-            />
-          )}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-          
-          {/* Close Button */}
-          <DialogClose asChild>
-            <button
-              onClick={onClose}
-              className="absolute top-2 right-2 sm:top-3 sm:right-3 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 flex items-center justify-center transition-colors shadow-lg z-20 border-2 border-black/20"
-              aria-label="Close project"
-            >
-              <X size={16} className="sm:w-5 sm:h-5 text-black font-bold" strokeWidth={3} />
-            </button>
-          </DialogClose>
+        {/* Sticky Close Button — always visible */}
+        <DialogClose asChild>
+          <button
+            onClick={onClose}
+            className="fixed-close-btn absolute top-2 right-2 sm:top-3 sm:right-3 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 flex items-center justify-center transition-colors shadow-lg z-30 border-2 border-black/20"
+            aria-label="Close project"
+          >
+            <X size={16} className="sm:w-5 sm:h-5 text-black font-bold" strokeWidth={3} />
+          </button>
+        </DialogClose>
 
-          {/* Title Overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-6">
-            <span className="px-2 py-0.5 sm:px-3 sm:py-1 text-[9px] sm:text-xs font-medium rounded-full bg-accent text-accent-foreground mb-1.5 sm:mb-3 inline-block">
-              {project.category}
-            </span>
-            <DialogHeader>
-              <DialogTitle className="text-base sm:text-2xl md:text-3xl font-display text-foreground leading-tight">
-                {project.title}
-              </DialogTitle>
-            </DialogHeader>
+        <ScrollArea className="flex-1 overflow-y-auto">
+          {/* Hero Media — scrolls with content */}
+          <div className="relative aspect-video sm:max-h-[420px] h-[30vh] sm:h-auto bg-black flex items-center justify-center">
+            {isHeroVideo ? (
+              <video
+                controls
+                playsInline
+                muted
+                aria-label={heroLabel}
+                className="w-full h-full object-contain block"
+              >
+                <source src={heroMedia.src} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <img
+                src={heroMedia.src}
+                alt={heroLabel}
+                className="w-full h-full object-contain block"
+              />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+
+            {/* Title Overlay */}
+            <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-6">
+              <span className="px-2 py-0.5 sm:px-3 sm:py-1 text-[9px] sm:text-xs font-medium rounded-full bg-accent text-accent-foreground mb-1.5 sm:mb-3 inline-block">
+                {project.category}
+              </span>
+              <DialogHeader>
+                <DialogTitle className="text-base sm:text-2xl md:text-3xl font-display text-foreground leading-tight">
+                  {project.title}
+                </DialogTitle>
+              </DialogHeader>
+            </div>
           </div>
-        </div>
 
-        <div className="flex-1 overflow-y-auto min-h-0">
           {/* Content */}
           <div className="p-3 sm:p-6 space-y-3 sm:space-y-6">
-            {/* Tags */}
-            <div className="flex flex-wrap gap-1 sm:gap-2">
-              {project.tags.map((tag) => (
-                <span key={tag} className="skill-badge pointer-events-none cursor-default text-[9px] sm:text-xs px-1.5 py-0.5 sm:px-3 sm:py-1.5">
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            {/* Summary */}
-            <p className="text-muted-foreground leading-relaxed text-xs sm:text-base">
-              {project.summary}
-            </p>
 
             {/* PDFs */}
             {pdfMedia.length > 0 && (
@@ -437,7 +425,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               </Section>
             )}
           </div>
-        </div>
+        </ScrollArea>
       </DialogContent>
     </Dialog>
   );
