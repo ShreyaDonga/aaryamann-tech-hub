@@ -23,21 +23,21 @@ const Index = () => {
     }
   }, [isDark]);
   const heroImages = useMemo(() => [
-    { src: "/banner/b1.jpeg"},
-    { src: "/banner/b2.jpeg"},
-    { src: "/banner/b3.jpeg"},
-    { src: "/projects/certificates/img6.jpeg" },
-    { src: "/projects/iris/img3.jpeg"},
-    { src: "/projects/compost/img13.jpeg"},
-    { src: "/projects/beetlebot/beetlebot_at_fsai-05.jpeg"},
-    { src: "/projects/img5.jpeg"},
-    { src: "/projects/hobbies/img.jpeg"},
-    { src: "/projects/hobbies/img10.jpeg"},
-    { src: "/projects/hobbies/img4.jpeg"},
-    { src: "/projects/beetlebot/beetlebot_at_fsai-11.jpeg"},
-    { src: "/projects/hobbies/img11.jpeg"},
-    { src: "/projects/beetlebot/fsai-speaker.jpeg"},
-    { src: "/projects/hobbies/img8.jpeg"},
+    // { src: "/banner/b1.jpeg", caption: "Banner 1" },
+    // { src: "/banner/b2.jpeg", caption: "Banner 2" },
+    // { src: "/banner/b3.jpeg", caption: "Banner 3" },
+    { src: "/projects/certificates/img6.jpeg", caption: "Cambridge Outstanding Learner Award" },
+    { src: "/projects/iris/img3.jpeg", caption: "IRIS Gold Award - Khadify" },
+    { src: "/projects/compost/img13.jpeg", caption: "Building Khadify" },
+    { src: "/projects/beetlebot/beetlebot_at_fsai-05.jpeg", caption: "Beetlebot - FSAI Presentation" },
+    { src: "/projects/img5.jpeg", caption: "IIT Delhi - Naval Construction Wing" },
+    // { src: "/projects/hobbies/img10.jpeg", caption: "Sandakphu Trek" },
+    // { src: "/projects/hobbies/img10.jpeg", caption: "Sandakphu Summit" },
+    { src: "/projects/hobbies/img4.jpeg", caption: "Workshop - Maker Space" },
+    { src: "/projects/beetlebot/beetlebot_at_fsai-11.jpeg", caption: "Beetlebot - Demo" },
+    // { src: "/projects/hobbies/img11.jpeg", caption: "Trek Summit" },
+    { src: "/projects/beetlebot/fsai-speaker.jpeg", caption: "FSAI Speaker Session" },
+    { src: "/projects/hobbies/img8.jpeg", caption: "NOLS Expedition Group" },
   ], []);
   
   useEffect(() => {
@@ -86,10 +86,10 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
           <a href="#" className="font-display font-bold text-xl gradient-text hover:opacity-80 transition-opacity">AG</a>
           <div className="flex items-center gap-3">
-            {/* <nav className="hidden md:flex items-center gap-6 mr-4">
+            <nav className="hidden md:flex items-center gap-6 mr-4">
               <a href="#projects" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Portfolio</a>
               <a href="#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">About</a>
-            </nav> */}
+            </nav>
             <a
               href="/Aaryamann_Resume.pdf"
               target="_blank"
@@ -117,19 +117,19 @@ const Index = () => {
         {/* Hero Banner */}
         <section className="relative h-80 md:h-96 lg:h-[32rem] overflow-hidden">
           <Carousel opts={{ loop: true }} setApi={setHeroApi} className="h-full">
-            <CarouselContent className="h-full">
+            <CarouselContent className="h-full ml-0">
               {heroImages.map((item, index) => (
-                <CarouselItem key={index} className="h-80 md:h-96 lg:h-[32rem]">
+                <CarouselItem key={index} className="h-80 md:h-96 lg:h-[32rem] pl-0">
                   <div className="relative h-full">
                     <img
                       src={item.src}
-                      // alt={item.caption}
-                      className="w-full h-full object-contain"
+                      alt={item.caption}
+                      className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <p className="text-sm md:text-base font-medium text-white drop-shadow-lg">
-                        {/* {item.caption} */}
+                        {item.caption}
                       </p>
                     </div>
                   </div>
@@ -146,13 +146,14 @@ const Index = () => {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row gap-6 md:gap-8">
               <div className="relative group">
-                <div className="w-35 h-35 md:w-40 md:h-40 rounded-2xl overflow-hidden border-4 border-background shadow-xl transition-transform duration-300 group-hover:scale-[1.03]">
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-4 border-background shadow-xl transition-transform duration-300 group-hover:scale-[1.03]">
                   <img src="/banner/profile.jpeg" alt="Aaryamann Goenka" className="w-full h-full object-cover" />
                 </div>
                 <div className="absolute -inset-1.5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.25), rgba(192,38,211,0.15))', filter: 'blur(10px)' }} />
               </div>
-              <div className="flex1 pt-2">
-                <h1 className="text-2xl md:text-4xl font-display font-bold gradient-text mb-2 animate-fade-in py-1">{aboutData.name}</h1>                <p className="text-muted-foreground text-sm md:text-base mb-4 max-w-2xl animate-fade-in delay-100">{aboutData.title}</p>
+              <div className="flex-1 pt-2">
+                <h1 className="text-2xl md:text-4xl font-display font-bold gradient-text mb-2 animate-fade-in leading-normal">{aboutData.name}</h1>
+                <p className="text-muted-foreground text-sm md:text-base mb-4 max-w-2xl animate-fade-in delay-100">{aboutData.title}</p>
                 <div className="flex flex-wrap items-center gap-4 animate-fade-in delay-200">
                   <div className="flex gap-2">
                     <a href={contactData.socials.linkedin} target="_blank" rel="noopener noreferrer"
