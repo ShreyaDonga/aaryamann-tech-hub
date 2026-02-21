@@ -1,72 +1,76 @@
-import { Linkedin, Mail, Phone, MapPin, FileText } from "lucide-react";
+import { Linkedin, Mail, Phone, MapPin, FileText, ArrowUpRight } from "lucide-react";
 import { contactData } from "@/data/portfolio";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-card/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
-          <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-11 h-11 rounded-xl flex items-center justify-center text-white shadow-sm" style={{ background: 'linear-gradient(135deg, #7C3AED, #C026D3)' }}>
-                <span className="font-display font-bold text-lg">AG</span>
-              </div>
-              <div>
-                <span className="font-display font-semibold text-foreground text-base block leading-tight">Aaryamann Goenka</span>
-                <span className="text-muted-foreground text-xs">Mumbai, India</span>
-              </div>
+    <footer className="border-t border-border">
+      {/* CTA banner */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 md:py-24">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div>
+            <p className="text-sm font-medium text-accent tracking-wider uppercase mb-2">Get in Touch</p>
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground leading-tight">
+              Let's build something<br /><span className="gradient-text">together.</span>
+            </h2>
+          </div>
+          <a
+            href={`mailto:${contactData.email}`}
+            className="group inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5 w-fit"
+            style={{ background: "var(--gradient-warm)" }}
+          >
+            Say Hello
+            <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </a>
+        </div>
+      </div>
+
+      {/* Links */}
+      <div className="border-t border-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+              <h4 className="font-display font-semibold text-foreground text-sm mb-4">Navigation</h4>
+              <nav className="space-y-2">
+                <a href="#work" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">Work</a>
+                <a href="#docs" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">Documents</a>
+                <a href="#about" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">About</a>
+              </nav>
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-              Aspiring engineer building at the intersection of Robotics, Sustainability, and IoT — with a bias for measurable impact.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-display font-semibold text-foreground text-sm uppercase tracking-wider mb-4">Explore</h4>
-            <nav className="space-y-2.5">
-              <a href="#projects" className="block text-sm text-muted-foreground hover:text-accent transition-all hover:translate-x-1 duration-200">Portfolio</a>
-              <a href="#about" className="block text-sm text-muted-foreground hover:text-accent transition-all hover:translate-x-1 duration-200">About Me</a>
-              <a href="/Aaryamann_Resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-accent transition-all hover:translate-x-1 duration-200">
-                <FileText size={14} />Resume
-              </a>
-            </nav>
-          </div>
-
-          <div>
-            <h4 className="font-display font-semibold text-foreground text-sm uppercase tracking-wider mb-4">Contact</h4>
-            <div className="space-y-2.5">
-              <a href={`mailto:${contactData.email}`} className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors text-sm">
-                <Mail size={14} className="flex-shrink-0" /><span className="truncate">{contactData.email}</span>
-              </a>
-              <a href={`tel:${contactData.phone}`} className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors text-sm">
-                <Phone size={14} className="flex-shrink-0" />{contactData.phone}
-              </a>
-              <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                <MapPin size={14} className="flex-shrink-0" />{contactData.location}
+            <div>
+              <h4 className="font-display font-semibold text-foreground text-sm mb-4">Contact</h4>
+              <div className="space-y-2">
+                <a href={`mailto:${contactData.email}`} className="block text-sm text-muted-foreground hover:text-foreground transition-colors truncate">{contactData.email}</a>
+                <a href={`tel:${contactData.phone}`} className="block text-sm text-muted-foreground hover:text-foreground transition-colors">{contactData.phone}</a>
               </div>
             </div>
-          </div>
-
-          <div>
-            <h4 className="font-display font-semibold text-foreground text-sm uppercase tracking-wider mb-4">Connect</h4>
-            <div className="flex gap-3">
-              <a href={contactData.socials.linkedin} target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center hover:bg-accent hover:text-white hover:border-accent hover:-translate-y-1 transition-all duration-300 shadow-sm">
-                <Linkedin size={18} />
-              </a>
-              <a href={`mailto:${contactData.email}`}
-                className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center hover:bg-accent hover:text-white hover:border-accent hover:-translate-y-1 transition-all duration-300 shadow-sm">
-                <Mail size={18} />
+            <div>
+              <h4 className="font-display font-semibold text-foreground text-sm mb-4">Social</h4>
+              <div className="flex gap-2">
+                <a href={contactData.socials.linkedin} target="_blank" rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-xl bg-secondary border border-border flex items-center justify-center hover:bg-accent hover:text-white hover:border-accent hover:-translate-y-1 transition-all duration-300">
+                  <Linkedin size={16} />
+                </a>
+                <a href={`mailto:${contactData.email}`}
+                  className="w-9 h-9 rounded-xl bg-secondary border border-border flex items-center justify-center hover:bg-accent hover:text-white hover:border-accent hover:-translate-y-1 transition-all duration-300">
+                  <Mail size={16} />
+                </a>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-display font-semibold text-foreground text-sm mb-4">Resume</h4>
+              <a href="/Aaryamann_Resume.pdf" target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <FileText size={14} /> Download PDF
               </a>
             </div>
-            <p className="text-muted-foreground text-xs mt-4 leading-relaxed">Open to collaborations, research opportunities, and conversations about engineering.</p>
           </div>
         </div>
       </div>
 
+      {/* Bottom bar */}
       <div className="border-t border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-muted-foreground text-xs">© {new Date().getFullYear()} Aaryamann Goenka. All rights reserved.</p>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-muted-foreground text-xs">© {new Date().getFullYear()} Aaryamann Goenka</p>
           <p className="text-muted-foreground/50 text-xs">Built with React + Tailwind</p>
         </div>
       </div>
