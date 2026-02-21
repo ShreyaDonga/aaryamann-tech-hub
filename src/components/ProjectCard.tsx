@@ -106,7 +106,10 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
             className={`w-full h-full ${mediaFitClass} transition-transform duration-500 group-hover:scale-110 bg-black`}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+        <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+          <span className="px-3 py-1.5 text-[11px] font-semibold rounded-lg bg-white/90 text-slate-800 shadow-md backdrop-blur-sm">View details →</span>
+        </div>
         
         {/* Spotlight Badge */}
         {isSpotlight && (
@@ -120,7 +123,8 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
         {/* Category Badge */}
         {!isSpotlight && (
           <div className="absolute top-3 left-3">
-            <span className="px-3 py-1 text-xs font-medium rounded-full bg-accent text-accent-foreground">
+            <span className="px-3 py-1.5 text-[11px] font-semibold rounded-lg backdrop-blur-md bg-background/75 text-foreground border border-border/40 shadow-sm flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-dot" />
               {project.category}
             </span>
           </div>
@@ -129,20 +133,25 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
 
       {/* Content */}
       <div className="p-5">
-        <h3 className="font-display font-semibold text-lg text-foreground mb-2 line-clamp-2 group-hover:text-accent transition-colors">
+        <h3 className="font-display font-semibold text-lg text-foreground mb-2 line-clamp-2 group-hover:text-accent transition-colors duration-300">
           {project.title}
         </h3>
-        <p className="text-muted-foreground text-sm line-clamp-2 mb-4">
-          {project.summary}
-        </p>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2">
-          {project.tags.slice(0, 3).map((tag) => (
-            <span key={tag} className="skill-badge text-xs pointer-events-none cursor-default">
-              {tag}
-            </span>
-          ))}
+        <p className="text-muted-foreground text-sm line-clamp-2 mb-4 leading-relaxed">{project.summary}</p>
+        <div className="flex flex-wrap gap-1.5">
+          {project.tags.slice(0, 3).map((tag, i) => {
+            const tagColors = [
+              { bg: 'rgba(124,58,237,0.07)', color: '#7C3AED', border: 'rgba(124,58,237,0.2)' },
+              { bg: 'rgba(99,102,241,0.07)', color: '#6366F1', border: 'rgba(99,102,241,0.2)' },
+              { bg: 'rgba(192,38,211,0.07)', color: '#C026D3', border: 'rgba(192,38,211,0.2)' },
+            ];
+            const c = tagColors[i % tagColors.length];
+            return (
+              <span key={tag} className="px-2.5 py-1 text-[11px] font-medium rounded-lg border pointer-events-none"
+                style={{ background: c.bg, color: c.color, borderColor: c.border }}>
+                {tag}
+              </span>
+            );
+          })}
         </div>
       </div>
     </div>

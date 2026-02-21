@@ -1,5 +1,4 @@
 import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { MediaItem, Project } from "@/data/portfolio";
 import { X, ExternalLink } from "lucide-react";
@@ -100,7 +99,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="w-[95vw] max-w-4xl max-h-[90vh] p-0 overflow-hidden flex flex-col gap-0">
         {/* Hero Media */}
-        <div className="relative aspect-video sm:max-h-[420px] h-[30vh] sm:h-auto bg-black flex items-center justify-center">
+        <div className="relative aspect-video sm:max-h-[420px] h-[30vh] sm:h-auto bg-black flex items-center justify-center flex-shrink-0">
           {isHeroVideo ? (
             <video
               controls
@@ -145,7 +144,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           </div>
         </div>
 
-        <ScrollArea className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto min-h-0">
           {/* Content */}
           <div className="p-3 sm:p-6 space-y-3 sm:space-y-6">
             {/* Tags */}
@@ -438,7 +437,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               </Section>
             )}
           </div>
-        </ScrollArea>
+        </div>
       </DialogContent>
     </Dialog>
   );

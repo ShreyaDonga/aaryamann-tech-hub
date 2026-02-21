@@ -80,9 +80,9 @@ export const skills = [
 export const projects: Project[] = [
   {
     id: "beetlebot",
-    title: "Beetlebot: Quadrupled Rescue Robot",
+    title: "Beetlebot: Quadruped Rescue Robot",
     shortTitle: "BeetleBot",
-    category: "Spotlight",
+    category: "Projects",
     summary:
       "Built RC+Wi-Fi quadruped with night vision and onboard audio; briefed DRDO & Naval Dockyard; earned Letter of Appreciation and Beetlebot talk to 200+ engineers.",
     image: "/projects/beetlebot/beetlebot_demo.mp4",
@@ -226,6 +226,11 @@ export const projects: Project[] = [
           src: "/projects/beetlebot/Spider_Bot_video.mp4",
           label: "BeetleBot Demo",
         },
+        {
+          type: "pdf",
+          src: "/docs/Beetlebot_Research_Paper.pdf",
+          label: "Beetlebot Research Paper",
+        },
       ],
     },
   },
@@ -233,9 +238,9 @@ export const projects: Project[] = [
     id: "smart-compost",
     title: "Khadify: Low-Cost, At-Home Smart Compost Bin",
     shortTitle: "Khadify",
-    category: "Spotlight",
+    category: "Projects",
     summary:
-      "Built dual-function reactor with NPK/ammonia/temp/moisture sensing, ESP32 automation, and ML Compost Quality Score; cut cycle time 20–25% and costs 40–50%.",
+      "IRIS National Science Fair Gold Award winner. Built dual-function reactor with NPK/ammonia/temp/moisture sensing, ESP32 automation, and ML Compost Quality Score; cut cycle time 20–25% and costs 40–50%.",
     image: "/projects/compost/compost-bin-01.jpeg",
     tags: ["IoT automation", "ESP32", "Agri-ML", "Sustainability"],
     content: {
@@ -255,9 +260,13 @@ export const projects: Project[] = [
         "CQS ML model",
       ],
       media: [
+        { type: "image", src: "/projects/iris/img3.jpeg", label: "IRIS Gold Award - Khadify" },
+        { type: "image", src: "/projects/iris/img2.jpeg", label: "IRIS National Fair 2025-26 Ceremony" },
         { type: "image", src: "/projects/compost/compost-bin-01.jpeg", label: "Sensor deck" },
         { type: "image", src: "/projects/compost/compost-bin-12.jpeg", label: "Final product" },
         { type: "image", src: "/projects/compost/building_compost_bin.jpeg", label: "Building Khadify" },
+        { type: "image", src: "/projects/compost/building_khadify_2.jpeg", label: "Building Khadify - Electronics" },
+        { type: "image", src: "/projects/compost/img9.jpeg", label: "Compost Field Material" },
         { type: "image", src: "/projects/compost/compost-bin-02.jpeg", label: "Aeration setup" },
         { type: "image", src: "/projects/compost/compost-bin-03.jpeg", label: "System assembly" },
         { type: "image", src: "/projects/compost/compost-bin-04.jpeg", label: "System overview" },
@@ -296,26 +305,31 @@ export const projects: Project[] = [
           src: "/docs/Khadify_PPT_Submission.pdf",
           label: "Khadify Project Deck",
         },
+        {
+          type: "pdf",
+          src: "/docs/Compost_system_paper_IRIS.pdf",
+          label: "Khadify IRIS Research Paper",
+        },
       ],
     },
   },
   {
     id: "coastal-erosion",
-    title: "MEMRI (Mangroves Erosion Mitigation Research Initiative)",
-    shortTitle: "MEMRI",
-    category: "Spotlight",
+    title: "Mumbai Mangroves Research Paper",
+    shortTitle: "Mumbai Mangroves",
+    category: "Projects",
     summary:
-      "Modeled mangrove root-density effects on wave attenuation using Hansen Global Forest data, Python GIS, ANSYS/MATLAB shoreline simulations, and long-term land-loss scenarios to guide coastal resilience.",
+      "Compares GFW (Global Forest Watch) and GMW (Global Mangrove Watch) for Mumbai through Python raster analysis, to resolve discrepancies since they are widespread in environmental and engineering studies.",
     image: "/projects/navy_presentation.jpeg",
     thumbnail: "/projects/thumb-memri.jpeg",
     tags: ["Geospatial", "Simulation", "Climate resilience"],
     content: {
       abstract:
-        "MEMRI: Independent study quantifying mangrove density vs. shoreline stability using remote-sensing datasets and simulation to prioritize coastal buffers.",
+        "This study presents a comparative geospatial analysis of mangrove detection in Mumbai using Hansen Global Forest Change (GFC) and Global Mangrove Watch (GMW) datasets. It evaluates spatial agreement, temporal consistency, and classification stability to assess how dataset choice influences interpretation of mangroves and their classification.",
       methodology:
-        "Processed Hansen Global Forest layers; built Python geospatial pipeline; simulated root drag and wave energy in ANSYS/MATLAB; mapped erosion risk bands.",
+        "Geospatial raster datasets were processed using Python libraries (GeoPandas, Rasterio, NumPy) to extract mangrove areas within Mumbai and overlay GFC annual forest signals with GMW baseline extent. Spatial overlap, temporal detection patterns, and forest-duration metrics were analyzed to identify classification discrepancies.",
       results:
-        "Identified high-loss segments needing reforestation; produced policy-ready visuals to guide buffer planting and monitoring.",
+        "Results indicate significant instability in Hansen forest detection within mangrove areas, including zero persistent forest classification and short median detection durations. The findings highlight the limitations of applying generic forest datasets to coastal wetlands and emphasize the importance of dataset selection in environmental assessments.",
       media: [
         {
           type: "image",
@@ -331,7 +345,7 @@ export const projects: Project[] = [
         },
         {
           type: "pdf",
-          src: "/projects/Mumbai_Mangroves_White_Paper.pdf",
+          src: "/docs/Mumbai_Mangroves_White_Paper.pdf",
           label: "Mumbai Mangroves White Paper",
         },
       ],
@@ -341,7 +355,7 @@ export const projects: Project[] = [
     id: "research-innovation",
     title: "Research & Engineering Innovation",
     shortTitle: "Innovation Awards",
-    category: "Research & Entrepreneurship",
+    category: "Competitions",
     summary:
       "Captured CREST Gold (materials science enamel study) and Hippo Technotex internship delivering cost/thermal analysis for Relief Roof panels.",
     image: "/projects/beetlebot/img2.jpeg",
@@ -369,7 +383,7 @@ export const projects: Project[] = [
     id: "robotics-leadership",
     title: "Robotics, Competitions & Club Leadership",
     shortTitle: "Robotics & Leadership",
-    category: "Competitions & Leadership",
+    category: "School Leadership",
     summary:
       "Led FTC G-Force CAD, founded AI Club, ran Engineering Club build labs, and served as Tech Secretary for BIS Tech Fest with AV + web ops.",
     image: "/projects/ftc/ftc_robotics_aaryaman_goenka.jpeg",
@@ -408,21 +422,23 @@ export const projects: Project[] = [
     id: "stem-olympiads",
     title: "STEM Olympiads & Academic Achievements",
     shortTitle: "STEM Honors",
-    category: "Competitions & Leadership",
+    category: "Academic Achievements",
     summary:
       "IGCSE World Topper (Additional Math 2025); SASMO Gold; HKISO Silver; Waterloo Pascal Distinction; AP Microeconomics 5 (self-study).",
-    image: "/projects/compost/service.jpeg",
-    thumbnail: "/projects/compost/service.jpeg",
+    image: "/projects/certificates/img6.jpeg",
+    thumbnail: "/projects/certificates/img15.jpeg",
     tags: ["Olympiads", "Math", "Self-study"],
     content: {
       media: [
+        { type: "image", src: "/projects/certificates/img6.jpeg", label: "Cambridge Outstanding Learner Award" },
+        { type: "image", src: "/projects/certificates/img15.jpeg", label: "Cambridge Award Certificate" },
         { type: "image", src: "/projects/hkiso_silver_award.jpeg", label: "HKISO Silver Award" },
-        { type: "image", src: "/projects/compost/service.jpeg", label: "STEM Olympiads & Academic Achievements" },
-        { type: "image", src: "/projects/crest_gold_award.jpeg", label: "CREST Gold Award" },
+        { type: "image", src: "/projects/img1.jpeg", label: "CREST Gold Award" },
+        { type: "image", src: "/projects/certificates/img1.jpeg", label: "CREST Gold Certificate" },
         { type: "image", src: "/projects/certificates/pascal_award.jpeg", label: "Waterloo Pascal Distinction" },
       ],
       subProjects: [
-        { title: "IGCSE World Topper", description: "Additional Mathematics (2025)." },
+        { title: "Cambridge Outstanding Learner Award", description: "IGCSE World Topper in Additional Mathematics (2025)." },
         { title: "SASMO Gold & HKISO Silver", description: "International STEM Olympiads." },
         { title: "Waterloo Pascal Distinction", description: "Problem-solving recognition." },
         { title: "AP Microeconomics 5", description: "Self-studied advanced quantitative econ." },
@@ -433,7 +449,7 @@ export const projects: Project[] = [
     id: "tech-fairs-outreach",
     title: "Tech Fairs, Outreach & Applied STEM",
     shortTitle: "Tech Outreach",
-    category: "Outreach & Fairs",
+    category: "Outreach & Applied STEM",
     summary:
       "Captured BIS Tech Fair honors (Most Creative 2024, Most Innovative 2025) and led STEM workshops, Khadify demos, and robotics/AI sessions.",
     image: "/projects/compost/compost-bin-03.jpeg",
@@ -441,6 +457,7 @@ export const projects: Project[] = [
     content: {
       media: [
         { type: "image", src: "/projects/beetlebot/fsai-speaker.jpeg", label: "BIS Tech Fair Speaker" },
+        { type: "image", src: "/projects/img5.jpeg", label: "IIT Delhi - Naval Construction Wing" },
       ],
       subProjects: [
         {
@@ -462,7 +479,7 @@ export const projects: Project[] = [
     id: "cyber-advocacy",
     title: "CyberDost: Anti-Cyberbullying Initiative",
     shortTitle: "CyberDost",
-    category: "Community",
+    category: "Social Initiative",
     summary:
       "Founded CyberDost awareness portal; ran 1,000+ participant seminars; secured 1,300+ signature petition with Dept. of Education endorsement.",
     image: "/projects/cyberdost-1.jpeg",
@@ -525,7 +542,7 @@ export const projects: Project[] = [
     id: "leadership-community",
     title: "Service & Expeditions",
     shortTitle: "Leadership & Grit",
-    category: "Service & Expeditions",
+    category: "Hobbies",
     summary:
       "Head Boy 2024–25; launched BIS Beholder film festival; executed school events; completed NOLS 65-mile expedition and multiple treks; advanced skier and scuba certified.",
     image: "/projects/trek_expedition_NOLS_USA.jpeg",
@@ -533,6 +550,13 @@ export const projects: Project[] = [
     tags: ["Leadership", "Operations", "Expeditions"],
     content: {
       media: [
+        { type: "image", src: "/projects/hobbies/img12.jpeg", label: "Sandakphu Trek" },
+        { type: "image", src: "/projects/hobbies/img10.jpeg", label: "Sandakphu Summit" },
+        { type: "image", src: "/projects/hobbies/img11.jpeg", label: "Trek Summit View" },
+        { type: "image", src: "/projects/hobbies/img8.jpeg", label: "NOLS Group" },
+        { type: "image", src: "/projects/hobbies/img14.jpeg", label: "Workshop - Woodworking" },
+        { type: "image", src: "/projects/hobbies/img4.jpeg", label: "Workshop - Power Tools" },
+        { type: "image", src: "/projects/hobbies/img7.jpeg", label: "Workshop - Bike Assembly" },
         { type: "image", src: "/projects/compost/WhatsApp Image 2025-12-08 at 20.07.14.jpeg", label: "BIS Beholder Festival" },
         { type: "image", src: "/projects/trekking_hill.jpeg", label: "Trekking Expedition" },
         { type: "image", src: "/projects/trek_expedition_NOLS_USA.jpeg", label: "NOLS Expedition" },
@@ -565,7 +589,7 @@ export const projects: Project[] = [
 export const aboutData = {
   name: "Aaryamann Goenka",
   title: "Adaptive Robotics 🤖  Sustainability Frontliner ♻️ Mangrove Mender 🌴",
-  bio: "Designs rescue robots, IoT + ML systems, and geospatial models; leads clubs, competitions, and outreach with a bias for measurable impact. MEMRI stands for Mangroves Erosion Mitigation Research Initiative.",
+  bio: "Designs rescue robots, IoT + ML systems, and geospatial models; leads clubs, competitions, and outreach with a bias for measurable impact.",
   technicalBackground: [
     "Robotics control: Arduino, ESP32, RC + Wi-Fi failsafes",
     "IoT + ML dashboards for sensing and automation",
@@ -576,10 +600,11 @@ export const aboutData = {
   achievements: [
     "Beetlebot demos to DRDO/Naval Dockyard + Beetlebot talk (200+ audience)",
     "Khadify: 20–25% faster cycles, 40–50% cheaper output",
-    "MEMRI: Coastal erosion modeling to map mangrove impact",
+    "Mumbai Mangroves: Dataset comparison for more consistent interpretations and better environmental policies",
     "CREST Gold (materials science) + Hippo Technotex internship",
     "FTC Think Award + Inspire Award; AI/Engineering club leadership",
     "IGCSE World Topper (Add-Math) + SASMO Gold + HKISO Silver",
+    "IRIS National Science Fair Gold Award (Khadify)",
   ],
   education: {
     school: "",
