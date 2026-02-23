@@ -152,6 +152,11 @@ export const projects: Project[] = [
           label: "Beetlebot Demo 2",
         },
         {
+          type: "pdf",
+          src: "/docs/Beetlebot_Research_Paper.pdf",
+          label: "Beetlebot Research Paper",
+        },
+        {
           type: "image",
           src: "/projects/beetlebot/beetlebot1.jpeg",
           label: "BeetleBot",
@@ -260,7 +265,6 @@ export const projects: Project[] = [
         { type: "image", src: "/projects/compost/compost-bin-01.jpeg", label: "Sensor deck" },
         { type: "image", src: "/projects/compost/compost-bin-12.jpeg", label: "Final product" },
         { type: "image", src: "/projects/compost/building_compost_bin.jpeg", label: "Building Khadify" },
-        { type: "image", src: "/projects/compost/building_khadify_2.jpeg", label: "Building Khadify - Electronics" },
         { type: "image", src: "/projects/compost/img9.jpeg", label: "Compost Field Material" },
         { type: "image", src: "/projects/compost/compost-bin-02.jpeg", label: "Aeration setup" },
         { type: "image", src: "/projects/compost/compost-bin-03.jpeg", label: "System assembly" },
@@ -299,6 +303,11 @@ export const projects: Project[] = [
           type: "pdf",
           src: "/docs/Khadify_PPT_Submission.pdf",
           label: "Khadify Project Deck",
+        },
+        {
+          type: "pdf",
+          src: "/docs/Compost_system_paper_IRIS.pdf",
+          label: "Khadify IRIS Research Paper",
         },
       ],
     },
@@ -391,8 +400,9 @@ export const projects: Project[] = [
     tags: ["Leadership", "Operations", "Clubs"],
     content: {
       media: [
-        { type: "image", src: "/projects/ftc/building_FTC_robotics.jpeg", label: "Building FTC Robotics" },
-        { type: "image", src: "/projects/ftc/ftc_robotics_aaryaman_goenka.jpeg", label: "FTC Robotics" },
+        { type: "image", src: "/projects/ftc/building_FTC_robotics.jpeg" },
+        { type: "image", src: "/projects/ftc/ftc_robotics_aaryaman_goenka.jpeg"},
+        { type: "image", src: "/projects/sl.png"},
       ],
       subProjects: [
         {
@@ -438,7 +448,6 @@ export const projects: Project[] = [
         { type: "image", src: "/projects/certificates/img6.jpeg", label: "Cambridge Outstanding Learner Award" },
         { type: "image", src: "/projects/certificates/img15.jpeg", label: "Cambridge Award Certificate" },
         { type: "image", src: "/projects/hkiso_silver_award.jpeg", label: "HKISO Silver Award" },
-        { type: "image", src: "/projects/img1.jpeg", label: "CREST Gold Award" },
         { type: "image", src: "/projects/certificates/img1.jpeg", label: "CREST Gold Certificate" },
         { type: "image", src: "/projects/certificates/pascal_award.jpeg", label: "Waterloo Pascal Distinction" },
       ],
@@ -461,8 +470,11 @@ export const projects: Project[] = [
     tags: ["STEM Outreach", "Project application", "Real-World Impact"],
     content: {
       media: [
-        { type: "image", src: "/projects/beetlebot/fsai-speaker.jpeg", label: "FSAI Conference Speaker" },
-        { type: "image", src: "/projects/img5.jpeg", label: "IIT Delhi - Naval Construction Wing" },
+        { type: "image", src: "/projects/outreach/outreach2.png"},
+        { type: "image", src: "/projects/outreach/otreach1.png" },
+        { type: "image", src: "/projects/outreach/outreach3.png" },
+        { type: "image", src: "/projects/beetlebot/fsai-speaker.jpeg"},
+        { type: "image", src: "/projects/img5.jpeg"},
       ],
       subProjects: [
         {
@@ -558,15 +570,12 @@ export const projects: Project[] = [
     tags: ["Expeditions", "Hobbies"],
     content: {
       media: [
-        { type: "image", src: "/projects/hobbies/img12.jpeg", label: "Sandakphu Trek" },
-        { type: "image", src: "/projects/hobbies/img10.jpeg", label: "Sandakphu Summit" },
-        { type: "image", src: "/projects/hobbies/img11.jpeg", label: "Trek Summit View" },
-        { type: "image", src: "/projects/hobbies/img8.jpeg", label: "NOLS Group" },
-        { type: "image", src: "/projects/hobbies/img14.jpeg", label: "Workshop - Woodworking" },
-        { type: "image", src: "/projects/hobbies/img4.jpeg", label: "Workshop - Power Tools" },
-        { type: "image", src: "/projects/hobbies/img7.jpeg", label: "Workshop - Bike Assembly" },
-        { type: "image", src: "/projects/trekking_hill.jpeg", label: "Trekking Expedition" },
-        { type: "image", src: "/projects/trek_expedition_NOLS_USA.jpeg", label: "NOLS Expedition" },
+        { type: "image", src: "/projects/hobbies/img12.jpeg" },
+        { type: "image", src: "/projects/hobbies/img8.jpeg"},
+        { type: "image", src: "/projects/hobbies/img14.jpeg"},
+        { type: "image", src: "/projects/hobbies/img4.jpeg"},
+        { type: "image", src: "/projects/hobbies/img7.jpeg"},
+        { type: "image", src: "/projects/trekking_hill.jpeg" },
       ],
       subProjects: [
         {

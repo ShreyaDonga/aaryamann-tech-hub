@@ -2,7 +2,7 @@ import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle } from "@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { MediaItem, Project } from "@/data/portfolio";
-import { X, ExternalLink } from "lucide-react";
+import { X, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { ReactNode, useState } from "react";
 
 const fallbackImage = "/projects/beetlebot/beetlebot1.jpeg";
@@ -98,21 +98,21 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-[95vw] max-w-4xl max-h-[90vh] p-0 overflow-hidden flex flex-col gap-0">
+      <DialogContent className="w-[95vw] max-w-4xl max-h-[90vh] p-0 overflow-hidden flex flex-col gap-0 [&>button.absolute]:hidden">
         {/* Sticky Close Button — always visible */}
         <DialogClose asChild>
           <button
             onClick={onClose}
-            className="fixed-close-btn absolute top-2 right-2 sm:top-3 sm:right-3 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 flex items-center justify-center transition-colors shadow-lg z-30 border-2 border-black/20"
+            className="absolute top-2 right-2 sm:top-3 sm:right-3 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 flex items-center justify-center transition-colors shadow-lg z-[60] border-2 border-black/20"
             aria-label="Close project"
           >
             <X size={16} className="sm:w-5 sm:h-5 text-black font-bold" strokeWidth={3} />
           </button>
         </DialogClose>
 
-        <ScrollArea className="flex-1 overflow-y-auto">
+        <ScrollArea className="flex-1 overflow-y-auto overflow-x-hidden">
           {/* Hero Media — scrolls with content */}
-          <div className="relative aspect-video sm:max-h-[420px] h-[30vh] sm:h-auto bg-black flex items-center justify-center">
+          <div className="relative w-full aspect-video sm:max-h-[420px] h-[30vh] sm:h-auto bg-black flex items-center justify-center overflow-hidden">
             {isHeroVideo ? (
               <video
                 controls
@@ -147,7 +147,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           </div>
 
           {/* Content */}
-          <div className="p-3 sm:p-6 space-y-3 sm:space-y-6">
+          <div className="p-3 sm:p-6 space-y-3 sm:space-y-6 overflow-x-hidden">
 
             {/* PDFs */}
             {pdfMedia.length > 0 && (
@@ -389,6 +389,17 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               </Section>
             )}
 
+            {/* Image Gallery — for projects with multiple images */}
+            {(() => {
+              const galleryImages = project.content.media?.filter((m) => m.type === "image") ?? [];
+              if (galleryImages.length <= 1) return null;
+              return (
+                <Section title="Gallery">
+                  <ImageGallery images={galleryImages} projectId={project.id} />
+                </Section>
+              );
+            })()}
+
             {/* Citations */}
             {project.content.citations && project.content.citations.length > 0 && (
               <Section title="References">
@@ -497,6 +508,72 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
         {title}
       </h3>
       {children}
+    </div>
+  );
+}
+
+function ImageGallery({ images, projectId }: { images: MediaItem[]; projectId: string }) {
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const total = images.length;
+
+  const prev = () => setCurrentIdx((i) => (i - 1 + total) % total);
+  const next = () => setCurrentIdx((i) => (i + 1) % total);
+
+  return (
+    <div className="space-y-3">
+      {/* Main image */}
+      <div className="relative rounded-xl overflow-hidden bg-black aspect-video">
+        <img
+          src={images[currentIdx].src}
+          alt={images[currentIdx].label ?? `Image ${currentIdx + 1}`}
+          className="w-full h-full object-contain"
+        />
+
+        {/* Nav arrows */}
+        {total > 1 && (
+          <>
+            <button
+              onClick={prev}
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors backdrop-blur-sm"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              onClick={next}
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors backdrop-blur-sm"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </>
+        )}
+
+        {/* Counter */}
+        <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/60 text-white text-[10px] sm:text-xs backdrop-blur-sm">
+          {currentIdx + 1} / {total}
+        </div>
+      </div>
+
+      {/* Caption */}
+      {images[currentIdx].label && (
+        <p className="text-center text-xs sm:text-sm text-muted-foreground">{images[currentIdx].label}</p>
+      )}
+
+      {/* Thumbnail strip */}
+      {total > 2 && (
+        <div className="flex gap-1.5 overflow-x-auto pb-1 no-scrollbar">
+          {images.map((img, i) => (
+            <button
+              key={`${projectId}-thumb-${i}`}
+              onClick={() => setCurrentIdx(i)}
+              className={`flex-shrink-0 w-14 h-10 sm:w-20 sm:h-14 rounded-lg overflow-hidden border-2 transition-all ${
+                i === currentIdx ? "border-accent opacity-100" : "border-transparent opacity-50 hover:opacity-80"
+              }`}
+            >
+              <img src={img.src} alt="" className="w-full h-full object-cover" />
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
