@@ -357,7 +357,7 @@ export const projects: Project[] = [
     category: "Competitions",
     summary:
       "CREST Gold (pH–erosion study), FTC Think + Inspire Awards, Most Creative & Most Innovative at BIS Tech Fair.",
-    image: "/projects/beetlebot/img2.jpeg",
+    image: "/projects/crest_gold_award.jpeg",
     thumbnail: "/projects/crest_gold_award.jpeg",
     tags: ["FTC", "CREST", "Materials", "Research"],
     content: {
@@ -400,9 +400,9 @@ export const projects: Project[] = [
     tags: ["Leadership", "Operations", "Clubs"],
     content: {
       media: [
+        { type: "image", src: "/projects/sl.png"},
         { type: "image", src: "/projects/ftc/building_FTC_robotics.jpeg" },
         { type: "image", src: "/projects/ftc/ftc_robotics_aaryaman_goenka.jpeg"},
-        { type: "image", src: "/projects/sl.png"},
       ],
       subProjects: [
         {
@@ -440,7 +440,7 @@ export const projects: Project[] = [
     category: "Academic Achievements",
     summary:
       "IGCSE World Topper (Additional Math 2025); SASMO Gold; HKISO Silver; Waterloo Pascal Distinction; AP Microeconomics 5 (self-study).",
-    image: "/projects/certificates/img6.jpeg",
+    image: "/projects/certificates/img15.jpeg",
     thumbnail: "/projects/certificates/img15.jpeg",
     tags: ["Olympiads", "Math"],
     content: {
@@ -565,29 +565,30 @@ export const projects: Project[] = [
     category: "Hobbies",
     summary:
       "NOLS 65-mile expedition; Sandakphu–Phalut 50-mile trek; advanced alpine skier (Black Diamond); open-water scuba diver.",
-    image: "/projects/trek_expedition_NOLS_USA.jpeg",
+    image: "/projects/hobbies/img8.jpeg",
     thumbnail: "/projects/trekking_hill.jpeg",
     tags: ["Expeditions", "Hobbies"],
     content: {
       media: [
-        { type: "image", src: "/projects/hobbies/img12.jpeg" },
-        { type: "image", src: "/projects/hobbies/img8.jpeg"},
-        { type: "image", src: "/projects/hobbies/img14.jpeg"},
+        // { type: "image", src: "/projects/hobbies/img12.jpeg" },
+        // { type: "image", src: "/projects/hobbies/img14.jpeg"},
         { type: "image", src: "/projects/hobbies/img4.jpeg"},
+        { type: "image", src: "/projects/hobbies/img8.jpeg"},
         { type: "image", src: "/projects/hobbies/img7.jpeg"},
-        { type: "image", src: "/projects/trekking_hill.jpeg" },
+        // { type: "image", src: "/projects/trekking_hill.jpeg" },
       ],
       subProjects: [
-        {
-          title: "Outdoor Leadership",
-          description:
-            "NOLS NH backpacking (65 miles/15 days, ~20 kg packs); Sandakphu–Phalut 50-mile trek (Most Spirited Trekker); Uluru–Kata Tjuta 10-mile cultural trek; built simple nav app for trail safety.",
-        },
-        {
-          title: "Athletics & Discipline",
-          description: "Advanced alpine skier (Black Diamond), open-water scuba diver, regular badminton athlete.",
-        },
-      ],
+  {
+    title: "Outdoor Leadership",
+    description:
+      "NOLS NH backpacking (65 miles/15 days, ~20 kg packs); Sandakphu–Phalut 50-mile trek (Most Spirited Trekker); Uluru–Kata Tjuta 10-mile cultural trek; built simple nav app for trail safety.",
+  },
+  {
+    title: "Athletics & Discipline",
+    description:
+      "Advanced alpine skier (Black Diamond), open-water scuba diver, regular badminton athlete.",
+  },
+],
     },
   },
 ];

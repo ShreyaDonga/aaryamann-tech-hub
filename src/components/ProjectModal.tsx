@@ -30,17 +30,17 @@ const heroMediaOverrides: Record<string, MediaItem> = {
   },
   "research-innovation": {
     type: "image",
-    src: "/projects/cyberdost/research_innovation.jpeg",
+    src: "/projects/crest_gold_award.jpeg",
     label: "Research & Engineering Innovation",
   },
   "robotics-leadership": {
     type: "image",
-    src: "/projects/ftc/building_FTC_robotics.jpeg",
+    src: "/projects/ftc/ftc_robotics_aaryaman_goenka.jpeg",
     label: "Building FTC Robotics",
   },
   "stem-olympiads": {
     type: "image",
-    src: "/projects/navy_presentation.jpeg",
+    src: "/projects/certificates/img15.jpeg",
     label: "Coastal Research Presentation",
   },
   "tech-fairs-outreach": {
@@ -55,7 +55,7 @@ const heroMediaOverrides: Record<string, MediaItem> = {
   },
   "leadership-community": {
     type: "image",
-    src: "/projects/STEM_Olympiads_Academic_Achievements.jpeg",
+    src: "/projects/hobbies/img8.jpeg",
     label: "STEM Olympiads & Academic Achievements",
   },
 };
@@ -372,7 +372,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             )}
 
             {/* Sub-Projects (for Cybersecurity) */}
-            {project.content.subProjects && project.content.subProjects.length > 0 && (
+            {/* {project.content.subProjects && project.content.subProjects.length > 0 && (
               <Section title="Project Collection">
                 <div className="grid gap-2 sm:gap-4">
                   {project.content.subProjects.map((subProject, index) => (
@@ -387,7 +387,22 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                   ))}
                 </div>
               </Section>
-            )}
+            )} */}
+
+            {/* Sub-Projects (Project Collection) */}
+{project.content.subProjects && project.content.subProjects.length > 0 && (
+  <Section title="Project Collection">
+    <div className="grid gap-2 sm:gap-4">
+      {project.content.subProjects.map((subProject, index) => (
+        <div key={index} className="p-2 sm:p-4 rounded-lg bg-secondary/50 border border-border">
+          <h4 className="font-display font-semibold text-foreground text-xs sm:text-base">
+            {subProject.title}
+          </h4>
+        </div>
+      ))}
+    </div>
+  </Section>
+)}
 
             {/* Image Gallery — for projects with multiple images */}
             {(() => {
