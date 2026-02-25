@@ -45,7 +45,7 @@ const heroMediaOverrides: Record<string, MediaItem> = {
   },
   "tech-fairs-outreach": {
     type: "image",
-    src: "/projects/compost/compost-bin-06.jpeg",
+    src: "/projects/aaryamann_image1.png",
     label: "BIS Tech Fair Exhibit",
   },
   "cyber-advocacy": {
@@ -110,16 +110,15 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           </button>
         </DialogClose>
 
-        <ScrollArea className="flex-1 overflow-y-auto overflow-x-hidden">
-          {/* Hero Media — scrolls with content */}
-          <div className="relative w-full aspect-video sm:max-h-[420px] h-[30vh] sm:h-auto bg-black flex items-center justify-center overflow-hidden">
+<ScrollArea className="flex-1 h-full overflow-auto">          {/* Hero Media — scrolls with content */}
+          <div className="relative w-full bg-black flex items-center justify-center overflow-hidden py-8 sm:py-12">
             {isHeroVideo ? (
               <video
                 controls
                 playsInline
                 muted
                 aria-label={heroLabel}
-                className="w-full h-full object-contain block"
+                className="w-auto h-auto max-w-[95%] max-h-[400px] sm:max-h-[500px] md:max-h-[600px] object-contain"
               >
                 <source src={heroMedia.src} type="video/mp4" />
                 Your browser does not support the video tag.
@@ -128,7 +127,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               <img
                 src={heroMedia.src}
                 alt={heroLabel}
-                className="w-full h-full object-contain block"
+                className="w-auto h-auto max-w-[95%] max-h-[400px] sm:max-h-[500px] md:max-h-[600px] object-contain"
               />
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
@@ -198,18 +197,16 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                     if (!media) return null;
 
                     return (
-                      <div
-                        key={index}
-                        className={`flex flex-col gap-4 sm:gap-6 md:gap-8 items-center ${
-                          index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
-                        }`}
-                      >
-                        <div className="w-full md:w-1/2 overflow-hidden rounded-lg sm:rounded-3xl border border-border bg-card shadow-sm">
-                          {media.type === "image" ? (
+<div
+  key={index}
+  className="flex flex-col gap-6 items-start"
+>
+<div className="w-full overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+    {media.type === "image" ? (
                             <img
                               src={media.src}
                               alt={media.label}
-                              className="w-full h-full min-h-[150px] sm:min-h-[320px] object-cover"
+                              className="w-auto h-auto max-w-[90%] max-h-[300px] sm:max-h-[350px] md:max-h-[400px] object-contain"
                               loading="lazy"
                             />
                           ) : (
@@ -217,27 +214,25 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                               controls
                               playsInline
                               muted
-                              className="w-full h-full min-h-[150px] sm:min-h-[320px] object-cover"
+                              className="w-auto h-auto max-w-[90%] max-h-[300px] sm:max-h-[350px] md:max-h-[400px] object-contain"
                             >
                               <source src={media.src} type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
                           )}
                         </div>
-                        <div className="w-full md:w-1/2 space-y-2 sm:space-y-3 text-left">
-                          {block.subtitle && (
+                        <div className="w-full space-y-3 text-left">                          {block.subtitle && (
                             <p className="text-[9px] sm:text-xs font-semibold uppercase tracking-[0.3em] sm:tracking-[0.4em] text-accent">
                               {block.subtitle}
                             </p>
                           )}
-                          <h3 className="text-base sm:text-xl font-semibold text-foreground">
+                          <h3 className="text-base sm:text-xl md:text-2xl font-semibold text-foreground leading-snug">
                             {block.title}
                           </h3>
-                          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                            {block.text}
+<p className="text-sm sm:text-base text-muted-foreground leading-relaxed">                            {block.text}
                           </p>
                           {block.bullets && block.bullets.length > 0 && (
-                            <ul className="list-disc pl-4 sm:pl-5 text-xs sm:text-sm text-muted-foreground space-y-0.5 sm:space-y-1">
+                            <ul className="list-disc pl-4 sm:pl-5 text-xs sm:text-sm md:text-base text-foreground space-y-1 sm:space-y-1.5 font-normal">
                               {block.bullets.map((bullet, bulletIndex) => (
                                 <li key={bulletIndex}>{bullet}</li>
                               ))}
@@ -398,6 +393,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           <h4 className="font-display font-semibold text-foreground text-xs sm:text-base">
             {subProject.title}
           </h4>
+          {subProject.description}
         </div>
       ))}
     </div>
@@ -410,7 +406,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               if (galleryImages.length <= 1) return null;
               return (
                 <Section title="Gallery">
-                  <ImageGallery images={galleryImages} projectId={project.id} />
+                  <ImageGallery images={galleryImages} projectId={project.id} />\
                 </Section>
               );
             })()}
@@ -537,11 +533,11 @@ function ImageGallery({ images, projectId }: { images: MediaItem[]; projectId: s
   return (
     <div className="space-y-3">
       {/* Main image */}
-      <div className="relative rounded-xl overflow-hidden bg-black aspect-video">
-        <img
+      <div className="relative rounded-xl overflow-hidden bg-black aspect-video flex items-center justify-center">        
+      <img
           src={images[currentIdx].src}
           alt={images[currentIdx].label ?? `Image ${currentIdx + 1}`}
-          className="w-full h-full object-contain"
+          className="w-auto h-auto max-w-[95%] max-h-[400px] sm:max-h-[500px] md:max-h-[600px] object-contain"
         />
 
         {/* Nav arrows */}
@@ -563,14 +559,14 @@ function ImageGallery({ images, projectId }: { images: MediaItem[]; projectId: s
         )}
 
         {/* Counter */}
-        <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/60 text-white text-[10px] sm:text-xs backdrop-blur-sm">
+        <div className="absolute bottom-3 right-3 px-3 py-1 sm:px-4 sm:py-2 rounded-full bg-black/70 text-white text-[10px] sm:text-xs backdrop-blur-sm font-semibold">
           {currentIdx + 1} / {total}
         </div>
       </div>
 
       {/* Caption */}
       {images[currentIdx].label && (
-        <p className="text-center text-xs sm:text-sm text-muted-foreground">{images[currentIdx].label}</p>
+        <p className="text-center text-xs sm:text-sm md:text-base text-foreground font-medium">{images[currentIdx].label}</p>
       )}
 
       {/* Thumbnail strip */}
