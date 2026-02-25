@@ -30,22 +30,22 @@ const heroMediaOverrides: Record<string, MediaItem> = {
   },
   "research-innovation": {
     type: "image",
-    src: "/projects/crest_gold_award.jpeg",
+    src: "/projects/cyberdost/research_innovation.jpeg",
     label: "Research & Engineering Innovation",
   },
   "robotics-leadership": {
     type: "image",
-    src: "/projects/ftc/ftc_robotics_aaryaman_goenka.jpeg",
+    src: "/projects/ftc/building_FTC_robotics.jpeg",
     label: "Building FTC Robotics",
   },
   "stem-olympiads": {
     type: "image",
-    src: "/projects/certificates/img15.jpeg",
+    src: "/projects/navy_presentation.jpeg",
     label: "Coastal Research Presentation",
   },
   "tech-fairs-outreach": {
     type: "image",
-    src: "/projects/aaryamann_image1.png",
+    src: "/projects/compost/compost-bin-06.jpeg",
     label: "BIS Tech Fair Exhibit",
   },
   "cyber-advocacy": {
@@ -55,7 +55,7 @@ const heroMediaOverrides: Record<string, MediaItem> = {
   },
   "leadership-community": {
     type: "image",
-    src: "/projects/hobbies/img8.jpeg",
+    src: "/projects/STEM_Olympiads_Academic_Achievements.jpeg",
     label: "STEM Olympiads & Academic Achievements",
   },
 };
@@ -98,7 +98,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-[95vw] max-w-4xl max-h-[90vh] p-0 overflow-hidden flex flex-col gap-0 [&>button.absolute]:hidden">
+      <DialogContent className="w-[95vw] max-w-6xl max-h-[90vh] p-0 overflow-hidden flex flex-col gap-0 [&>button.absolute]:hidden">
         {/* Sticky Close Button — always visible */}
         <DialogClose asChild>
           <button
@@ -110,15 +110,16 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           </button>
         </DialogClose>
 
-<ScrollArea className="flex-1 h-full overflow-auto">          {/* Hero Media — scrolls with content */}
-          <div className="relative w-full bg-black flex items-center justify-center overflow-hidden py-8 sm:py-12">
+        <ScrollArea className="flex-1 overflow-y-auto overflow-x-hidden">
+          {/* Hero Media — scrolls with content */}
+          <div className="relative w-full aspect-video sm:max-h-[420px] h-[30vh] sm:h-auto bg-black flex items-center justify-center overflow-hidden">
             {isHeroVideo ? (
               <video
                 controls
                 playsInline
                 muted
                 aria-label={heroLabel}
-                className="w-auto h-auto max-w-[95%] max-h-[400px] sm:max-h-[500px] md:max-h-[600px] object-contain"
+                className="w-full h-full object-contain block"
               >
                 <source src={heroMedia.src} type="video/mp4" />
                 Your browser does not support the video tag.
@@ -127,8 +128,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               <img
                 src={heroMedia.src}
                 alt={heroLabel}
-                className="w-auto h-auto max-w-[95%] max-h-[400px] sm:max-h-[500px] md:max-h-[600px] object-contain"
-              />
+              className="w-full h-full object-cover object-center"              />
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
 
@@ -146,7 +146,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           </div>
 
           {/* Content */}
-          <div className="p-3 sm:p-6 space-y-3 sm:space-y-6 overflow-x-hidden">
+          <div className="px-6 md:px-16 py-12 space-y-16 max-w-5xl mx-auto">
 
             {/* PDFs */}
             {pdfMedia.length > 0 && (
@@ -193,55 +193,62 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               <Section title={`${project.title} Story`}>
                 <div className="space-y-6 sm:space-y-12">
                   {project.content.contentFlow.map((block, index) => {
-                    const media = project.content.media?.[block.mediaIndex];
-                    if (!media) return null;
+  const media = project.content.media?.[block.mediaIndex];
+  if (!media) return null;
 
-                    return (
-<div
-  key={index}
-  className="flex flex-col gap-6 items-start"
->
-<div className="w-full overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-    {media.type === "image" ? (
-                            <img
-                              src={media.src}
-                              alt={media.label}
-                              className="w-auto h-auto max-w-[90%] max-h-[300px] sm:max-h-[350px] md:max-h-[400px] object-contain"
-                              loading="lazy"
-                            />
-                          ) : (
-                            <video
-                              controls
-                              playsInline
-                              muted
-                              className="w-auto h-auto max-w-[90%] max-h-[300px] sm:max-h-[350px] md:max-h-[400px] object-contain"
-                            >
-                              <source src={media.src} type="video/mp4" />
-                              Your browser does not support the video tag.
-                            </video>
-                          )}
-                        </div>
-                        <div className="w-full space-y-3 text-left">                          {block.subtitle && (
-                            <p className="text-[9px] sm:text-xs font-semibold uppercase tracking-[0.3em] sm:tracking-[0.4em] text-accent">
-                              {block.subtitle}
-                            </p>
-                          )}
-                          <h3 className="text-base sm:text-xl md:text-2xl font-semibold text-foreground leading-snug">
-                            {block.title}
-                          </h3>
-<p className="text-sm sm:text-base text-muted-foreground leading-relaxed">                            {block.text}
-                          </p>
-                          {block.bullets && block.bullets.length > 0 && (
-                            <ul className="list-disc pl-4 sm:pl-5 text-xs sm:text-sm md:text-base text-foreground space-y-1 sm:space-y-1.5 font-normal">
-                              {block.bullets.map((bullet, bulletIndex) => (
-                                <li key={bulletIndex}>{bullet}</li>
-                              ))}
-                            </ul>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
+  return (
+    <div
+      key={index}
+      className="grid lg:grid-cols-2 gap-16 items-center"
+    >
+      {/* Media */}
+      <div className="rounded-2xl overflow-hidden border border-border bg-card shadow-sm">
+        {media.type === "image" ? (
+          <img
+            src={media.src}
+            alt={media.label}
+            className="w-full max-h-[450px] object-cover object-center"
+            loading="lazy"
+          />
+        ) : (
+          <video
+            controls
+            playsInline
+            muted
+            className="w-full max-h-[450px] object-cover object-center"
+          >
+            <source src={media.src} type="video/mp4" />
+          </video>
+        )}
+      </div>
+
+      {/* Text */}
+      <div className="max-w-xl space-y-6">
+        {block.subtitle && (
+          <p className="text-xs font-semibold uppercase tracking-widest text-accent">
+            {block.subtitle}
+          </p>
+        )}
+
+        <h3 className="text-2xl md:text-3xl font-semibold leading-tight">
+          {block.title}
+        </h3>
+
+        <p className="text-lg text-muted-foreground leading-relaxed">
+          {block.text}
+        </p>
+
+        {block.bullets && (
+          <ul className="list-disc pl-6 text-lg text-muted-foreground space-y-3">
+            {block.bullets.map((bullet, i) => (
+              <li key={i}>{bullet}</li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+})}
                 </div>
               </Section>
             )}
@@ -367,7 +374,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             )}
 
             {/* Sub-Projects (for Cybersecurity) */}
-            {/* {project.content.subProjects && project.content.subProjects.length > 0 && (
+            {project.content.subProjects && project.content.subProjects.length > 0 && (
               <Section title="Project Collection">
                 <div className="grid gap-2 sm:gap-4">
                   {project.content.subProjects.map((subProject, index) => (
@@ -382,23 +389,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                   ))}
                 </div>
               </Section>
-            )} */}
-
-            {/* Sub-Projects (Project Collection) */}
-{project.content.subProjects && project.content.subProjects.length > 0 && (
-  <Section title="Project Collection">
-    <div className="grid gap-2 sm:gap-4">
-      {project.content.subProjects.map((subProject, index) => (
-        <div key={index} className="p-2 sm:p-4 rounded-lg bg-secondary/50 border border-border">
-          <h4 className="font-display font-semibold text-foreground text-xs sm:text-base">
-            {subProject.title}
-          </h4>
-          {subProject.description}
-        </div>
-      ))}
-    </div>
-  </Section>
-)}
+            )}
 
             {/* Image Gallery — for projects with multiple images */}
             {(() => {
@@ -406,7 +397,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               if (galleryImages.length <= 1) return null;
               return (
                 <Section title="Gallery">
-                  <ImageGallery images={galleryImages} projectId={project.id} />\
+                  <ImageGallery images={galleryImages} projectId={project.id} />
                 </Section>
               );
             })()}
@@ -533,11 +524,11 @@ function ImageGallery({ images, projectId }: { images: MediaItem[]; projectId: s
   return (
     <div className="space-y-3">
       {/* Main image */}
-      <div className="relative rounded-xl overflow-hidden bg-black aspect-video flex items-center justify-center">        
-      <img
+      <div className="relative rounded-xl overflow-hidden bg-black aspect-video">
+        <img
           src={images[currentIdx].src}
           alt={images[currentIdx].label ?? `Image ${currentIdx + 1}`}
-          className="w-auto h-auto max-w-[95%] max-h-[400px] sm:max-h-[500px] md:max-h-[600px] object-contain"
+          className="w-full h-full object-contain"
         />
 
         {/* Nav arrows */}
@@ -559,14 +550,14 @@ function ImageGallery({ images, projectId }: { images: MediaItem[]; projectId: s
         )}
 
         {/* Counter */}
-        <div className="absolute bottom-3 right-3 px-3 py-1 sm:px-4 sm:py-2 rounded-full bg-black/70 text-white text-[10px] sm:text-xs backdrop-blur-sm font-semibold">
+        <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/60 text-white text-[10px] sm:text-xs backdrop-blur-sm">
           {currentIdx + 1} / {total}
         </div>
       </div>
 
       {/* Caption */}
       {images[currentIdx].label && (
-        <p className="text-center text-xs sm:text-sm md:text-base text-foreground font-medium">{images[currentIdx].label}</p>
+        <p className="text-center text-xs sm:text-sm text-muted-foreground">{images[currentIdx].label}</p>
       )}
 
       {/* Thumbnail strip */}
