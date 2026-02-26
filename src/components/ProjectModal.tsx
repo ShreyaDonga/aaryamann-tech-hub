@@ -30,17 +30,17 @@ const heroMediaOverrides: Record<string, MediaItem> = {
   },
   "research-innovation": {
     type: "image",
-    src: "/projects/cyberdost/research_innovation.jpeg",
+    src: "/projects/crest_gold_award.jpeg",
     label: "Research & Engineering Innovation",
   },
   "robotics-leadership": {
     type: "image",
-    src: "/projects/ftc/building_FTC_robotics.jpeg",
+    src: "/projects/s1.png",
     label: "Building FTC Robotics",
   },
   "stem-olympiads": {
     type: "image",
-    src: "/projects/navy_presentation.jpeg",
+    src: "/projects/certificates/img6.jpeg",
     label: "Coastal Research Presentation",
   },
   "tech-fairs-outreach": {
@@ -55,7 +55,7 @@ const heroMediaOverrides: Record<string, MediaItem> = {
   },
   "leadership-community": {
     type: "image",
-    src: "/projects/STEM_Olympiads_Academic_Achievements.jpeg",
+    src: "/projects/hobbies/img8.jpeg",
     label: "STEM Olympiads & Academic Achievements",
   },
 };

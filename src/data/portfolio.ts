@@ -150,11 +150,6 @@ export const projects: Project[] = [
         },
         {
           type: "image",
-          src: "/projects/beetlebot/beetlebot1.jpeg",
-          label: "BeetleBot",
-        },
-        {
-          type: "image",
           src: "/projects/beetlebot/img2.jpeg",
         },
         {
@@ -175,49 +170,49 @@ export const projects: Project[] = [
         },
         {
           type: "image",
-          src: "/projects/beetlebot/beetlebot_at_fsai-02.jpeg",
+          src: "/projects/beetlebot/beetlebot_at_fsai-02.jpeg" ,label: "FSAI Conference Presentation",
         },
         {
           type: "image",
-          src: "/projects/beetlebot/beetlebot_at_fsai-03.jpeg",
+          src: "/projects/beetlebot/beetlebot_at_fsai-03.jpeg", label: "FSAI Conference Presentation",
         },
         {
           type: "image",
-          src: "/projects/beetlebot/beetlebot_at_fsai-04.jpeg",
+          src: "/projects/beetlebot/beetlebot_at_fsai-04.jpeg",label: "FSAI Conference Presentation",
         },
         {
           type: "image",
-          src: "/projects/beetlebot/beetlebot_at_fsai-05.jpeg",
+          src: "/projects/beetlebot/beetlebot_at_fsai-05.jpeg",label: "FSAI Conference Presentation",
         },
         {
           type: "image",
-          src: "/projects/beetlebot/beetlebot_at_fsai-06.jpeg",
+          src: "/projects/beetlebot/beetlebot_at_fsai-06.jpeg",label: "FSAI Conference Presentation",
+        },
+        // {
+        //   type: "image",
+        //   src: "/projects/beetlebot/beetlebot_at_fsai-07.jpeg",
+        // },
+        // {
+        //   type: "image",
+        //   src: "/projects/beetlebot/beetlebot_at_fsai-10.jpeg",
+        // },
+        {
+          type: "image",
+          src: "/projects/beetlebot/beetlebot_at_fsai-11.jpeg",label: "FSAI Conference Presentation",
         },
         {
           type: "image",
-          src: "/projects/beetlebot/beetlebot_at_fsai-07.jpeg",
+          src: "/projects/beetlebot/beetlebot_at_fsai-12.jpeg",label: "FSAI Conference Presentation",
         },
         {
           type: "image",
-          src: "/projects/beetlebot/beetlebot_at_fsai-10.jpeg",
+          src: "/projects/observership_naval.jpeg", label: "IIT Delhi Observership",
         },
-        {
-          type: "image",
-          src: "/projects/beetlebot/beetlebot_at_fsai-11.jpeg",
-        },
-        {
-          type: "image",
-          src: "/projects/beetlebot/beetlebot_at_fsai-12.jpeg",
-        },
-        {
-          type: "image",
-          src: "/projects/observership_naval.jpeg",
-        },
-        {
-          type: "image",
-          src: "/projects/navy_presentation.jpeg",
-          label: "Naval Presentation",
-        },
+        // {
+        //   type: "image",
+        //   src: "/projects/navy_presentation.jpeg",
+        //   label: "Naval Presentation",
+        // },
         {
           type: "video",
           src: "/projects/beetlebot/Spider_Bot_video.mp4",
@@ -255,15 +250,14 @@ export const projects: Project[] = [
         { type: "image", src: "/projects/iris/img3.jpeg", label: "IRIS Gold Award - Khadify" },
         { type: "image", src: "/projects/iris/img2.jpeg", label: "IRIS National Fair 2025-26 Ceremony" },
         { type: "image", src: "/projects/compost/compost-bin-01.jpeg", label: "Sensor deck" },
-        { type: "image", src: "/projects/compost/compost-bin-12.jpeg", label: "Final product" },
+        { type: "image", src: "/projects/compost/compost-bin-12.jpeg", label: "Compost material layering" },
         { type: "image", src: "/projects/compost/building_compost_bin.jpeg", label: "Building Khadify" },
         { type: "image", src: "/projects/compost/img9.jpeg", label: "Compost Field Material" },
         { type: "image", src: "/projects/compost/compost-bin-02.jpeg", label: "Aeration setup" },
         { type: "image", src: "/projects/compost/compost-bin-03.jpeg", label: "System assembly" },
         { type: "image", src: "/projects/compost/compost-bin-04.jpeg", label: "System overview" },
-        { type: "image", src: "/projects/compost/compost-bin-05.jpeg", label: "Control view" },
         { type: "image", src: "/projects/compost/compost-bin-06.jpeg", label: "Component integration" },
-        { type: "image", src: "/projects/compost/compost-bin-07.jpeg", label: "Wiring and sensors" },
+        { type: "image", src: "/projects/compost/compost-bin-07.jpeg", label: "Farming presentation" },
         { type: "image", src: "/projects/compost/compost-bin-08.jpeg", label: "Field testing" },
         { type: "image", src: "/projects/compost/compost-bin-09.jpeg", label: "Build process" },
         { type: "image", src: "/projects/compost/compost-bin-11.jpeg", label: "Quality analysis" },
@@ -359,6 +353,10 @@ export const projects: Project[] = [
       ],
       subProjects: [
         {
+          title: "CREST Gold Award (December 2025)",
+          description: "ML and IoT Sensing to Enhance Compost Quality and Speed Processing, IRIS National Fair 2025-26.",
+        },
+        {
           title: "Most Creative Project (October 2024)",
           description:
             "Cyberbullying Website, Bombay International School, Tech fair.",
@@ -373,11 +371,6 @@ export const projects: Project[] = [
           description:
             " CAD designer of the G-Force Team, First Tech Challenge",
         },
-        {
-          title: "Most Innovative Project (2025)",
-          description:
-            "BeetleBot showcase at BIS Tech Fair.",
-        },
       ],
     },
   },
@@ -388,15 +381,16 @@ export const projects: Project[] = [
     category: "School Leadership",
     summary:
       "Elected Head Boy (Jan 2024–Jan 2025); founded AI Club (2023) and presided over Engineering Club (2024–present); served as Tech Secretary (2023–2024). Created BIS Beholder interschool film festival and led BIS Technology Fest under the theme 'Tech for All'.",
-    image: "/projects/sl.png",
+    image: "/projects/s1.png",
     thumbnail: "/projects/ftc/ftc_robotics_aaryaman_goenka.jpeg",
     tags: ["Leadership", "Student operations", "Club founding"],
     content: {
       introduction:
         "Held multiple leadership positions at Bombay International School, managing student operations, founding technical clubs, and organizing school-wide events that fostered innovation and community engagement.",
       media: [
-        { type: "image", src: "/projects/sl.png", label: "School Leadership" },
-        { type: "image", src: "/projects/ftc/building_FTC_robotics.jpeg", label: "Engineering Club Workshop" },
+        // { type: "image", src: "/projects/ftc/building_FTC_robotics.jpeg", label: "Engineering Club Workshop" },
+        { type: "image", src: "/projects/ftc/ftc_robotics_aaryaman_goenka.jpeg", label: "FTC Robotics - CAD Design" },
+        { type: "image", src: "/projects/s1.png", label: "FTC Robotics - CAD Design" },  
       ],
       subProjects: [
         {
@@ -434,11 +428,12 @@ export const projects: Project[] = [
     tags: ["Olympiads", "Math"],
     content: {
       media: [
-        { type: "image", src: "/projects/certificates/img6.jpeg", label: "Cambridge Outstanding Learner Award" },
         { type: "image", src: "/projects/certificates/img15.jpeg", label: "Cambridge Award Certificate" },
+        // { type: "image", src: "/projects/certificates/img7.jpeg", label: "SASMO Gold Medal" },
         { type: "image", src: "/projects/hkiso_silver_award.jpeg", label: "HKISO Silver Award" },
-        { type: "image", src: "/projects/certificates/img1.jpeg", label: "CREST Gold Certificate" },
+        // { type: "image", src: "/projects/certificates/img1.jpeg", label: "CREST Gold Certificate" },
         { type: "image", src: "/projects/certificates/pascal_award.jpeg", label: "Waterloo Pascal Distinction" },
+        { type: "image", src: "/projects/certificates/img6.jpeg", label: "Cambridge Outstanding Learner Award" },
       ],
       subProjects: [
         { title: "Cambridge Outstanding Learner Award", description: "IGCSE World Topper in Additional Mathematics (2025)." },
@@ -463,38 +458,12 @@ export const projects: Project[] = [
         "Engaged in structured observerships, internships, and outreach activities that translate academic learning into practical research and community impact.",
       media: [
         // { type: "image", src: "/projects/outreach/outreach2.png", label: "Agricultural STEM Workshop" },
-        { type: "image", src: "/projects/outreach/otreach1.png", label: "Farmer Engagement Session" },
+        { type: "image", src: "/projects/outreach/outreach1.png", label: "Farmer Engagement Session" },
         { type: "image", src: "/projects/outreach/outreach3.png", label: "Community Outreach" },
         { type: "image", src: "/projects/beetlebot/fsai-speaker.jpeg", label: "FSAI Conference Presentation" },
         { type: "image", src: "/projects/img5.jpeg", label: "Field Demonstration" },
       ],
       subProjects: [
-        {
-          title:"Gold Medal",
-          description:"Smart Compost System, IRIS National Fair (January 2026)"
-        },
-        {
-          title: "CREST Gold Award",
-          description:"Co-Author, Research Project on Corrosive Properties of Beverages, (Sep 2023-May 2024)"
-        },
-        {
-          title:"IGCSE World Topper",
-          description:"Additional Mathematics (2025)"
-        },
-        {
-          title:"International and National Olympiads (Feb 2024 - Dec 2024)",
-          description:"SASMO Gold, HKISO Silver, Waterloo Pascal Distinction"
-        },
-        {
-          title: "Defense Research and Development Organization (DRDO) Observership (May 2024–Present)",
-          description:
-            "Conducted observership at DRDO New Delhi where I explored and examined fire safety protocols in defense establishments. The experience directly informed improvements to BeetleBot's fire-response functionality through feedback from experienced defense researchers and operational experts.",
-        },
-        {
-          title: "Indian Institute of Technology Delhi (IIT Delhi) Observership",
-          description:
-            "Pursued research exploration at IIT Delhi focusing on on-ground and underwater electronics, studying advanced applications of electronic systems relevant to rescue robotics and underwater sensing.",
-        },
         {
           title: "Hippo Technotex Research Internship (July 2025–Present)",
           description:
@@ -528,7 +497,7 @@ export const projects: Project[] = [
       media: [
         { type: "image", src: "/projects/cyberdost-08.jpeg", label: "CyberDost Community Engagement" },
         { type: "image", src: "/projects/cyberdost-07.jpeg", label: "CyberDost Outreach Program" },
-        { type: "image", src: "/projects/cyberdost-1.jpeg", label: "CyberDost Platform" },
+        { type: "image", src: "/projects/cyberdost-1.jpeg", label: "Cyberbullying Presentation" },
         { type: "image", src: "/projects/cyberdost_smiley.jpeg", label: "CyberDost Campaign" },
         { type: "image", src: "/projects/cyberdost_webinar.jpeg", label: "CyberDost Webinar Session" },
         { type: "image", src: "/projects/cyberdost/cyberdost_with_school_staff.jpeg", label: "School Staff Training" },
@@ -601,32 +570,32 @@ export const projects: Project[] = [
         {
           title: "Outdoor Leadership & Expeditions",
           description:
-            "Completed NOLS (National Outdoor Leadership School) New Hampshire backpacking expedition in the USA, covering 65 miles of diverse and challenging terrain over 15 days while carrying ~20 kg packs. The extended wilderness experience developed critical leadership skills, wilderness survival competency, and collaborative teamwork in high-stress remote environments. Undertook the Sandakphu–Phalut 50-mile trek in West Bengal, navigating high-altitude terrain and earning the 'Most Spirited Trekker' award for leadership and perseverance. Completed a 10-mile cultural trekking experience at Uluru and Kata Tjuta National Park in Australia, combining outdoor adventure with indigenous cultural education and environmental stewardship.",
+      "Completed a 65-mile backpacking expedition with the National Outdoor Leadership School (NOLS) in New Hampshire, developing resilience, teamwork, and confidence in challenging wilderness conditions. Also undertook the Sandakphu–Phalut trek in West Bengal, earning the 'Most Spirited Trekker' award, and explored Uluru–Kata Tjuta National Park in Australia, deepening my appreciation for nature and cultural landscapes.",
         },
         {
           title: "Trail Navigation Technology",
           description:
-            "Developed and deployed a basic navigation application designed to help trekkers safely navigate trail routes, share experiences on trail forums, and optimize route planning. The app integrates GPS technology with community-contributed trail data and safety alerts.",
+      "Enjoy exploring trekking routes and learning navigation skills using maps and GPS tools. Built a simple navigation app to help trekkers plan routes and share trail experiences, combining my interest in technology with outdoor adventure.",
         },
         {
           title: "Alpine Skiing & Winter Sports",
           description:
-            "Advanced alpine skier with expertise on Black Diamond terrain. Demonstrates technical skiing proficiency in steep, variable snow conditions, and understands avalanche awareness, mountain safety protocols, and ski equipment selection.",
+      "An advanced alpine skier who enjoys skiing on challenging Black Diamond terrain. Skiing has taught me balance, focus, and adaptability while allowing me to experience mountain environments and winter sports culture.",
         },
         {
           title: "Open Water Scuba Diving",
           description:
-            "Certified open-water scuba diver trained in underwater navigation, buoyancy control, equipment management, dive safety procedures, and emergency response protocols. Explores underwater ecosystems while adhering to responsible diving practices.",
+      "Certified open-water scuba diver with experience exploring marine ecosystems. Diving has strengthened my discipline, situational awareness, and appreciation for underwater biodiversity and conservation.",
         },
         {
           title: "Badminton Athletics",
           description:
-            "Participates in regular competitive badminton, maintaining cardiovascular fitness, strategic thinking, and motor skill development through a sport that requires rapid reaction times and tactical court positioning.",
+      "Regularly play badminton to stay active and competitive. The sport helps build endurance, quick decision-making, and mental focus while providing an enjoyable way to maintain overall fitness.",
         },
         {
           title: "Classical Guitar Performance",
           description:
-            "Trained classical guitarist holding Trinity College London Grade 2 certification with Merit distinction. Performs classical repertoire and continues to develop advanced playing technique and musical interpretation.",
+      "Trained classical guitarist with Trinity College London Grade 2 certification (Merit). Enjoy playing classical pieces and continuing to develop musical skills as a creative outlet alongside academic and technical pursuits.",
         },
         {
           title: "Technical Skills",
