@@ -8,9 +8,10 @@ export interface Project {
   thumbnail?: string;
   tags: string[];
   content: ProjectContent;
+  
 }
 
-export type MediaType = "image" | "video" | "pdf";
+export type MediaType = "image" | "video" | "pdf" | "link";
 
 export interface MediaItem {
   type: MediaType;
@@ -34,6 +35,10 @@ export interface ProjectContent {
   hardwareGroups?: HardwareGroup[];
   comparisons?: ComparisonStage[];
   contentFlow?: ContentFlowItem[];
+  links?: {
+  label: string;
+  url: string;
+  }[];
 }
 
 export interface HardwareGroup {
@@ -60,6 +65,8 @@ export interface SubProject {
   title: string;
   description: string;
 }
+
+
 
 export const skills = [
   "Python",
@@ -382,7 +389,7 @@ export const projects: Project[] = [
     summary:
       "Elected Head Boy (Jan 2024–Jan 2025); founded AI Club (2023) and presided over Engineering Club (2024–present); served as Tech Secretary (2023–2024). Created BIS Beholder interschool film festival and led BIS Technology Fest under the theme 'Tech for All'.",
     image: "/projects/navy_presentation.jpeg",
-    thumbnail: "/projects/leadership.jpeg",
+    thumbnail: "/projects/leadershipthumbnail.png",
     tags: ["Leadership", "Student operations", "Club founding"],
     content: {
       introduction:
@@ -458,8 +465,8 @@ export const projects: Project[] = [
         "Engaged in structured observerships, internships, and outreach activities that translate academic learning into practical research and community impact.",
       media: [
         // { type: "image", src: "/projects/outreach/outreach2.png", label: "Agricultural STEM Workshop" },
-        { type: "image", src: "/projects/outreach/farmer engagement.jpeg", label: "Farmer Engagement Session" },
-        { type: "image", src: "/projects/outreach/outreach3.png", label: "Community Outreach" },
+        { type: "image", src: "/projects/farmer engagement.jpeg", label: "Farmer Engagement Session" },
+        { type: "image", src: "/projects/outreach/outreach3.png", label: "Hippo Cool Roof Installation" },
         { type: "image", src: "/projects/beetlebot/fsai-speaker.jpeg", label: "FSAI Conference Presentation" },
         // { type: "image", src: "/projects/img5.jpeg", label: "Field Demonstration" },
       ],
@@ -482,16 +489,22 @@ export const projects: Project[] = [
       ],
     },
   },
-  {
-    id: "cyber-advocacy",
-    title: "CyberDost: Outreach Program in School",
-    shortTitle: "CyberDost",
-    category: "Social Initiative",
-    summary:
-      "Founded CyberDost awareness and prevention platform (July 2024–Present). Created interactive website covering cyberbullying's psychological, legal, and policy dimensions. Organized art exhibition with Brush of Hope, expert panel discussions, and bilingual infographic campaigns. Directed 1,000+ participant seminars on cybersafety and youth involvement (December 2024–Present). Secured 1,300+ signatures on legislation petition endorsed by Maharashtra Department of Education.",
-    image: "/projects/cyberdost-1.jpeg",
-    tags: ["Advocacy", "Mental health", "Policy reform"],
-    content: {
+{
+  id: "cyber-advocacy",
+  title: "CyberDost: Outreach Program in School",
+  shortTitle: "CyberDost",
+  category: "Social Initiative",
+  summary:
+    "Founded CyberDost awareness and prevention platform (July 2024–Present). Created interactive website covering cyberbullying's psychological, legal, and policy dimensions. Organized art exhibition with Brush of Hope, expert panel discussions, and bilingual infographic campaigns. Directed 1,000+ participant seminars on cybersafety and youth involvement (December 2024–Present). Secured 1,300+ signatures on legislation petition endorsed by Maharashtra Department of Education.",
+  image: "/projects/cyberdost-1.jpeg",
+  tags: ["Advocacy", "Mental health", "Policy reform"],
+  content: {
+    links: [
+      {
+        label: "Visit Cyberbullying Website",
+        url: "https://yourcyberdost.tiiny.site/cyberdost.html"
+      }
+    ],
       introduction:
         "CyberDost is a comprehensive cyberbullying prevention and awareness initiative designed to educate students, educators, and families on the psychological impacts, legal protections, and policy solutions related to online harassment and cybersecurity.",
       media: [
@@ -518,6 +531,12 @@ export const projects: Project[] = [
         //   src: "/docs/Cyberbullying Prevention Infographic.pdf",
         //   label: "Cyberbullying Prevention Infographic",
         // },
+        {
+          type: "link",
+          src: "https://yourcyberdost.tiiny.site/cyberdost.html",
+          label: "Cyberbullying Website",
+          description: "Visit the CyberDost awareness platform",
+        },
         {
           type: "pdf",
           src: "/docs/Message_DharmendraPradhan_CyberDost.pdf",
@@ -557,7 +576,7 @@ export const projects: Project[] = [
       "15-day NOLS NH backpacking (65 miles, ~20 kg load); 50-mile Sandakphu–Phalut trek (Most Spirited Trekker award); 10-mile Uluru base walk in Australia. Advanced alpine skier (Black Diamond); open-water certified scuba diver. Created navigation app for trail safety. Trinity Grade 2 (Merit) classical guitar.",
     image: "/projects/hobbies/img8.jpeg",
     thumbnail: "/projects/trekking_hill.jpeg",
-    tags: ["Outdoor expeditions", "Leadership", "Adventure sports"],
+tags: ["Outdoor expeditions", "Leadership", "Adventure sports"],
     content: {
       introduction:
         "Pursues outdoor adventure, athletic discipline, and technical applications of technology in personal pursuits, balancing physical challenge with innovation.",

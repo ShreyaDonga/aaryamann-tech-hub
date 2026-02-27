@@ -94,6 +94,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   const heroLabel = heroMedia.label ?? project.title;
   const isHeroVideo = heroMedia.type === "video";
   const pdfMedia = project.content.media?.filter((m) => m.type === "pdf") ?? [];
+  const linkMedia = project.content.media?.filter((m) => m.type === "link") ?? [];
   const videoMedia = project.content.media?.filter((m) => m.type === "video") ?? [];
 
   return (
@@ -147,6 +148,26 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
           {/* Content */}
           <div className="px-6 md:px-16 py-12 space-y-16 max-w-5xl mx-auto">
+            
+            {/* External Links */}
+{project.content.links && project.content.links.length > 0 && (
+  <Section title="Cyberbullying Website">
+    <div className="space-y-2">
+      {project.content.links.map((link, index) => (
+        <a
+          key={index}
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-accent hover:underline text-sm font-medium"
+        >
+          <ExternalLink size={14} />
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </Section>
+)}
 
             {/* PDFs */}
             {pdfMedia.length > 0 && (
@@ -221,7 +242,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           </video>
         )}
       </div>
-
+        
       {/* Text */}
       <div className="max-w-xl space-y-6">
         {block.subtitle && (
@@ -404,7 +425,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
             {/* Citations */}
             {project.content.citations && project.content.citations.length > 0 && (
-              <Section title="References">
+              <Section title="Website">
                 <div className="space-y-1.5 sm:space-y-2">
                   {project.content.citations.map((citation, index) => (
                     <a
@@ -412,10 +433,10 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                       href={citation}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 sm:gap-2 text-accent hover:underline text-[10px] sm:text-sm break-all"
+                      className="flex items-center gap-2 text-accent hover:underline text-sm"
                     >
-                      <ExternalLink size={12} className="sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                      {citation}
+                      <ExternalLink size={14} />
+                      Visit Cyberbullying Website
                     </a>
                   ))}
                 </div>
