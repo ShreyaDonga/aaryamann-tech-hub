@@ -35,7 +35,7 @@ const heroMediaOverrides: Record<string, MediaItem> = {
   },
   "robotics-leadership": {
     type: "image",
-    src: "/projects/s1.png",
+    src: "/projects/leadership.jpeg",
     label: "Building FTC Robotics",
   },
   "stem-olympiads": {

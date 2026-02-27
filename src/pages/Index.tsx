@@ -12,6 +12,7 @@ import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselPrevious,
 const Index = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>("all");
+  // const [activeFilter, setActiveFilter] = useState<string>(projects[0]?.category || "");  
   const [heroApi, setHeroApi] = useState<CarouselApi | null>(null);
   const [isDark, setIsDark] = useState(false);
   
@@ -55,7 +56,8 @@ const Index = () => {
   }, [heroApi]);
 
   const categories = ["all", ...new Set(projects.map((p) => p.category))];
-  const documentMedia = useMemo(
+// const categories = [...new Set(projects.map((p) => p.category))];  
+const documentMedia = useMemo(
     () =>
       projects
         .map((project) => ({
@@ -73,11 +75,17 @@ const Index = () => {
         .filter((entry) => entry.docs.length > 0),
     []
   );
+
   const filteredProjects = useMemo(() => {
-    return activeFilter === "all"
-      ? projects
-      : projects.filter((p) => p.category === activeFilter);
-  }, [activeFilter]);
+  return activeFilter === "all"
+    ? projects
+    : projects.filter((p) => p.category === activeFilter);
+}, [activeFilter]);
+
+
+  // const filteredProjects = useMemo(() => {
+  //   return projects.filter((p) => p.category === activeFilter);
+  // }, [activeFilter]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -155,10 +163,10 @@ const Index = () => {
                 <h1 className="text-2xl md:text-4xl font-display font-bold gradient-text mb-2 animate-fade-in py-1">{aboutData.name}</h1>                <p className="text-muted-foreground text-sm md:text-base mb-4 max-w-2xl animate-fade-in delay-100">{aboutData.title}</p>
                 <div className="flex flex-wrap items-center gap-4 animate-fade-in delay-200">
                   <div className="flex gap-2">
-                    <a href={contactData.socials.linkedin} target="_blank" rel="noopener noreferrer"
+                    {/* <a href={contactData.socials.linkedin} target="_blank" rel="noopener noreferrer"
                       className="w-9 h-9 rounded-xl bg-secondary border border-border flex items-center justify-center hover:bg-accent hover:text-white hover:border-accent hover:-translate-y-1 transition-all duration-300">
                       <Linkedin size={16} />
-                    </a>
+                    </a> */}
                     <a href={`mailto:${contactData.email}`}
                       className="w-9 h-9 rounded-xl bg-secondary border border-border flex items-center justify-center hover:bg-accent hover:text-white hover:border-accent hover:-translate-y-1 transition-all duration-300">
                       <Mail size={16} />
@@ -183,7 +191,7 @@ const Index = () => {
 
             {/* Filter Tabs */}
             <div className="flex gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar">
-              {categories.map((category, i) => {
+              {categories.filter((category) => category !== "all").map((category, i) => {
                 const grads = [
                   'linear-gradient(135deg, #7C3AED, #9F67FF)',
                   'linear-gradient(135deg, #7C3AED, #C026D3)',
@@ -206,8 +214,9 @@ const Index = () => {
                     }`}
                     style={active ? { background: grads[i % grads.length], boxShadow: '0 4px 16px rgba(124,58,237,0.25)' } : {}}
                   >
-                    {category === "all" ? "All Projects" : category}
-                  </button>
+                    {category}         
+                    {/* {category === "all" ? "All Projects" : category}          */}
+                    </button>
                 );
               })}
             </div>
@@ -362,9 +371,20 @@ const Index = () => {
         <div className="section-divider max-w-6xl mx-auto" />
         <section id="about" className="py-16">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-8">
-              <h2 className="text-3xl md:text-4xl font-display font-bold gradient-text mb-2">About Me</h2>
-              <p className="text-foreground/80 text-base max-w-3xl leading-relaxed">{aboutData.bio}</p>
+            <div className="mb-10">
+              {/* Name */}
+              <h2 className="text-3xl md:text-4xl font-display font-bold gradient-text mb-2">
+            About Me  </h2>
+
+              {/* Aspiring Engineer label */}
+              <p className="text-accent font-semibold text-sm md:text-base mb-3">
+                Aspiring Engineer
+              </p>
+
+              {/* Clean 2-line intro */}
+              <p className="text-foreground/80 text-base max-w-3xl leading-relaxed">
+                Aaryamann is an aspiring engineer passionate about robotics, applied STEM, and building real-world technology solutions. He has led award-winning projects, conducted independent research, and actively contributes through leadership, innovation, and outreach.
+              </p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -476,7 +496,7 @@ const Index = () => {
           onClose={() => setSelectedProject(null)}
         />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

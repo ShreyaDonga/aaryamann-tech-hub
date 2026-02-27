@@ -381,16 +381,16 @@ export const projects: Project[] = [
     category: "School Leadership",
     summary:
       "Elected Head Boy (Jan 2024–Jan 2025); founded AI Club (2023) and presided over Engineering Club (2024–present); served as Tech Secretary (2023–2024). Created BIS Beholder interschool film festival and led BIS Technology Fest under the theme 'Tech for All'.",
-    image: "/projects/s1.png",
-    thumbnail: "/projects/ftc/ftc_robotics_aaryaman_goenka.jpeg",
+    image: "/projects/navy_presentation.jpeg",
+    thumbnail: "/projects/leadership.jpeg",
     tags: ["Leadership", "Student operations", "Club founding"],
     content: {
       introduction:
         "Held multiple leadership positions at Bombay International School, managing student operations, founding technical clubs, and organizing school-wide events that fostered innovation and community engagement.",
       media: [
         // { type: "image", src: "/projects/ftc/building_FTC_robotics.jpeg", label: "Engineering Club Workshop" },
-        { type: "image", src: "/projects/ftc/ftc_robotics_aaryaman_goenka.jpeg", label: "FTC Robotics - CAD Design" },
-        { type: "image", src: "/projects/s1.png", label: "FTC Robotics - CAD Design" },  
+        { type: "image", src: "/projects/navy_presentation.jpeg", label: "Navy Presentation" },
+        { type: "image", src: "/projects/leadership.jpeg", label: "Leadership at BIS" },  
       ],
       subProjects: [
         {
@@ -429,7 +429,7 @@ export const projects: Project[] = [
     content: {
       media: [
         { type: "image", src: "/projects/certificates/img15.jpeg", label: "Cambridge Award Certificate" },
-        // { type: "image", src: "/projects/certificates/img7.jpeg", label: "SASMO Gold Medal" },
+        { type: "image", src: "/projects/certificates/sasmo.jpeg", label: "SASMO Gold Medal" },
         { type: "image", src: "/projects/hkiso_silver_award.jpeg", label: "HKISO Silver Award" },
         // { type: "image", src: "/projects/certificates/img1.jpeg", label: "CREST Gold Certificate" },
         { type: "image", src: "/projects/certificates/pascal_award.jpeg", label: "Waterloo Pascal Distinction" },
@@ -451,17 +451,17 @@ export const projects: Project[] = [
     summary:
       "Observerships with DRDO New Delhi (fire safety protocols) and IIT Delhi (electronics research). Research Intern at Hippo Technotex analyzing the Cool Roof System. Delivered STEM outreach workshops and Khadify demonstrations to farmers across Maharashtra. Keynote presentation at Fire Safety Association of India conference to 200+ attendees.",
     image: "/projects/aaryamann_image2.png",
-    thumbnail: "/projects/aaryamann_image2.png",
+    thumbnail: "/projects/outreach/outreachthumbnail.jpeg",
     tags: ["STEM Outreach", "Industry research", "Real-world application"],
     content: {
       introduction:
         "Engaged in structured observerships, internships, and outreach activities that translate academic learning into practical research and community impact.",
       media: [
         // { type: "image", src: "/projects/outreach/outreach2.png", label: "Agricultural STEM Workshop" },
-        { type: "image", src: "/projects/outreach/outreach1.png", label: "Farmer Engagement Session" },
+        { type: "image", src: "/projects/outreach/farmer engagement.jpeg", label: "Farmer Engagement Session" },
         { type: "image", src: "/projects/outreach/outreach3.png", label: "Community Outreach" },
         { type: "image", src: "/projects/beetlebot/fsai-speaker.jpeg", label: "FSAI Conference Presentation" },
-        { type: "image", src: "/projects/img5.jpeg", label: "Field Demonstration" },
+        // { type: "image", src: "/projects/img5.jpeg", label: "Field Demonstration" },
       ],
       subProjects: [
         {
@@ -484,7 +484,7 @@ export const projects: Project[] = [
   },
   {
     id: "cyber-advocacy",
-    title: "CyberDost: Cyberbullying Prevention Initiative",
+    title: "CyberDost: Outreach Program in School",
     shortTitle: "CyberDost",
     category: "Social Initiative",
     summary:
@@ -506,18 +506,18 @@ export const projects: Project[] = [
         {
           type: "pdf",
           src: "/docs/Cyberbullying Awareness and Prevention in India.pdf",
-          label: "Cyberbullying Awareness (English)",
+          label: "Cyberbullying Awareness Pamphlet(English)",
         },
         {
           type: "pdf",
           src: "/docs/Hindi_Cyberbullying Awareness and Prevention in India.pdf",
-          label: "Cyberbullying Awareness (Hindi)",
+          label: "Cyberbullying Awareness Pamphlet(Hindi)",
         },
-        {
-          type: "pdf",
-          src: "/docs/Cyberbullying Prevention Infographic.pdf",
-          label: "Cyberbullying Prevention Infographic",
-        },
+        // {
+        //   type: "pdf",
+        //   src: "/docs/Cyberbullying Prevention Infographic.pdf",
+        //   label: "Cyberbullying Prevention Infographic",
+        // },
         {
           type: "pdf",
           src: "/docs/Message_DharmendraPradhan_CyberDost.pdf",
@@ -550,7 +550,7 @@ export const projects: Project[] = [
   },
   {
     id: "leadership-community",
-    title: "Hobbies & Outdoor Leadership",
+    title: "Hobbies",
     shortTitle: "Hobbies",
     category: "Hobbies",
     summary:
@@ -562,16 +562,16 @@ export const projects: Project[] = [
       introduction:
         "Pursues outdoor adventure, athletic discipline, and technical applications of technology in personal pursuits, balancing physical challenge with innovation.",
       media: [
-        { type: "image", src: "/projects/hobbies/img4.jpeg", label: "Trekking Adventure" },
-        { type: "image", src: "/projects/hobbies/img8.jpeg", label: "Mountain Expedition" },
-        { type: "image", src: "/projects/hobbies/img7.jpeg", label: "Outdoor Leadership" },
+        { type: "image", src: "/projects/hobbies/img4.jpeg", label: "Sandakphu Phalut Trek" },
+        { type: "image", src: "/projects/hobbies/img8.jpeg", label: "Knolls Mountain Expedition" },
+        // { type: "image", src: "/projects/hobbies/img7.jpeg", label: "Outdoor Leadership" },
       ],
       subProjects: [
-        {
-          title: "Outdoor Leadership & Expeditions",
-          description:
-      "Completed a 65-mile backpacking expedition with the National Outdoor Leadership School (NOLS) in New Hampshire, developing resilience, teamwork, and confidence in challenging wilderness conditions. Also undertook the Sandakphu–Phalut trek in West Bengal, earning the 'Most Spirited Trekker' award, and explored Uluru–Kata Tjuta National Park in Australia, deepening my appreciation for nature and cultural landscapes.",
-        },
+      //   {
+      //     title: "Outdoor Leadership & Expeditions",
+      //     description:
+      // "Completed a 65-mile backpacking expedition with the National Outdoor Leadership School (NOLS) in New Hampshire, developing resilience, teamwork, and confidence in challenging wilderness conditions. Also undertook the Sandakphu–Phalut trek in West Bengal, earning the 'Most Spirited Trekker' award, and explored Uluru–Kata Tjuta National Park in Australia, deepening my appreciation for nature and cultural landscapes.",
+      //   },
         {
           title: "Trail Navigation Technology",
           description:
