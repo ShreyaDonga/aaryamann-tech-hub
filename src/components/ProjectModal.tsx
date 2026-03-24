@@ -30,7 +30,7 @@ const heroMediaOverrides: Record<string, MediaItem> = {
   },
   "research-innovation": {
     type: "image",
-    src: "/projects/crest_gold_award.jpeg",
+    src: "/projects/IRISaward.jpg",
     label: "Research & Engineering Innovation",
   },
   "robotics-leadership": {

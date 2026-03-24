@@ -155,10 +155,10 @@ export const projects: Project[] = [
           src: "/docs/Beetlebot_Research_Paper.pdf",
           label: "Beetlebot Research Paper",
         },
-        {
-          type: "image",
-          src: "/projects/beetlebot/img2.jpeg",
-        },
+        // {
+        //   type: "image",
+        //   src: "/projects/beetlebot/img2.jpeg",
+        // },
         {
           type: "image",
           src: "/projects/beetlebot/img3.jpeg",
@@ -179,10 +179,10 @@ export const projects: Project[] = [
           type: "image",
           src: "/projects/beetlebot/beetlebot_at_fsai-02.jpeg" ,label: "FSAI Conference Presentation",
         },
-        {
-          type: "image",
-          src: "/projects/beetlebot/beetlebot_at_fsai-03.jpeg", label: "FSAI Conference Presentation",
-        },
+        // {
+        //   type: "image",
+        //   src: "/projects/beetlebot/beetlebot_at_fsai-03.jpeg", label: "FSAI Conference Presentation",
+        // },
         {
           type: "image",
           src: "/projects/beetlebot/beetlebot_at_fsai-04.jpeg",label: "FSAI Conference Presentation",
@@ -203,10 +203,10 @@ export const projects: Project[] = [
         //   type: "image",
         //   src: "/projects/beetlebot/beetlebot_at_fsai-10.jpeg",
         // },
-        {
-          type: "image",
-          src: "/projects/beetlebot/beetlebot_at_fsai-11.jpeg",label: "FSAI Conference Presentation",
-        },
+        // {
+        //   type: "image",
+        //   src: "/projects/beetlebot/beetlebot_at_fsai-11.jpeg",label: "FSAI Conference Presentation",
+        // },
         {
           type: "image",
           src: "/projects/beetlebot/beetlebot_at_fsai-12.jpeg",label: "FSAI Conference Presentation",
@@ -352,7 +352,7 @@ export const projects: Project[] = [
     summary:
       "CREST Gold (pH–erosion study), FTC Think + Inspire Awards, Most Creative & Most Innovative at BIS Tech Fair.",
     image: "/projects/crest_gold_award.jpeg",
-    thumbnail: "/projects/crest_gold_award.jpeg",
+    thumbnail: "/projects/IRISaward.jpg",
     tags: ["FTC", "CREST", "Materials", "Research"],
     content: {
       media: [
@@ -360,8 +360,12 @@ export const projects: Project[] = [
       ],
       subProjects: [
         {
+          title: "IRIS National Fair 2025-26",
+          description: "Gold Medal winner at IRIS National Fair 2025-26. Built dual-function smart composting reactor with IoT sensors (temperature, moisture, NPK, ammonia gas), automated systems (aeration pump, PTC heater, exhaust fan), and ML-driven dashboard.",
+        },
+        {
           title: "CREST Gold Award (December 2025)",
-          description: "ML and IoT Sensing to Enhance Compost Quality and Speed Processing, IRIS National Fair 2025-26.",
+          description: "ML and IoT Sensing to Enhance Compost Quality and Speed Processing.",
         },
         {
           title: "Most Creative Project (October 2024)",
@@ -396,8 +400,11 @@ export const projects: Project[] = [
         "Held multiple leadership positions at Bombay International School, managing student operations, founding technical clubs, and organizing school-wide events that fostered innovation and community engagement.",
       media: [
         // { type: "image", src: "/projects/ftc/building_FTC_robotics.jpeg", label: "Engineering Club Workshop" },
-        { type: "image", src: "/projects/navy_presentation.jpeg", label: "Navy Presentation" },
+        { type: "image", src: "/projects/navy_presentation.jpeg", label: "Head Boy Investiture 2024" },
         { type: "image", src: "/projects/leadership.jpeg", label: "Leadership at BIS" },  
+        { type: "image", src: "/projects/droneclub.jpeg", label: "Drone and Engineering Club" },
+        { type: "image", src: "/projects/droneclub2.jpeg", label: "Drone and Engineering Club" },
+        { type: "image", src: "/projects/droneclub3.jpeg", label: "Drone and Engineering Club" },
       ],
       subProjects: [
         {
@@ -435,7 +442,7 @@ export const projects: Project[] = [
     tags: ["Olympiads", "Math"],
     content: {
       media: [
-        { type: "image", src: "/projects/certificates/img15.jpeg", label: "Cambridge Award Certificate" },
+        { type: "image", src: "/projects/certificates/img15.jpeg", label: "Oustanding Cambridge Learner Award" },
         { type: "image", src: "/projects/certificates/sasmo.jpeg", label: "SASMO Gold Medal" },
         { type: "image", src: "/projects/hkiso_silver_award.jpeg", label: "HKISO Silver Award" },
         // { type: "image", src: "/projects/certificates/img1.jpeg", label: "CREST Gold Certificate" },
@@ -582,7 +589,8 @@ tags: ["Outdoor expeditions", "Leadership", "Adventure sports"],
         "Pursues outdoor adventure, athletic discipline, and technical applications of technology in personal pursuits, balancing physical challenge with innovation.",
       media: [
         { type: "image", src: "/projects/hobbies/img4.jpeg", label: "Sandakphu Phalut Trek" },
-        { type: "image", src: "/projects/hobbies/img8.jpeg", label: "Knolls Mountain Expedition" },
+        { type: "image", src: "/projects/hobbies/img8.jpeg", label: "NOLS Mountain Expedition" },
+        { type: "image", src: "/projects/Annapurnatrek.jpeg", label: "Trekking on foothills of Annapurna" },
         // { type: "image", src: "/projects/hobbies/img7.jpeg", label: "Outdoor Leadership" },
       ],
       subProjects: [
