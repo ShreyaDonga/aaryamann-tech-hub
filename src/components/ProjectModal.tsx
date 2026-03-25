@@ -422,6 +422,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                 </Section>
               );
             })()}
+            
 
             {/* Citations */}
             {project.content.citations && project.content.citations.length > 0 && (
@@ -436,7 +437,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                       className="flex items-center gap-2 text-accent hover:underline text-sm"
                     >
                       <ExternalLink size={14} />
-                      Visit Cyberbullying Website
+                      Visit Website Link
                     </a>
                   ))}
                 </div>
